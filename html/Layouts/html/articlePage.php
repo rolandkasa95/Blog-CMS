@@ -17,3 +17,23 @@
         </div>
     </div>
 </div>
+<div class="container">
+    <div class="col-md-1">
+        
+    </div>
+    <div class="col-md-11">
+        <?php
+        $result = $this->model->showArticle();
+        foreach ($result as $items)
+            foreach ($items as $key=>$row) {
+                if ('title' === $key){
+                    echo '<h1>' . $row . '</h1>';
+                }elseif ('date' === $key){
+                    echo '<h1>' . $row . '</h1>';
+                }else{
+                    echo '<h4>' . $row . '</h4>';
+                }
+            }
+        ?>
+    </div>
+</div>

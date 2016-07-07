@@ -28,13 +28,13 @@ class homepageModel
         return $result;
     }
 
-    public function getArticleId(){
+    public function getArticleId($row){
         $config = \ObjectFactoryService::getConfig();
         $this->connect($config);
-        $sql = 'SELECT article_id FROM articles WHERE isPublished=1';
+        $sql = 'SELECT article_id FROM articles WHERE isPublished=1 AND title="' . $row . '"';
         $statement = $this->db->prepare($sql);
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_COLUMN);
+        $result = $statement->fetch(PDO::FETCH_COLUMN);
         return $result;
     }
 }

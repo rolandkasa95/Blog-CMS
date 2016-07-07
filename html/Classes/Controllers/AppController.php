@@ -22,7 +22,7 @@ class AppController
             $this->model = new homepageModel();
             $view->render('homePage.php',$this->model);
         }
-        if('articlesShow' === $_GET['action'] && $_GET['id']){
+        if('articleShow' === $_GET['action']){
             $this->model = new articlepageModel();
             $view->render('articlePage.php',$this->model);
         }

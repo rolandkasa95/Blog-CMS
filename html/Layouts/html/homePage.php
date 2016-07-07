@@ -25,7 +25,7 @@
             $result = $this->model->getArticles();
             foreach($result as $row => $key)
             {
-                echo "<a href=index.php?action=articleShow;id=" . $this->model->getArticleId() . " >" . $row . '</a><br />';
+                echo "<a href=index.php?action=articleShow&id=" . $this->model->getArticleId($row) . " >" . $row . '</a><br />';
                 echo $key . '<br />';
             }
             ?>

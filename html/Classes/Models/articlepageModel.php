@@ -27,11 +27,11 @@ class articlepageModel
     public function showArticle(){
         $config = \ObjectFactoryService::getConfig();
         $this->connect($config);
-        $sql='SELECT name,date,body FROM articles WHERE isPublished=1';
+        $id = $_GET['id'];
+        $sql='SELECT title,date,body FROM articles WHERE isPublished=1 AND article_id=' .$id ;
         $statement = $this->db->prepare($sql);
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_COLUMN);
-        var_dump($result);
+        $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
         return $result;
     }
 }
