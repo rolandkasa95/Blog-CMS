@@ -1,5 +1,8 @@
 <?php
 
-echo phpinfo();
+require 'Loader.php';
+Loader::init();
+
+
 
 ?>
