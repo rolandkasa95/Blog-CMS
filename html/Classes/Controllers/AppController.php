@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Models\articlepageModel;
 use Models\homepageModel;
 use Views\View;
 
@@ -18,12 +19,12 @@ class AppController
         $view = new View();
 
         if(empty($_GET['action'])){
-            $model = new homepageModel();
-            $result = $model->getArticles();
-            $view->render('homePage.php',$model);
+            $this->model = new homepageModel();
+            $view->render('homePage.php',$this->model);
         }
         if('articlesShow' === $_GET['action'] && $_GET['id']){
-            
+            $this->model = new articlepageModel();
+            $view->render('articlePage.php',$this->model);
         }
     }
 }
