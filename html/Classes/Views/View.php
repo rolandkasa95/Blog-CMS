@@ -1,8 +1,16 @@
 <?php
 
+namespace Views;
+
+/**
+ * Class View
+ */
 class View
 {
+    /**
+     * @param $param
+     */
     public function render($param){
-        require '../../Layouts/' . $param;
+        require LAYOUTS . 'html/' . $param;
     }
 }
