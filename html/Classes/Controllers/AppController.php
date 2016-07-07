@@ -4,6 +4,7 @@ namespace Controllers;
 
 use Models\articlepageModel;
 use Models\homepageModel;
+use Models\tagpageModel;
 use Views\View;
 
 /**
@@ -26,5 +27,10 @@ class AppController
             $this->model = new articlepageModel();
             $view->render('articlePage.php',$this->model);
         }
+        if('tag' === $_GET['action']){
+            $this->model = new tagpageModel();
+            $view->render('tagPage.php',$this->model);
+        }
+
     }
 }

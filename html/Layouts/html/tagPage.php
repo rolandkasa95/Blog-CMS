@@ -11,34 +11,24 @@
 <body>
 <div class="container">
     <div class="jumbotron">
-        <h1>My Blog</h1>
+        <h1>You are browsing: <?php echo $_GET['name'] ?></h1>
         <div align="right">
             <a href="index.php?action=login">Login|Logout</a>
         </div>
     </div>
 </div>
 <div class="container">
-    <div class="col-md-1">
-        
-    </div>
-    <div class="col-md-11">
-        <?php
-        $result = $this->model->showArticle();
-        foreach ($result as $items)
-            foreach ($items as $key=>$row) {
-                if ('title' === $key){
-                    echo '<h1>' . $row . '</h1>';
-                }elseif ('date' === $key){
-                    echo '<h1>' . $row . '</h1>';
-                }else{
-                    echo '<h4>' . $row . '</h4>';
-                }
+    <div class="col-md-1"></div>
+    <div class="col-md-8">
+        <h2>
+            <?php
+            $result = $this->model->getArticles();
+            foreach($result as $row => $key)
+            {
+                echo "<a href=index.php?action=articleShow&id=" . $this->model->getArticleId($row) . " >" . $row . '</a><br />';
+                echo $key . '<br />';
             }
-        $result = $this->model->tagNameDisplay();
-        foreach($result as $items)
-            foreach($items as $key=>$row){
-                echo "<a href=index.php?action=tag&name=$row>" . $row . '</a><br />';
-            }
-        ?>
+            ?>
+        <h2>
     </div>
 </div>
