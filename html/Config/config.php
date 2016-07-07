@@ -3,5 +3,5 @@
 return [
     'dsn' => 'mysql:host=localhost;dbname=myblog',
     'user' => 'root',
-    'pass' => 'secret',
+    'pass' => '123',
 ];

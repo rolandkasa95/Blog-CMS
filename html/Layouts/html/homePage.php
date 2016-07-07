@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta charset="utf-8" />
@@ -19,6 +17,19 @@
             </div>
         </div>
     </div>
-
+    <div class="container">
+        <div class="col-md-8">
+            <h2>
+            <?php
+            $result = $this->model->getArticles();
+            foreach($result as $row => $key)
+            {
+                echo $row . '<br />';
+                echo $key. '<br />';
+            }
+            ?>
+                <h2>
+        </div>
+    </div>
 </body>
 

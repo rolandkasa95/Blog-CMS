@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Models\homepageModel;
 use Views\View;
 
 /**
@@ -17,7 +18,9 @@ class AppController
         $view = new View();
 
         if(empty($_GET['action'])){
-            $view->render('homePage.html');
+            $model = new homepageModel();
+            $result = $model->getArticles();
+            $view->render('homePage.php',$model);
         }
     }
 }
