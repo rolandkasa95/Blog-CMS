@@ -25,7 +25,16 @@ class homepageModel
         $statement = $this->db->prepare($sql);
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_KEY_PAIR);
-        var_dump($result);
+        return $result;
+    }
+
+    public function getArticleId(){
+        $config = \ObjectFactoryService::getConfig();
+        $this->connect($config);
+        $sql = 'SELECT article_id FROM articles WHERE isPublished=1';
+        $statement = $this->db->prepare($sql);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_COLUMN);
         return $result;
     }
 }

@@ -22,5 +22,8 @@ class AppController
             $result = $model->getArticles();
             $view->render('homePage.php',$model);
         }
+        if('articlesShow' === $_GET['action'] && $_GET['id']){
+            
+        }
     }
 }

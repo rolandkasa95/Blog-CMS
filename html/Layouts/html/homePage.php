@@ -18,14 +18,15 @@
         </div>
     </div>
     <div class="container">
+        <div class="col-md-1"></div>
         <div class="col-md-8">
             <h2>
             <?php
             $result = $this->model->getArticles();
             foreach($result as $row => $key)
             {
-                echo $row . '<br />';
-                echo $key. '<br />';
+                echo "<a href=index.php?action=articleShow;id=" . $this->model->getArticleId() . " >" . $row . '</a><br />';
+                echo $key . '<br />';
             }
             ?>
                 <h2>
