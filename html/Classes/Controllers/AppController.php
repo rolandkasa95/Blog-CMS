@@ -2,9 +2,12 @@
 
 namespace Controllers;
 
+use Forms\LoginForm;
 use Models\articlepageModel;
 use Models\homepageModel;
 use Models\tagpageModel;
+use Models\userModel;
+use Session\Session;
 use Views\View;
 
 /**
@@ -15,22 +18,39 @@ class AppController
 {
     public $view;
     public $model;
+    public $form;
+    public $loginController;
+    public $session;
 
-    public function init(){
+    public function init()
+    {
         $view = new View();
 
-        if( !isset($_GET['action']) || empty($_GET['action']) ){
+        if (!isset($_GET['action']) || empty($_GET['action'])) {
             $this->model = new homepageModel();
-            $view->render('homePage.php',$this->model);
+            $view->render('homePage.php', $this->model);
         }
-        if( isset($_GET['action']) && 'articleShow' === $_GET['action']){
+        if (isset($_GET['action']) && 'articleShow' === $_GET['action']) {
             $this->model = new articlepageModel();
-            $view->render('articlePage.php',$this->model);
+            $view->render('articlePage.php', $this->model);
         }
-        if( isset($_GET['action']) && 'tag' === $_GET['action']){
+        if (isset($_GET['action']) && 'tag' === $_GET['action']) {
             $this->model = new tagpageModel();
-            $view->render('tagPage.php',$this->model);
+            $view->render('tagPage.php', $this->model);
         }
-
-    }
+        if (isset($_GET['action']) && 'login' === $_GET['action']) {
+            $this->model = new userModel();
+            $this->form = new LoginForm($this->model);
+            $view->render('loginpage.php', $this->form);
+        }
+        if (isset($_GET['action']) && 'validate' === $_GET['action'] && isset($_POST['submit']) ) {
+            $this->model = new userModel();
+            if($this->model->getUsername($_POST['username'])){
+                    $this->session = new \Models\Session();
+                    $this->session->init();
+                    $this->model = new homepageModel();
+                    $view->render('homePage.php',$this->model);
+                }
+            }
+        }
 }

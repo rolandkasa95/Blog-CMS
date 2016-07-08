@@ -13,7 +13,13 @@
         <div class="jumbotron">
             <h1>My Blog</h1>
             <div align="right">
-                <a href="index.php?action=login">Login|Logout</a>
+                <a href="index.php?action=login"><?php
+                    if(!empty(session_start())) {
+                        echo $_SESSION['username'] . '   Logout';
+                    }else{
+                        echo "Login";
+                    }
+                    ?></a>
             </div>
         </div>
     </div>

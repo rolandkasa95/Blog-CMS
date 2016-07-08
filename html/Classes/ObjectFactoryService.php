@@ -7,6 +7,11 @@ class ObjectFactoryService
      */
     public static $config;
 
+    /**
+     * @var object
+     */
+    public static $session;
+
 
     /**
      * Database Configuration retrieval

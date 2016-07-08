@@ -9,6 +9,7 @@ class View
 {
 
     protected $model;
+
     /**
      * @param $param
      */
