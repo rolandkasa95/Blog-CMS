@@ -15,7 +15,7 @@
         <div align="right">
             <a href="index.php?action=login">
                 <?php
-                if(session_start()) {
+                if(session_start() && isset($_SESSION['username'])) {
                     echo $_SESSION['username'] . '   Logout';
                 }else{
                     echo "Login";

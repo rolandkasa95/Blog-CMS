@@ -40,6 +40,10 @@ class AppController
         }
         if (isset($_GET['action']) && 'login' === $_GET['action']) {
             $this->model = new userModel();
+            if (session_start()){
+                session_unset();
+                session_destroy();
+            }
             $this->form = new LoginForm($this->model);
             $view->render('loginpage.php', $this->form);
         }
@@ -50,7 +54,10 @@ class AppController
                     $this->session->init();
                     $this->model = new homepageModel();
                     $view->render('homePage.php',$this->model);
-                }
+                }else{
+                $view->render("loginpage.php",new LoginForm($this->model));
+                echo "<div class='container'><div class='col-md-1'></div><div class='col-md-8'><h4 style='color: red'>Enter a Valid username and password</h4></div></div>";
+            }
             }
         }
 }

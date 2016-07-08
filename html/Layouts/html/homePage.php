@@ -14,7 +14,10 @@
             <h1>My Blog</h1>
             <div align="right">
                 <a href="index.php?action=login"><?php
-                    if(!empty(session_start())) {
+                    if(isset($_SESSION)){
+                        echo $_SESSION['username'] . '   Logout';
+                    }
+                    elseif(session_start()  && isset($_SESSION['username'])) {
                         echo $_SESSION['username'] . '   Logout';
                     }else{
                         echo "Login";

@@ -23,4 +23,8 @@ class Session
     public function get(){
         return $_SESSION;
     }
+    public function destroy(){
+        session_unset();
+        session_destroy();
+    }
 }
