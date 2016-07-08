@@ -1,7 +1,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta charset="utf-8" />
-    <title>Webserver Landing Page</title>
+    <title>My Blog</title>
     <meta name="generator" content="PuPHPet.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" />
@@ -24,16 +24,14 @@
     </div>
 </div>
 <div class="container">
-    <div class="col-md-1">
-    </div>
-    <div class="col-md-11">
-        <h1 style="font-style: italic;"><a href="index.php">Back Home</a></h1><br />
+    <div class="col-md-12">
+        <h1 style="text-align: center; font-style: italic;"><a href="index.php">Back Home</a></h1><hr /><hr />
         <?php
         $result = $this->model->showArticle();
         foreach ($result as $items)
             foreach ($items as $key=>$row) {
                 if ('title' === $key){
-                    echo '<h1>' . $row . '</h1>';
+                    echo '<h1 style="text-align: center">' . $row . '</h1>';
                 }elseif ('date' === $key){
                     echo '<h2>' . $row . '</h2>';
                 }else{

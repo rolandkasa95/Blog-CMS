@@ -42,7 +42,7 @@ class AppController
             $this->model = new userModel();
             if (session_start()){
                 session_unset();
-                session_destroy();
+               session_destroy();
             }
             $this->form = new LoginForm($this->model);
             $view->render('loginpage.php', $this->form);
@@ -58,6 +58,6 @@ class AppController
                 $view->render("loginpage.php",new LoginForm($this->model));
                 echo "<div class='container'><div class='col-md-1'></div><div class='col-md-8' style=\"text-align: center\"><h4 style='color: red'>Enter a Valid username and password</h4></div></div>";
             }
-            }
+        }
         }
 }

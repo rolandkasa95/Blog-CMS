@@ -1,7 +1,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta charset="utf-8" />
-    <title>Webserver Landing Page</title>
+    <title>My Blog</title>
     <meta name="generator" content="PuPHPet.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" />
@@ -13,7 +13,8 @@
     <div class="col-md-8" style="padding-top: 20%; text-align: center">
         <h2>
             <h1>Welcome, please login</h1>
-            <?php echo $this->model->getStartTag()?>
+            <?php echo '<p style="position: relative">' . $this->model->getStartTag() . '</p>';?>
+            <h4 style="font-style: italic; text-align: right; position: static"><a href="index.php">Back Home</a></h4><br />
             <?php foreach($this->model->getFields() as $field) : ?>
                 <?php if(method_exists($field, 'getLabelTag')) : ?>
                     <?php echo $field->getLabelTag();?>
