@@ -21,7 +21,7 @@
     <div class="col-md-1">
     </div>
     <div class="col-md-11">
-        <h1><a href="index.php">Back Home</a></h1><br />
+        <h1 style="font-style: italic;"><a href="index.php">Back Home</a></h1><br />
         <?php
         $result = $this->model->showArticle();
         foreach ($result as $items)
@@ -36,9 +36,15 @@
             }
         $result = $this->model->tagNameDisplay();
         echo "<h5>";
+        $i=0;
         foreach($result as $items)
-            foreach($items as $key=>$row){
-                echo "<a href=index.php?action=tag&name=$row>" . $row . '</a>,  ';
+            foreach($items as $key=>$row) {
+                if ($i != 0) {
+                    echo ",  <a href=index.php?action=tag&name=$row>" . $row . '</a>';
+                }else{
+                    echo "  <a href=index.php?action=tag&name=$row>" . $row . '</a>'        ;
+                }
+                $i++;
             }
         echo "</h5>";
         ?>

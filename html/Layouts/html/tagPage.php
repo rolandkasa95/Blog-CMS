@@ -22,13 +22,13 @@
         <div class="col-md-6">
         </div>
         <div class="col-md-8">
-            <h1><a href="index.php">Back Home</a></h1>
+            <h1 style="font-style: italic;"><a href="index.php">Back Home</a></h1>
             <h2>
                 <?php
                 $result = $this->model->getArticles();
                 foreach ($result as $items) {
                     foreach ($items as $item)
-                        echo "<a href=index.php?action=articleShow&id=" . $this->model->getArticleId($item) . " >" . $item . '</a><br />';
+                        echo "<p style='padding: 5px 10px 10px 5px'><a href=index.php?action=articleShow&id=" . $this->model->getArticleId($item) . " >" . $item . '</a><br /></p>';
                 }
                 ?>
             <h2>
