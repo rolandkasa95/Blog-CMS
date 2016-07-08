@@ -56,7 +56,7 @@ class AppController
                     $view->render('homePage.php',$this->model);
                 }else{
                 $view->render("loginpage.php",new LoginForm($this->model));
-                echo "<div class='container'><div class='col-md-1'></div><div class='col-md-8'><h4 style='color: red'>Enter a Valid username and password</h4></div></div>";
+                echo "<div class='container'><div class='col-md-1'></div><div class='col-md-8' style=\"text-align: center\"><h4 style='color: red'>Enter a Valid username and password</h4></div></div>";
             }
             }
         }

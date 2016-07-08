@@ -10,7 +10,7 @@
 </head>
 <div class="container">
     <div class="col-md-1"></div>
-    <div class="col-md-8">
+    <div class="col-md-8" style="padding-top: 20%; text-align: center">
         <h2>
             <h1>Welcome, please login</h1>
             <?php echo $this->model->getStartTag()?>
