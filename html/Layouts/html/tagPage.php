@@ -18,17 +18,20 @@
     </div>
 </div>
 <div class="container">
-    <div class="col-md-1"></div>
-    <div class="col-md-8">
-        <h2>
-            <?php
-            $result = $this->model->getArticles();
-            foreach($result as $row => $key)
-            {
-                echo "<a href=index.php?action=articleShow&id=" . $this->model->getArticleId($row) . " >" . $row . '</a><br />';
-                echo $key . '<br />';
-            }
-            ?>
-        <h2>
+    <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-8">
+            <h1><a href="index.php">Back Home</a></h1>
+            <h2>
+                <?php
+                $result = $this->model->getArticles();
+                foreach ($result as $items) {
+                    foreach ($items as $item)
+                        echo "<a href=index.php?action=articleShow&id=" . $this->model->getArticleId($item) . " >" . $item . '</a><br />';
+                }
+                ?>
+            <h2>
+        </div>
     </div>
 </div>

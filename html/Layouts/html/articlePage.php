@@ -19,9 +19,9 @@
 </div>
 <div class="container">
     <div class="col-md-1">
-        
     </div>
     <div class="col-md-11">
+        <h1><a href="index.php">Back Home</a></h1><br />
         <?php
         $result = $this->model->showArticle();
         foreach ($result as $items)
@@ -29,16 +29,18 @@
                 if ('title' === $key){
                     echo '<h1>' . $row . '</h1>';
                 }elseif ('date' === $key){
-                    echo '<h1>' . $row . '</h1>';
+                    echo '<h2>' . $row . '</h2>';
                 }else{
                     echo '<h4>' . $row . '</h4>';
                 }
             }
         $result = $this->model->tagNameDisplay();
+        echo "<h5>";
         foreach($result as $items)
             foreach($items as $key=>$row){
-                echo "<a href=index.php?action=tag&name=$row>" . $row . '</a><br />';
+                echo "<a href=index.php?action=tag&name=$row>" . $row . '</a>,  ';
             }
+        echo "</h5>";
         ?>
     </div>
 </div>

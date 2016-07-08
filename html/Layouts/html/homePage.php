@@ -26,7 +26,7 @@
             foreach($result as $row => $key)
             {
                 echo "<a href=index.php?action=articleShow&id=" . $this->model->getArticleId($row) . " >" . $row . '</a><br />';
-                echo $key . '<br />';
+                echo $key . '<br /><br />';
             }
             ?>
                 <h2>

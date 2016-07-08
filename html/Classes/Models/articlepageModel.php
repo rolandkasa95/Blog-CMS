@@ -39,7 +39,7 @@ class articlepageModel
         $config = \ObjectFactoryService::getConfig();
         $this->connect($config);
         $id = $_GET['id'];
-        $sql='SELECT name FROM articles  INNER JOIN articles_tags ON articles.article_id = articles_tags.article_id INNER JOIN tags ON articles_tags.tag_id = tags.tag_id WHERE articles.article_id=' .$id ;
+        $sql='SELECT name FROM articles  INNER JOIN articles_tags ON articles.article_id = articles_tags.article_id INNER JOIN tags ON articles_tags.tag_id = tags.tag_id WHERE articles.article_id=' .$id . ' AND articles.isPublished=1';
         $statement = $this->db->prepare($sql);
         $statement->execute();
         $result = $statement->fetchAll(\PDO::FETCH_ASSOC);

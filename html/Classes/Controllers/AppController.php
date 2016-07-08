@@ -19,15 +19,15 @@ class AppController
     public function init(){
         $view = new View();
 
-        if(empty($_GET['action'])){
+        if( !isset($_GET['action']) || empty($_GET['action']) ){
             $this->model = new homepageModel();
             $view->render('homePage.php',$this->model);
         }
-        if('articleShow' === $_GET['action']){
+        if( isset($_GET['action']) && 'articleShow' === $_GET['action']){
             $this->model = new articlepageModel();
             $view->render('articlePage.php',$this->model);
         }
-        if('tag' === $_GET['action']){
+        if( isset($_GET['action']) && 'tag' === $_GET['action']){
             $this->model = new tagpageModel();
             $view->render('tagPage.php',$this->model);
         }
