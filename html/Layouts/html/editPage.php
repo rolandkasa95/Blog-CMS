@@ -16,6 +16,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            <h1 style="text-align: center; font-style: italic;"><a href="index.php">Back Home</a></h1><hr /><hr />
             <h2>Select The Tags</h2>
             <?php
                     require "addTags.php";
@@ -28,11 +29,10 @@
             <input type="submit" value="submit" name="submit">
             </form>
             <?php
-            var_dump($_POST);
-            die;
             if(isset($_POST['submit'])){
                 $this->model = new \Models\insertarticleModel();
                 $this->model->insertArticle();
+                $this->model->insertArticlesTags();
             }
             ?>
         </div>
