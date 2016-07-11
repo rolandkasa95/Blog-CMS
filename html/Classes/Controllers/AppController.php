@@ -5,6 +5,7 @@ namespace Controllers;
 use Forms\LoginForm;
 use Models\articlepageModel;
 use Models\homepageModel;
+use Models\selectTagsModel;
 use Models\tagpageModel;
 use Models\userModel;
 use Session\Session;
@@ -59,6 +60,10 @@ class AppController
                 $view->render("loginpage.php",new LoginForm($this->model));
                 echo "<div class='container'><div class='col-md-1'></div><div class='col-md-8' style=\"text-align: center\"><h4 style='color: red'>Enter a Valid username and password</h4></div></div>";
             }
+        }
+        if(isset($_GET['action']) && 'edit' === $_GET['action']){
+            $this->model= new selectTagsModel();
+            $view->render('editPage.php',$this->model);
         }
         }
 }
