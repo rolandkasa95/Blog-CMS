@@ -9,7 +9,8 @@ use Validators\AlnumValidator;
 /**
  * Register Form Class
  */
-class RegisterForm extends FormCommon implements FormInterface
+class InsertArticleForm
+    extends FormCommon implements FormInterface
 {
     /**
      * RegisterForm constructor.
@@ -55,6 +56,7 @@ class RegisterForm extends FormCommon implements FormInterface
             'form' => 'form1',
             'name' => 'body',
             'required' => true,
+            'priority' => 2,
             'validator' =>[
               'StringLengthValidator' => [
                'minimum' => 15,

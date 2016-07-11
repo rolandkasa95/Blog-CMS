@@ -47,7 +47,6 @@ class selectTagsModel
             $statement = $this->db->prepare($sql);
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_COLUMN);
-            var_dump($result);
             return $result;
         }catch(\PDOException $e){
             echo "Failed selection: " . $e->getMessage();
