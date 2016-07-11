@@ -19,7 +19,22 @@
             <h2>Select The Tags</h2>
             <?php
                     require "addTags.php";
-             ?>
+            ?>
+            <hr />
+            <textarea name="body" rows="8" cols="80" required form="edit"></textarea>
+            <hr />
+            <label for="title">Title: </label>
+            <input type="text" name="title" value="title" placeholder="Title name...">
+            <input type="submit" value="submit" name="submit">
+            </form>
+            <?php
+            var_dump($_POST);
+            die;
+            if(isset($_POST['submit'])){
+                $this->model = new \Models\insertarticleModel();
+                $this->model->insertArticle();
+            }
+            ?>
         </div>
     </div>
 </div>

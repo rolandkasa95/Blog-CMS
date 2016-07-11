@@ -14,7 +14,7 @@ Use PDO;
  * Class editarticleModel
  * @package Models
  */
-class editarticleModel
+class insertarticleModel
 {
     /**
      * @var PDO
@@ -31,7 +31,7 @@ class editarticleModel
 
     public function insertArticle(){
         $this->connect(\ObjectFactoryService::getConfig());
-        $sql="INSERT INTO articles(user_id,title,author,body,date,isPublished) VALUES (" . $this->getIdFromUsers() . ",'" . $_POST['title'] . "','" . $_SESSION['username'] . "','" . $_POST['body'] . "','" . date('Y-m-d') . "'," . $_POST['isPublished'];
+        $sql="INSERT INTO articles(user_id,title,author,body,date,isPublished) VALUES (" . $this->getIdFromUsers() . ",'" . $_POST['title'] . "','" . $_SESSION['username'] . "','" . $_POST['body'] . "','" . date('Y-m-d') . "'," . $_POST['submit']?1:0;
         $insert = $this->db->prepare($sql);
         $insert->execute();
     }
@@ -48,9 +48,32 @@ class editarticleModel
     public function insertArticlesTags(){
         $this->connect(\ObjectFactoryService::getConfig());
         $model = new tagpageModel();
-        $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (" . $this->getArticleId($_POST['title']) . "," . $this->getTagId($_POST['name']) . ")";
-        $insert = $this->db->prepare($sql);
-        $insert->execute();
+        for($j=0;$j<3;$j++){
+            $name = 'select' + $j;
+            $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (" . $this->getArticleId($_POST['title']) . "," . $this->getTagId($_POST[$name]) . ")";
+            $insert = $this->db->prepare($sql);
+            $insert->execute();
+        }
+    }
+
+    public function getTagId($tagName){
+        $this->connect(\ObjectFactoryService::getConfig());
+        $sql = "SELECT id FROM tags WHERE name='" . $tagName . "'";
+        $statement = $this->db->prepare($sql);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_COLUMN);
+        return $result;
+    }
+
+    public function showArticle(){
+        $config = \ObjectFactoryService::getConfig();
+        $this->connect($config);
+        $id = $_GET['id'];
+        $sql='SELECT title,date,body FROM articles WHERE isPublished=1 AND article_id=' .$id ;
+        $statement = $this->db->prepare($sql);
+        $statement->execute();
+        $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+        return $result;
     }
 
 }
