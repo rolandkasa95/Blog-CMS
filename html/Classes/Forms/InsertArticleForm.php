@@ -25,7 +25,7 @@ class InsertArticleForm
             'name' => 'register',
             'id' => 'form1',
             'method' => 'post',
-            'action' => 'index.php',
+            'action' => '#',
         ];
         parent::__construct($models, $params);
 

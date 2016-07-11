@@ -1,9 +1,3 @@
-<?php
-
-USE Forms\Inputs\BaseInput;
-
-?>
-
 <html>
 <body>
 <div class="container">
@@ -30,15 +24,22 @@ USE Forms\Inputs\BaseInput;
                 <?php foreach($this->model->fields as $field) : ?>
                         <?php echo '<hr />' . $field->getLabelTag();?>
                     <?php
-                    if('tags' === $field->name){
-                        for ($j=0;$j<2;$j++){
+                    if('Please Select the Tags' === $field->label){
+                        for ($j=0;$j<3;$j++){
+                            $field->name= 'tags' . $j;
                             echo $field->getInput();
                         }
-                    }
-                    ?>
-                    <?php echo $field->getInput()?>
+                    }else{
+                    echo $field->getInput();}?>
                 <?php endforeach ?>
                 <?php echo $this->model->getEndTag()?>
+                <?php
+                if(isset($_POST['submit'])){
+                    $this->model = new \Models\insertarticleModel();
+                    $this->model->insertArticle();
+                    $this->model->insertArticlesTags();
+                }
+                ?>
                 </h4>
             </div>
         </div>

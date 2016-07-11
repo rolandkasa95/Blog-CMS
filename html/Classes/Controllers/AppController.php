@@ -64,8 +64,8 @@ class AppController
             }
         }
         if(isset($_GET['action']) && 'edit' === $_GET['action']){
-            // $this->model= new selectTagsModel();
-            // $view->render('editPage.php',$this->model);
+//            $this->model= new selectTagsModel();
+//            $view->render('editPage.php',$this->model);
             $this->model = new selectTagsModel();
             $this->form = new InsertArticleForm($this->model);
             $view->render('editPage1.php', $this->form);
