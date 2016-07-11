@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Forms\LoginForm;
+use Forms\RegisterForm;
 use Models\articlepageModel;
 use Models\homepageModel;
 use Models\selectTagsModel;
@@ -62,8 +63,11 @@ class AppController
             }
         }
         if(isset($_GET['action']) && 'edit' === $_GET['action']){
-            $this->model= new selectTagsModel();
-            $view->render('editPage.php',$this->model);
+            // $this->model= new selectTagsModel();
+            // $view->render('editPage.php',$this->model);
+            $this->model = new selectTagsModel();
+            $this->form = new RegisterForm($this->model);
+            $view->render('editPage1.php', $this->form);
         }
         }
 }

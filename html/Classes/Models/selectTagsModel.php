@@ -38,4 +38,20 @@ class selectTagsModel
             echo "Failed selection: " . $e->getMessage();
         }
     }
+
+    public function selectTags1(){
+        $config = \ObjectFactoryService::getConfig();
+        try{
+            $this->connect($config);
+            $sql = 'SELECT name FROM tags';
+            $statement = $this->db->prepare($sql);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_COLUMN);
+            var_dump($result);
+            return $result;
+        }catch(\PDOException $e){
+            echo "Failed selection: " . $e->getMessage();
+        }
+    }
+
 }

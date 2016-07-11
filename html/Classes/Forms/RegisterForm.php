@@ -3,6 +3,9 @@
 namespace Forms;
 
 use Controllers\configController;
+use Models\selectTagsModel;
+use Validators\AlnumValidator;
+
 /**
  * Register Form Class
  */
@@ -27,16 +30,16 @@ class RegisterForm extends FormCommon implements FormInterface
 
         //Add username
         $this->addField([
-            'label' => 'Username',
+            'label' => 'title',
             'type' => 'text',
-            'name' => 'username',
+            'name' => 'title',
             'priority' => 1,
             'required' => true,
             'value' => '',
             'validator' => [
                 'StringLengthValidator' => [
-                    'minimum' => 2,
-                    'maximum' => 30,
+                    'minimum' => 5,
+                    'maximum' => 100,
                 ],
                 'AlnumValidator',
                 'DuplicationValidator',
@@ -44,89 +47,27 @@ class RegisterForm extends FormCommon implements FormInterface
             ],
         ]);
 
-        //Add password
         $this->addField([
-            'label' => 'Password',
-            'type' => 'password',
-            'name' => 'password',
-            'priority' => 2,
+           'label' => 'textarea',
+            'type' => 'textarea',
+            'rows' => 8,
+            'cols' => 80,
+            'form' => 'form1',
+            'name' => 'body',
             'required' => true,
-            'value' => '',
-            'validator' => [
-                'StringLengthValidator' => [
-                    'minimum' => 2,
-                    'maximum' => 30,
-                ],
+            'validator' =>[
+              'StringLengthValidator' => [
+               'minimum' => 15,
+                  'maximum' => 50000000,
+              ],
+                'AlnumValidator',
                 'requiredValidator',
-            ],
-        ]);
-
-        //Add first name
-        $this->addField([
-            'label' => 'First Name',
-            'type' => 'text',
-            'name' => 'first_name',
-            'priority' => 3,
-            'required' => true,
-            'value' => '',
-            'validator' => [
-                'StringLengthValidator' => [
-                    'minimum' => 2,
-                    'maximum' => 30,
-                ],
-                'AlphaValidator',
-                'requiredValidator',
-            ],
-        ]);
-
-        //Add last name
-        $this->addField([
-            'label' => 'Last Name',
-            'type' => 'text',
-            'name' => 'last_name',
-            'priority' => 4,
-            'required' => true,
-            'value' => '',
-            'validator' => [
-                'StringLengthValidator' => [
-                    'minimum' => 2,
-                    'maximum' => 30,
-                ],
-                'alphaValidator',
-                'requiredValidator',
-            ],
-        ]);
-
-        //Add email
-        $this->addField([
-            'label' => 'Email',
-            'type' => 'text',
-            'name' => 'email',
-            'priority' => 5,
-            'required' => true,
-            'value' => '',
-            'validator' => [
-                'emailValidator',
-                'requiredValidator'
-            ],
-        ]);
-
-        //Add email preferred contact
-        $this->addField([
-            'label' => 'Contact By Email',
-            'type' => 'checkbox',
-            'name' => 'email_preferred_contact',
-            'priority' => 6,
-            'required' => true,
-            'value' => false,
-            'validator' => [
-                'booleanValidator',
             ],
         ]);
 
         //Add country and data options
-        $this->models = configController::getModels();
-        $countries = $this->models['country']->getCountries();
+        $this->models = new selectTagsModel();
+        $countries = $this->models->selectTags1();
         $this->addField([
             'label' => 'Country',
             'type' => 'select',
