@@ -9,19 +9,19 @@ abstract class BaseInput{
     /**
      * @var string
      */
-    protected $type;
+    public  $type;
     /**
      * @var string
      */
-    protected $name;
+    public $name;
     /**
      * @var
      */
-    protected $label;
-    protected $value;
-    protected $required;
-    protected $valid;
-    protected $validators;
+    public $label;
+    public $value;
+    public $required;
+    public $valid;
+    public $validators;
 
     /**
      * @param $param

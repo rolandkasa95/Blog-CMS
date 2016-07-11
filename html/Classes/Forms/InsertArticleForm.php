@@ -31,7 +31,7 @@ class InsertArticleForm
 
         //Add username
         $this->addField([
-            'label' => 'title',
+            'label' => 'Title',
             'type' => 'text',
             'name' => 'title',
             'priority' => 1,
@@ -49,10 +49,10 @@ class InsertArticleForm
         ]);
 
         $this->addField([
-           'label' => 'textarea',
+           'label' => 'Body',
             'type' => 'textarea',
             'rows' => 8,
-            'cols' => 80,
+            'cols' => 50,
             'form' => 'form1',
             'name' => 'body',
             'required' => true,
@@ -71,9 +71,9 @@ class InsertArticleForm
         $this->models = new selectTagsModel();
         $countries = $this->models->selectTags1();
         $this->addField([
-            'label' => 'Country',
+            'label' => 'Please Select the Tags',
             'type' => 'select',
-            'name' => 'country',
+            'name' => 'tags',
             'multiple' => false,
             'priority' => 7,
             'required' => true,
@@ -87,7 +87,7 @@ class InsertArticleForm
 
         //Adjust the button attributes
         $button = $this->getField('Submit');
-        $button->setValue('register');
+        $button->setValue('Publish');
 
         //Sort the fields by priority
         ksort($this->fields);
