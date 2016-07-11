@@ -8,9 +8,13 @@
 
 namespace Models;
 
+use PDO;
 
 class selectTagsModel
 {
+    /**
+     * @var $db PDO
+     */
     protected $db;
 
     public function connect($config){
@@ -24,7 +28,12 @@ class selectTagsModel
     public function selectTags(){
         $config = \ObjectFactoryService::getConfig();
         try{
-
+            $this->db->connect($config);
+            $sql = 'SELECT * FROM tags';
+            $statement = $this->db->prepare($sql);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            var_dump($result);
         }catch(\PDOException $e){
             echo "Failed selection: " . $e->getMessage();
         }
