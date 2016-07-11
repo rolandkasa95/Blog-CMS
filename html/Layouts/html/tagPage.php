@@ -1,13 +1,3 @@
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta charset="utf-8" />
-    <title>My Blog</title>
-    <meta name="generator" content="PuPHPet.com" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" />
-    <style type="text/css">pre { background: #444; color:#fff; border-style: none; }</style>
-    <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js?"></script><![endif]-->
-</head>
 <body>
 <div class="container">
     <div class="jumbotron">

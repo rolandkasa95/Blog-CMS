@@ -15,6 +15,7 @@ class View
      */
     public function render($param,$model){
         $this->model = $model;
+        require LAYOUTS . 'html/headHtml.html';
         require LAYOUTS . 'html/' . $param;
     }
 }
