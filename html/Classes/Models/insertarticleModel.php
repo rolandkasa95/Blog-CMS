@@ -50,7 +50,7 @@ class insertarticleModel
         $this->connect(\ObjectFactoryService::getConfig());
         $model = new tagpageModel();
         for($j=0;$j<3;$j++){
-            $tags = 'tags' . $j;
+            $tags = 'select' . $j;
             if(isset($_POST[$tags])) {
                 $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (" . $this->getArticleId($_POST['title']) . "," . $this->getTagId($_POST[$tags]) . ")";
             }

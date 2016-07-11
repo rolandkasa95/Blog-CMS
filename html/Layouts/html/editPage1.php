@@ -8,7 +8,7 @@
                 if(session_start() && isset($_SESSION['username'])){
                     echo $_SESSION['username'] . '   Logout';
                 }else{
-                    echo "Login";
+                    header("Location: index.php?action=login ");
                 }
                 ?></a>
         </div>
@@ -26,7 +26,7 @@
                     <?php
                     if('Please Select the Tags' === $field->label){
                         for ($j=0;$j<3;$j++){
-                            $field->name= 'tags' . $j;
+                            $field->name= 'select' . $j;
                             echo $field->getInput();
                         }
                     }else{
