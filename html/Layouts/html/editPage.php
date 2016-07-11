@@ -16,7 +16,10 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-
+            <h2>Select The Tags</h2>
+            <?php
+                    require "addTags.php";
+             ?>
         </div>
     </div>
 </div>

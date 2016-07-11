@@ -28,12 +28,12 @@ class selectTagsModel
     public function selectTags(){
         $config = \ObjectFactoryService::getConfig();
         try{
-            $this->db->connect($config);
+            $this->connect($config);
             $sql = 'SELECT * FROM tags';
             $statement = $this->db->prepare($sql);
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-            var_dump($result);
+            return $result;
         }catch(\PDOException $e){
             echo "Failed selection: " . $e->getMessage();
         }
