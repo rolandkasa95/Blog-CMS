@@ -44,9 +44,9 @@
         foreach($result as $items)
             foreach($items as $key=>$row) {
                 if ($i != 0) {
-                    echo ",  <a href=index.php?action=tag&name=$row>" . $row . '</a>';
+                    echo ",  <a href=index.php?action=tag&name=$row>" . strtolower($row) . '</a>';
                 }else{
-                    echo "  <a href=index.php?action=tag&name=$row>" . $row . '</a>'        ;
+                    echo "  <a href=index.php?action=tag&name=$row>" . strtolower($row) . '</a>';
                 }
                 $i++;
             }

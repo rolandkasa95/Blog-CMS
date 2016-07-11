@@ -27,7 +27,7 @@
         </div>
     </div>
     <div class="container">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <h2>
             <?php
             $result = $this->model->getArticles();

@@ -41,8 +41,9 @@ class AppController
         if (isset($_GET['action']) && 'login' === $_GET['action']) {
             $this->model = new userModel();
             if (session_start()){
+                
                 session_unset();
-               session_destroy();
+                session_destroy();
             }
             $this->form = new LoginForm($this->model);
             $view->render('loginpage.php', $this->form);

@@ -17,7 +17,6 @@ class Session
 
     public function init(){
         $_SESSION['username'] = $_POST['username'];
-        $_SESSION['password'] = $_POST['password'];
     }
 
     public function get(){
