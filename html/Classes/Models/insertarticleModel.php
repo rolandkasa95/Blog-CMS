@@ -32,7 +32,7 @@ class insertarticleModel
     public function insertArticle(){
         $this->connect(\ObjectFactoryService::getConfig());
         $bool = $_POST['submit']?1:0;
-        $sql="INSERT INTO articles(user_id,title,author,body,date,isPublished) VALUES (" . $this->getIdFromUsers() . ",'" . $_POST['title'] . "','" . $_SESSION['username'] . "','" . $_POST['body'] . "','" . date('Y-m-d') . "'," . $bool . ")";
+        $sql="INSERT INTO articles(user_id,title,author,body,date,isPublished) VALUES (" . $this->getIdFromUsers() . ",'" . str_replace("'","\'",str_replace('"','\"',$_POST['title'])) . "','" . $_SESSION['username'] . "','" . str_replace("'","\'",str_replace('"','\"',$_POST['body'])) . "','" . date('Y-m-d') . "'," . $bool . ")";
         $insert = $this->db->prepare($sql);
         $insert->execute();
     }

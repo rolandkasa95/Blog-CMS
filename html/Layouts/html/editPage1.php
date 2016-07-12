@@ -24,10 +24,13 @@
                 <?php foreach($this->model->fields as $field) : ?>
                         <?php echo '<hr />' . $field->getLabelTag();?>
                     <?php
-                    if('Please Select the Tags' === $field->label){
-                        for ($j=0;$j<3;$j++){
+                    $array = $field->getInput();
+                    if(is_array($array)){
+                        $j=1;
+                        foreach ($array as $item){
                             $field->name= 'select' . $j;
-                            echo $field->getInput();
+                            echo $item;
+                            $j++;
                         }
                     }else{
                     echo $field->getInput();}?>

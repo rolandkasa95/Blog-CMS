@@ -69,18 +69,17 @@ class InsertArticleForm
 
         //Add country and data options
         $this->models = new selectTagsModel();
-        $countries = $this->models->selectTags1();
+        $title = $this->models->selectTags1();
         $this->addField([
             'label' => 'Please Select the Tags',
-            'type' => 'select',
+            'type' => 'checkbox',
             'name' => 'tags',
-            'multiple' => false,
             'priority' => 7,
             'required' => true,
             'value' => '',
-            'options' => $countries,
+            'options' => $title,
             'validator' => [
-                'InArrayValidator' => $countries,
+                'InArrayValidator' => $title,
                 'requiredValidator',
             ],
         ]);

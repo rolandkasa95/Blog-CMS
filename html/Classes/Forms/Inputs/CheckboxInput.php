@@ -4,12 +4,14 @@ namespace Forms\Inputs;
 /**
  * Class InputCheckbox
  */
-class Checkbox extends BaseInput implements InputInterface
+class CheckboxInput extends BaseInput implements InputInterface
 {
     /**
      * @var string
      */
+    public $options = [];
     public $valueString;
+    public $str;
 
     /**
      * Checkbox constructor.
@@ -21,7 +23,17 @@ class Checkbox extends BaseInput implements InputInterface
     }
 
     public function getInput(){
-        return "<input type=\"checkbox\" name=\"$this->name\" value=\"$this->value\"> $this->valueString";
+        foreach ($this->options as $key => $option) {
+            $this->str .= ' ' . "<input type=\"checkbox\" name=\"$option\" value=\"$key+1\"> $option</input>";
+        }
+        return explode('</input>',$this->str);
+    }
+
+    /**
+     * @param $options
+     */
+    public function setOptions($options){
+        $this->options = $options;
     }
 
     /**

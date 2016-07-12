@@ -132,10 +132,11 @@ abstract class FormBase
                 break;
             case 'checkbox':
                 require_once CLASSES . 'Forms/Inputs/CheckboxInput.php';
-                $newField = new Inputs\Checkbox();
+                $newField = new Inputs\CheckboxInput();
                 $field['type'] ? $newField->setType($field['type']) : null;
                 $field['label'] ? $newField->setLabel($field['label']) : null;
                 $field['name'] ? $newField->setName($field['name']) : null;
+                $field['options'] ? $newField->setOptions($field['options']) : null;
                 $field['validator'] ? $newField->setValidators($field['validator']) : null;
                 break;
             case 'select':
