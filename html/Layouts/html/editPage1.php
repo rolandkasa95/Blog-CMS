@@ -26,11 +26,8 @@
                     <?php
                     $array = $field->getInput();
                     if(is_array($array)){
-                        $j=1;
                         foreach ($array as $item){
-                            $field->name= 'select' . $j;
                             echo $item;
-                            $j++;
                         }
                     }else{
                     echo $field->getInput();}?>

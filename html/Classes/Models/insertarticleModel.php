@@ -20,6 +20,7 @@ class insertarticleModel
      * @var PDO
      */
     protected $db;
+    public $item;
 
     public function connect($config){
         try {
@@ -49,13 +50,16 @@ class insertarticleModel
     public function insertArticlesTags(){
         $this->connect(\ObjectFactoryService::getConfig());
         $model = new tagpageModel();
-        for($j=0;$j<3;$j++){
-            $tags = 'select' . $j;
-            if(isset($_POST[$tags])) {
+        $j = 0;
+        $tags = 'tags_' . $j;
+        foreach($_POST as $item) {
+            if (isset($_POST[$tags])) {
                 $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (" . $this->getArticleId($_POST['title']) . "," . $this->getTagId($_POST[$tags]) . ")";
+                $insert = $this->db->prepare($sql);
+                $insert->execute();
             }
-            $insert = $this->db->prepare($sql);
-            $insert->execute();
+            $j++;
+            $tags = 'tags_' . $j;
         }
     }
 

@@ -23,8 +23,10 @@ class CheckboxInput extends BaseInput implements InputInterface
     }
 
     public function getInput(){
+        $j = 0;
         foreach ($this->options as $key => $option) {
-            $this->str .= ' ' . "<input type=\"checkbox\" name=\"$option\" value=\"$key+1\"> $option</input>";
+            $this->str .= ' ' . "<input type=\"checkbox\" name=\"tags.$j\" value=\"$option\"> $option</input>";
+            $j++;
         }
         return explode('</input>',$this->str);
     }
