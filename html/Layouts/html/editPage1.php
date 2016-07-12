@@ -19,6 +19,9 @@
         <div class="col-md-12">
             <h1 style="text-align: center; font-style: italic;"><a href="index.php">Back Home</a></h1><hr />
             <div id="content">
+                <b style="color: red;">
+                Please keep in mind: if you add new tags to the article, separate them with a comma! Thank you!
+                </b>
                 <h4>
                 <?php echo $this->model->getStartTag()?>
                 <?php foreach($this->model->fields as $field) : ?>
@@ -34,22 +37,23 @@
                 <?php endforeach ?>
                 <?php echo $this->model->getEndTag()?>
                 <?php
-                if(isset($_POST['submit'])){
-                    $this->model = new \Models\insertarticleModel();
-                    $this->model->insertArticle();
-                    $this->model->insertArticlesTags();
-                }
+                if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
+                    if(isset($_POST['tag'])) {
+                        $this->model = new \Models\insertTag();
+                        $this->model->insertTag();
+                    }
+                    if(isset($_POST['body']) && isset($_POST['title'])  && '' != $_POST['body']  && '' != $_POST['title']) {
+                        $this->model = new \Models\insertarticleModel();
+                        $this->model->insertArticle();
+                        $this->model->insertNewTags();
+                        $this->model->insertArticlesTags();
+                        header("Location: index.php");
+                    }
+                    header("Location: index.php");
+                    }
                 ?>
                 </h4>
             </div>
-        </div>
-        <div class="col-md-12">
-            <h2> Add a new tag here</h2>
-            <form action="index.php?action=addTag" method="post">
-                <?php
-                    $this->model = new \Forms\insertTagForm();
-                ?>
-            </form>
         </div>
     </div>
 </div>

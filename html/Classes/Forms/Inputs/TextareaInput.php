@@ -39,7 +39,6 @@ class TextareaInput extends BaseInput implements InputInterface
      */
     public function getInput()
     {
-        $required = $this->required ? ' required' : null;
-        return "<textarea name=\"$this->name\" rows=\"$this->rows\" cols=\"$this->cols\" $required form=\"$this->form\"></textarea>";
+        return "<textarea name=\"$this->name\" rows=\"$this->rows\" cols=\"$this->cols\"  form=\"$this->form\"></textarea>";
     }
 }

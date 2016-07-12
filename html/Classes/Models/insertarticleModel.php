@@ -82,4 +82,20 @@ class insertarticleModel
         return $result;
     }
 
+    public function insertNewTags(){
+        $this->connect(\ObjectFactoryService::getConfig());
+        try{
+            $newTags = $_POST['tag'];
+            $newTags = explode(',',$newTags);
+            foreach ($newTags as $key => $value) {
+                $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (" . $this->getArticleId($_POST['title']) . "," . $this->getTagId($value) . ")";
+                $statement = $this->db->prepare($sql);
+                $statement->execute();
+            }
+
+        }catch (\PDOException $e){
+            echo "Transaction failed: " . $e->getMessage();
+        }
+    }
+
 }

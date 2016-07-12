@@ -22,7 +22,7 @@ class InsertArticleForm
     public function __construct($models)
     {
         $params = [
-            'name' => 'register',
+            'name' => 'insertArticle',
             'id' => 'form1',
             'method' => 'post',
             'action' => '#',
@@ -31,11 +31,11 @@ class InsertArticleForm
 
         //Add username
         $this->addField([
-            'label' => 'Title',
+            'label' => 'Title: ',
             'type' => 'text',
             'name' => 'title',
             'priority' => 1,
-            'required' => true,
+            'required' => false,
             'value' => '',
             'validator' => [
                 'StringLengthValidator' => [
@@ -49,13 +49,13 @@ class InsertArticleForm
         ]);
 
         $this->addField([
-           'label' => 'Body',
+           'label' => 'Body: ',
             'type' => 'textarea',
             'rows' => 8,
             'cols' => 50,
             'form' => 'form1',
             'name' => 'body',
-            'required' => true,
+            'required' => false,
             'priority' => 2,
             'validator' =>[
               'StringLengthValidator' => [
@@ -71,7 +71,7 @@ class InsertArticleForm
         $this->models = new selectTagsModel();
         $title = $this->models->selectTags1();
         $this->addField([
-            'label' => 'Please Select the Tags',
+            'label' => 'Please Select the Tags: ',
             'type' => 'checkbox',
             'name' => 'tags',
             'priority' => 7,
@@ -80,6 +80,24 @@ class InsertArticleForm
             'options' => $title,
             'validator' => [
                 'InArrayValidator' => $title,
+                'requiredValidator',
+            ],
+        ]);
+
+        $this->addField([
+            'label' => 'Tag Name: ',
+            'type' => 'text',
+            'name' => 'tag',
+            'priority' => 8,
+            'required' => true,
+            'value' => '',
+            'validator' => [
+                'StringLengthValidator' => [
+                    'minimum' => 2,
+                    'maximum' => 100,
+                ],
+                'AlphaValidator',
+                'DuplicationValidator',
                 'requiredValidator',
             ],
         ]);

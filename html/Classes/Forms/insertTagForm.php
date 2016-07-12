@@ -42,7 +42,7 @@ class insertTagForm
                     'minimum' => 2,
                     'maximum' => 100,
                 ],
-                'AlfaValidator',
+                'AlphaValidator',
                 'DuplicationValidator',
                 'requiredValidator',
             ],
