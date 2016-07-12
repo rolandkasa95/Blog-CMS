@@ -43,6 +43,12 @@
                 </h4>
             </div>
         </div>
+        <div class="col-md-12">
+            <h2> Add a new tag here</h2>
+            <form action="index.php?action=addTag" method="post">
+                <
+            </form>
+        </div>
     </div>
 </div>
 </body>
