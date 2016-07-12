@@ -13,6 +13,7 @@ class Session
     public function __construct()
     {
         session_start();
+        $_SESSION['offset']=0;
     }
 
     public function init(){
