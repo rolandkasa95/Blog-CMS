@@ -25,31 +25,44 @@ class insertTag
             if(strpos($tags,',')) {
                 $tags = explode(',', $_POST['tag']);
                 foreach ($tags as $key => $value) {
-                    $this->inTable($value);
-                    $sql = "INSERT INTO tags(name,isVisible) VALUES (:name,:isVisible)";
-                    $statement = $this->db->prepare($sql);
-                    $statement->bindParam(':name',$value,PDO::PARAM_STR,100);
-                    $statement->bindParam(':isVisible',$button,PDO::PARAM_BOOL);
-                    $statement->execute();
+                    if($this->inTable($value)) {
+                        $sql = "INSERT INTO tags(name,isVisible) VALUES (:name,:isVisible)";
+                        $statement = $this->db->prepare($sql);
+                        $statement->bindParam(':name', $value, PDO::PARAM_STR, 100);
+                        $statement->bindParam(':isVisible', $button, PDO::PARAM_BOOL);
+                        $statement->execute();
+                    }
                 }
             }else{
-                $this->inTable($tags);
-                $sql = "INSERT INTO tags(name,isVisible) VALUES (:name,:isVisible)";
-                $statement = $this->db->prepare($sql);
-                $statement->bindParam(':name',$_POST['tag'],PDO::PARAM_STR,100);
-                $statement->bindParam(':isVisible',$button,PDO::PARAM_BOOL);
-                $statement->execute();
+                if($this->inTable($tags)) {
+                    $sql = "INSERT INTO tags(name,isVisible) VALUES (:name,:isVisible)";
+                    $statement = $this->db->prepare($sql);
+                    $statement->bindParam(':name', $_POST['tag'], PDO::PARAM_STR, 100);
+                    $statement->bindParam(':isVisible', $button, PDO::PARAM_BOOL);
+                    $statement->execute();
+                }
             }
         }catch (\PDOException $e){
             echo "Transaction Failed: " . $e->getMessage();
         }
     }
 
-    public function inTable(){
+    public function inTable($tags){
         try{
             $this->connect(\ObjectFactoryService::getConfig());
-
-        }catch (\PDOException $e
+            $sql = "SELECT tag_id FROM tags WHERE name=:name";
+            $statement = $this->db->prepare($sql);
+            $statement->bindParam(':name',$tags,PDO::PARAM_STR,100);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_COLUMN);
+            if(empty($result)){
+                return true;
+            }else{
+                return false;
+            }
+        }catch (\PDOException $e){
+            echo "Transaction failed" . $e->getMessage();
+        }
     }
 
 }
