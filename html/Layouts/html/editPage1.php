@@ -46,7 +46,9 @@
         <div class="col-md-12">
             <h2> Add a new tag here</h2>
             <form action="index.php?action=addTag" method="post">
-                <
+                <?php
+                    $this->model = new \Forms\insertTagForm();
+                ?>
             </form>
         </div>
     </div>

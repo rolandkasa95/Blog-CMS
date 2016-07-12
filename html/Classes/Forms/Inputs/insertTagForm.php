@@ -9,7 +9,7 @@ use Validators\AlnumValidator;
 /**
  * Register Form Class
  */
-class InsertArticleForm
+class insertTagForm
     extends FormCommon implements FormInterface
 {
     /**
