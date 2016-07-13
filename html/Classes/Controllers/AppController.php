@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Forms\EditArticleForm;
 use Forms\InsertArticleForm;
 use Forms\LoginForm;
 use Forms\RegisterForm;
@@ -69,6 +70,11 @@ class AppController
             $this->model = new selectTagsModel();
             $this->form = new InsertArticleForm($this->model);
             $view->render('editPage1.php', $this->form);
+        }
+        if (isset($_GET['action']) && 'title' === $_GET['action']) {
+            $this->model = new articlepageModel();
+            $this->form = new EditArticleForm();
+            $view->render('adminEditPage.php', $this->form);
         }
         }
 }
