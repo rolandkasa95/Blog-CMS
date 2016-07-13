@@ -55,6 +55,7 @@ class InsertArticleForm
             'cols' => 50,
             'form' => 'form1',
             'name' => 'body',
+            'value' => '',
             'required' => false,
             'priority' => 2,
             'validator' =>[
