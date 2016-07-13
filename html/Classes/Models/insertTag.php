@@ -6,6 +6,9 @@ Use PDO;
 
 class insertTag
 {
+    /**
+     * @var PDO
+     */
     protected $db;
 
     public function connect($config){
