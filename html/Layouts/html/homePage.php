@@ -50,14 +50,24 @@
             ?>
         </div>
         <div class="col-md-6">
-            <?php if (isset($_GET['offset'])) {
+            <?php
+            $offset = 1;
+            if (isset($_GET['offset'])) {
                 $offset = (int)$_GET['offset'];
             }
-            if( isset($_GET['offset']) && 1 <= $offset){?>
-                <p style="text-align: right"><a href="index.php?offset=<?php echo ++$offset ?>">Next 5 articles</a></p>
-            <?php }else{ ?>
-                <p style="text-align: right"><a href="index.php?offset=1">Next 5 articles</a></p>
-            <?php } ?>
+            if(!empty($this->model->getArticles(++$offset*5))) {
+                if (isset($_GET['offset']) && 1 <= $offset) {
+                     if (isset($_GET['offset'])) {
+                        $offset = (int)$_GET['offset'];
+                    }
+                    ?>
+                    <p style="text-align: right"><a href="index.php?offset=<?php echo ++$offset ?>">Next 5 articles</a>
+                    </p>
+                <?php } else { ?>
+                    <p style="text-align: right"><a href="index.php?offset=1">Next 5 articles</a></p>
+                <?php }
+            }
+            ?>
         </div>
     </div>
 </body>
