@@ -52,7 +52,6 @@ class editarticleModel
             $body = filter_input(INPUT_POST, 'body', FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
             $sql = "UPDATE articles SET user_id=:user_id, title=:title, author=:author, body=:body, date=:date, isPublished=:isPublished WHERE article_id=:id";
             $insert = $this->db->prepare($sql);
-            var_dump($insert);
             $insert->bindParam(':user_id', $this->getIdFromUsers(), PDO::PARAM_INT);
             $insert->bindParam(':title', trim($title, ' '), PDO::PARAM_STR, 100);
             $insert->bindParam(':author', $_SESSION['username'], PDO::PARAM_STR, 100);
@@ -60,8 +59,8 @@ class editarticleModel
             $insert->bindParam(':date', $date->format('Y-m-d H:i:sP'));
             $insert->bindParam('isPublished', $bool, PDO::PARAM_BOOL);
             $insert->bindParam(':id', $id, PDO::PARAM_INT);
-            var_dump($insert);
             $insert->execute();
+            return;
         }catch (\PDOException $e){
             echo $e->getMessage();
         }
@@ -80,22 +79,24 @@ class editarticleModel
         $this->connect(\ObjectFactoryService::getConfig());
         $model = new tagpageModel();
         $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        $sql = "DELETE FROM articles_tags WHERE article_id=$id";
+        $insert = $this->db->prepare($sql);
+        $insert->execute();
         $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
         $title = trim($title,' ');
         $j = 0;
         for($j=0;$j<=$this->count();$j++){
             $tags = 'tags_' . $j;
-            echo $j;
             if (isset($_POST[$tags])) {
-                echo $j;
                 $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
-                $sql = "UPDATE articles_tags SET tag_id=:tag_id WHERE article_id=:article_id";
+                $sql = "INSERT INTO articles_tags (article_id,tag_id) VALUES (:article_id,:tag_id)";
                 $insert = $this->db->prepare($sql);
                 $insert->bindParam(':article_id', $id, PDO::PARAM_INT);
                 $insert->bindParam(':tag_id',$this->getTagId(trim($_POST[$tags]),' '),PDO::PARAM_INT);
                 $insert->execute();
             }
         }
+        return;
     }
 
     public function count(){
@@ -135,23 +136,22 @@ class editarticleModel
     }
 
     public function insertNewTags(){
+        $this->connect(\ObjectFactoryService::getConfig());
         try{
-            $this->connect(\ObjectFactoryService::getConfig());
-            $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
             $newTags = filter_input(INPUT_POST,'tag',FILTER_SANITIZE_STRING);
             $newTags = explode(',',$newTags);
             foreach ($newTags as $key => $value) {
-                $sql = "UPDATE articles_tags SET tag_id=:tag_id WHERE article_id=:article_id";
-                $insert = $this->db->prepare($sql);
-                $insert->bindParam(':article_id', $id, PDO::PARAM_INT);
-                $insert->bindParam(':tag_id',$this->getTagId(trim($value),' '),PDO::PARAM_INT);
-                $insert->execute();
+                $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (:article_id,:tag_id)";
+                $statement = $this->db->prepare($sql);
+                $statement->bindParam(':article_id',$this->getArticleId($_POST['title']),PDO::PARAM_INT);
+                $statement->bindParam(':tag_id',$this->getTagId(trim($value,' ')),PDO::PARAM_INT);
+                $statement->execute();
             }
-
         }catch (\PDOException $e){
             echo "Transaction failed: " . $e->getMessage();
         }
     }
+
 
 
 }

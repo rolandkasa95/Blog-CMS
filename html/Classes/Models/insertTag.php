@@ -46,6 +46,7 @@ class insertTag
                     $statement->execute();
                 }
             }
+            return;
         }catch (\PDOException $e){
             echo "Transaction Failed: " . $e->getMessage();
         }

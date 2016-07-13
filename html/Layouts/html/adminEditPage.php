@@ -37,7 +37,6 @@
                     <?php endforeach ?>
                     <?php
                     if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
-                        var_dump($_POST);
                         if(!empty($_POST['tag']) && '' !== $_POST['tag']) {
                             $this->model = new \Models\insertTag();
                             $this->model->insertTag();
@@ -45,8 +44,8 @@
                         if(!empty($_POST['body']) && !empty($_POST['title'])) {
                             $this->model = new \Models\editarticleModel();
                             $this->model->insertArticle();
-                            $this->model->insertNewTags();
                             $this->model->insertArticlesTags();
+                            $this->model->insertNewTags();
                             header("Location: index.php");
                         }
                         header("Location: index.php");
