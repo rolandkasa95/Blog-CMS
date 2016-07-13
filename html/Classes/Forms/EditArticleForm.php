@@ -9,7 +9,8 @@
 namespace Forms;
 
 
-use Models\articlepageModel;
+use Models\editarticleModel;
+use Models\selectTagsModel;
 
 class EditArticleForm
     extends FormCommon implements FormInterface
@@ -31,6 +32,9 @@ class EditArticleForm
         ];
         parent::__construct($models, $params);
 
+
+        $this->models = new editarticleModel();
+        $result = $this->models->showArticle();
         //Add username
         $this->addField([
             'label' => 'Title: ',
@@ -38,7 +42,7 @@ class EditArticleForm
             'name' => 'title',
             'priority' => 1,
             'required' => false,
-            'value' => '',
+            'value' => $result['title'],
             'validator' => [
                 'StringLengthValidator' => [
                     'minimum' => 5,
@@ -50,15 +54,12 @@ class EditArticleForm
             ],
         ]);
 
-        $this->models = new articlepageModel();
-        $result = $this->models->showArticle();
-        var_dump($result);
-        die;
         $this->addField([
             'label' => 'Body: ',
             'type' => 'textarea',
             'rows' => 8,
             'cols' => 50,
+            'value' => $result['body'],
             'form' => 'form1',
             'name' => 'body',
             'required' => false,

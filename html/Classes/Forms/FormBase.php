@@ -98,6 +98,7 @@ abstract class FormBase
                 $newField = new TextareaInput();
                 $field['rows'] ? $newField->setRows($field['rows']) : null;
                 $field['cols'] ? $newField->setCols($field['cols']) : null;
+                $field['value'] ? $newField->setValue($field['value']) : null;
                 $field['form'] ? $newField->setForm($field['form']) : null;
                 $field['label'] ? $newField->setLabel($field['label']) : null;
                 $field['name'] ? $newField->setName($field['name']) : null;
@@ -108,6 +109,7 @@ abstract class FormBase
                 $newField = new Text();
                 $field['type'] ? $newField->setType($field['type']) : null;
                 $field['label'] ? $newField->setLabel($field['label']) : null;
+                $field['value'] ? $newField->setValue($field['value']) : null;
                 $field['name'] ? $newField->setName($field['name']) : null;
                 $field['validator'] ? $newField->setValidators($field['validator']) : null;
                 break;
