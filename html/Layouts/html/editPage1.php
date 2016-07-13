@@ -38,7 +38,7 @@
                 <?php echo $this->model->getEndTag()?>
                 <?php
                 if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
-                    if(!empty($_POST['tag'])) {
+                    if(!empty($_POST['tag']) && '' !== $_POST['tag']) {
                         $this->model = new \Models\insertTag();
                         $this->model->insertTag();
                     }

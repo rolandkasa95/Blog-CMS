@@ -32,16 +32,17 @@ class insertarticleModel
 
     public function insertArticle(){
         $this->connect(\ObjectFactoryService::getConfig());
+        $date = new \DateTime();
         $bool = $_POST['submit']?1:0;
         $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
         $body = filter_input(INPUT_POST,'body',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
         $sql="INSERT INTO articles(user_id,title,author,body,date,isPublished) VALUES (:user_id,:title,:author,:body,:date,:isPublished)";
         $insert = $this->db->prepare($sql);
         $insert->bindParam(':user_id',$this->getIdFromUsers(),PDO::PARAM_INT);
-        $insert->bindParam(':title',trim(str_replace("'","\'",str_replace('"','\"',$title)),' '),PDO::PARAM_STR,100);
+        $insert->bindParam(':title',trim($title,' '),PDO::PARAM_STR,100);
         $insert->bindParam(':author',$_SESSION['username'],PDO::PARAM_STR,100);
-        $insert->bindParam(':body',trim(str_replace("'","\'",str_replace('"','\"',$body)),' '),PDO::PARAM_STR,100);
-        $insert->bindParam(':date',new \DateTime(time()));
+        $insert->bindParam(':body',trim($body,' '),PDO::PARAM_STR,100);
+        $insert->bindParam(':date',$date->format('Y-m-d H:i:sP'));
         $insert->bindParam('isPublished',$bool,PDO::PARAM_BOOL);
         $insert->execute();
     }
@@ -58,18 +59,39 @@ class insertarticleModel
     public function insertArticlesTags(){
         $this->connect(\ObjectFactoryService::getConfig());
         $model = new tagpageModel();
-        $j = 0;
         $tags = 'tags_' . $j;
-        foreach($_POST as $item) {
+        $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
+        $title = trim($title,' ');
+        $j = 0;
+        for($j=0;$j<=$this->count();$j++){
+            $tags = 'tags_' . $j;
+            echo $j;
             if (isset($_POST[$tags])) {
+                echo $j;
+                $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
                 $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (:article_id,:tag_id)";
                 $insert = $this->db->prepare($sql);
-                $insert->bindParam(':article_id',$this->getArticleId($_POST['title']),PDO::PARAM_INT);
+                $insert->bindParam(':article_id',$this->getArticleId($title),PDO::PARAM_INT);
                 $insert->bindParam(':tag_id',$this->getTagId(trim($_POST[$tags]),' '),PDO::PARAM_INT);
                 $insert->execute();
             }
-            $j++;
-            $tags = 'tags_' . $j;
+        }
+    }
+
+    public function count(){
+        try{
+            $this->connect(\ObjectFactoryService::getConfig());
+            $sql = "SELECT tag_id FROM tags";
+            $statement = $this->db->prepare($sql);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            $i=0;
+            foreach ($result as $item){
+                $i++;
+            }
+            return $i;
+        }catch (\PDOException $e){
+            echo $e->getMessage();
         }
     }
 
