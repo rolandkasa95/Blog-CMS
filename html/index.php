@@ -7,6 +7,6 @@ require 'Loader.php';
 Loader::init();
 
 $controller = new \Controllers\AppController();
-$controller->init();
+$controller->init();    
 
 ?>
