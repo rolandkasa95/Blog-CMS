@@ -71,7 +71,7 @@ class AppController
             $this->form = new InsertArticleForm($this->model);
             $view->render('editPage1.php', $this->form);
         }
-        if (isset($_GET['title']) && 'edit' === $_GET['action']) {
+        if (isset($_GET['id']) && 'edit' === $_GET['action']) {
             $this->model = new articlepageModel();
             $this->form = new EditArticleForm($this->model);
             $view->render('adminEditPage.php', $this->form);

@@ -82,7 +82,7 @@ class EditArticleForm
             'name' => 'tags',
             'priority' => 7,
             'required' => true,
-            'value' => '',
+            'value' => 1,
             'options' => $title,
             'validator' => [
                 'InArrayValidator' => $title,

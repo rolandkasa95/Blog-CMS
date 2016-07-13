@@ -33,7 +33,7 @@
             }
             foreach($result as $row => $key)
             {
-                echo "<hr /><a href='index.php?action=edit&title=$row'><div style='font-size: x-small; float: right; width: 30px;height: 30px; background-color: greenyellow'></div></a>";
+                echo "<hr /><a href='index.php?action=edit&id=" . $this->model->getArticleId($row) . "'><div style='font-size: x-small; float: right; width: 30px;height: 30px; background-color: greenyellow'></div></a>";
                 echo "<a href=index.php?action=articleShow&id=" . $this->model->getArticleId($row) . " >" . $row . '</a><br />';
                 echo $key . '<br />';
             }

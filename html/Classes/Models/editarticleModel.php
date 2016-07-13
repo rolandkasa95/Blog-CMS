@@ -27,16 +27,36 @@ class editarticleModel
     }
 
     public function showArticle(){
-        $config = \ObjectFactoryService::getConfig();
-        $this->connect($config);
-        $title = filter_input(INPUT_GET,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
-        $title = trim($title,' ');
-        $sql='SELECT title,date,body FROM articles WHERE title=:title';
-        $statement = $this->db->prepare($sql);
-        $statement->bindParam(':title',$title,PDO::PARAM_STR,100);
-        $statement->execute();
-        $result = $statement->fetch(\PDO::FETCH_ASSOC);
-        return $result;
+       try {
+           $config = \ObjectFactoryService::getConfig();
+           $this->connect($config);
+           $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+           $sql = 'SELECT title,date,body FROM articles WHERE article_id=:id';
+           $statement = $this->db->prepare($sql);
+           $statement->bindParam(':id', $id, PDO::PARAM_INT);
+           $statement->execute();
+           $result = $statement->fetch(\PDO::FETCH_ASSOC);
+           return $result;
+       }catch (\PDOException $e){
+           echo $e->getMessage();
+       }
+    }
+
+    public function editTitle(){
+       try {
+           $config = \ObjectFactoryService::getConfig();
+           $this->connect($config);
+           $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
+           $title = trim($title, ' ');
+           $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+           $sql = 'UPDATE articles SET title=:title WHERE article_id=:id';
+           $statement = $this->db->prepare($sql);
+           $statement->bindParam(':id', $id, PDO::PARAM_INT);
+           $statement->bindParam(':title',$title,PDO::PARAM_STR,100);
+           $statement->execute();
+       }catch (\PDOException $e){
+           echo $e->getMessage();
+       }
     }
 
 }
