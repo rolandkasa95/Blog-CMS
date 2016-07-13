@@ -22,8 +22,10 @@
                 <?php
                 $result = $this->model->getArticles();
                 foreach ($result as $items) {
-                    foreach ($items as $item)
-                        echo "<hr /><p style='padding: 5px 10px 10px 5px'><a href=index.php?action=articleShow&id=" . $this->model->getArticleId($item) . " >" . $item . '</a><br /></p>';
+                    foreach ($items as $key => $value)
+                        if ('title' === $key) {
+                            echo "<hr /><p style='padding: 5px 10px 10px 5px'><a href=index.php?action=articleShow&id=" . $this->model->getArticleId($value) . " >" . $value . '</a><br /></p>';
+                        }
                 }
                 ?>
                 <hr />

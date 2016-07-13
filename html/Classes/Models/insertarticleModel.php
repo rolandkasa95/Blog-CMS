@@ -88,7 +88,7 @@ class insertarticleModel
             $newTags = $_POST['tag'];
             $newTags = explode(',',$newTags);
             foreach ($newTags as $key => $value) {
-                $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (" . $this->getArticleId($_POST['title']) . "," . $this->getTagId($value) . ")";
+                $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (" . $this->getArticleId($_POST['title']) . "," . $this->getTagId(trim($value,' ')) . ")";
                 $statement = $this->db->prepare($sql);
                 $statement->execute();
             }

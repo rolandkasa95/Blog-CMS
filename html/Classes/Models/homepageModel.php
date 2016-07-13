@@ -21,7 +21,7 @@ class homepageModel
     public function getArticles($offset){
         $config = \ObjectFactoryService::getConfig();
         $this->connect($config);
-        $sql = 'SELECT title,date FROM articles WHERE isPublished=1 LIMIT 5 OFFSET ' . $offset;
+        $sql = 'SELECT title,date FROM articles WHERE isPublished=1 ORDER BY date DESC LIMIT 5 OFFSET ' . $offset;
         $statement = $this->db->prepare($sql);
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_KEY_PAIR);

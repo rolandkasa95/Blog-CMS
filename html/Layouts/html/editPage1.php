@@ -42,7 +42,7 @@
                         $this->model = new \Models\insertTag();
                         $this->model->insertTag();
                     }
-                    if(isset($_POST['body']) && isset($_POST['title'])  && '' != $_POST['body']  && '' != $_POST['title']) {
+                    if(!empty($_POST['body']) && !empty($_POST['title'])) {
                         $this->model = new \Models\insertarticleModel();
                         $this->model->insertArticle();
                         $this->model->insertNewTags();
