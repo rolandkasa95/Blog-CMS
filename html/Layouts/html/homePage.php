@@ -24,7 +24,7 @@
             <h2>
             <?php
             if(isset($_SESSION['username'])){
-                echo "<a href='index.php?action=edit'>Insert Article<a/>";
+                echo "<a href='index.php?action=insert'>Insert Article<a/>";
             }
             if(isset($_GET['offset'])){
                 $result = $this->model->getArticles($offset * 5);
@@ -33,7 +33,7 @@
             }
             foreach($result as $row => $key)
             {
-                echo "<hr /><a href='index.php?title=$row'><div style='font-size: x-small; float: right; width: 30px;height: 30px; background-color: greenyellow'></div></a>";
+                echo "<hr /><a href='index.php?action=edit&title=$row'><div style='font-size: x-small; float: right; width: 30px;height: 30px; background-color: greenyellow'></div></a>";
                 echo "<a href=index.php?action=articleShow&id=" . $this->model->getArticleId($row) . " >" . $row . '</a><br />';
                 echo $key . '<br />';
             }
@@ -72,4 +72,5 @@
         </div>
     </div>
 </body>
+</html>
 

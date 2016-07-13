@@ -64,14 +64,14 @@ class AppController
                 echo "<div class='container'><div class='col-md-1'></div><div class='col-md-8' style=\"text-align: center\"><h4 style='color: red'>Enter a Valid username and password</h4></div></div>";
             }
         }
-        if(isset($_GET['action']) && 'edit' === $_GET['action']){
+        if(isset($_GET['action']) && 'insert' === $_GET['action']){
 //            $this->model= new selectTagsModel();
 //            $view->render('editPage.php',$this->model);
             $this->model = new selectTagsModel();
             $this->form = new InsertArticleForm($this->model);
             $view->render('editPage1.php', $this->form);
         }
-        if (isset($_GET['title'])) {
+        if (isset($_GET['title']) && 'edit' === $_GET['action']) {
             $this->model = new articlepageModel();
             $this->form = new EditArticleForm($this->model);
             $view->render('adminEditPage.php', $this->form);
