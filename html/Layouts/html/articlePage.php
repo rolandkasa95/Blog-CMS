@@ -18,8 +18,7 @@
         <h1 style="text-align: center; font-style: italic;"><a href="index.php">Back Home</a></h1><hr /><hr />
         <?php
         $result = $this->model->showArticle();
-        foreach ($result as $items)
-            foreach ($items as $key=>$row) {
+        foreach ($result as $key=>$row){
                 if ('title' === $key){
                     echo '<h1 style="text-align: center">' . $row . '</h1>';
                 }elseif ('date' === $key){

@@ -38,14 +38,14 @@
                     <?php
                     if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
                         if(!empty($_POST['tag']) && '' !== $_POST['tag']) {
-                            $this->model = new \Models\insertTag();
+                            $this->model = new \Models\Model();
                             $this->model->insertTag();
                         }
                         if(!empty($_POST['body']) && !empty($_POST['title'])) {
-                            $this->model = new \Models\editarticleModel();
-                            $this->model->insertArticle();
-                            $this->model->insertArticlesTags();
-                            $this->model->insertNewTags();
+                            $this->model = new \Models\Model();
+                            $this->model->editArticle();
+                            $this->model->editArticlesTags();
+                            $this->model->editNewTags();
                             header("Location: index.php");
                         }
                         header("Location: index.php");

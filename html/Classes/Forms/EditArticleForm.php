@@ -10,6 +10,7 @@ namespace Forms;
 
 
 use Models\editarticleModel;
+use Models\Model;
 use Models\selectTagsModel;
 
 class EditArticleForm
@@ -74,7 +75,7 @@ class EditArticleForm
         ]);
 
         //Add country and data options
-        $this->models = new selectTagsModel();
+        $this->models = new Model();
         $title = $this->models->selectTags1();
         $this->addField([
             'label' => 'Please Select the Tags: ',

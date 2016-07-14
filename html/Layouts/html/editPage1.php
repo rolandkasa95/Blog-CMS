@@ -38,12 +38,13 @@
                 <?php echo $this->model->getEndTag()?>
                 <?php
                 if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
+                    $this->model->validate();
                     if(!empty($_POST['tag']) && '' !== $_POST['tag']) {
-                        $this->model = new \Models\insertTag();
+                        $this->model = new \Models\Model();
                         $this->model->insertTag();
                     }
                     if(!empty($_POST['body']) && !empty($_POST['title'])) {
-                        $this->model = new \Models\insertarticleModel();
+                        $this->model = new \Models\Model();
                         $this->model->insertArticle();
                         $this->model->insertNewTags();
                         $this->model->insertArticlesTags();

@@ -69,7 +69,7 @@ class InsertArticleForm
         ]);
 
         //Add country and data options
-        $this->models = new selectTagsModel();
+        $this->models = new Model();
         $title = $this->models->selectTags1();
         $this->addField([
             'label' => 'Please Select the Tags: ',
