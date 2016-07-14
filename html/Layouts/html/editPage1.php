@@ -37,6 +37,9 @@
                 <?php endforeach ?>
                 <?php echo $this->model->getEndTag()?>
                 <?php
+                $valid = new \Validators\insertValidate();
+                $valid->validate();
+                die;
                 if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
                     $this->model->validate();
                     if(!empty($_POST['tag']) && '' !== $_POST['tag']) {

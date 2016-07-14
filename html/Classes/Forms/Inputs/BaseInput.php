@@ -18,6 +18,7 @@ abstract class BaseInput{
      * @var
      */
     public $label;
+    public $error;
     public $value;
     public $required;
     public $valid;
@@ -110,6 +111,15 @@ abstract class BaseInput{
             $this->validators[] = new $validate;
         }
         return $this;
+    }
+
+    public function setError($error){
+        $this->error = $error;
+        return $this;
+    }
+
+    public function getErrot($error){
+        return $this->error;
     }
 
     /**

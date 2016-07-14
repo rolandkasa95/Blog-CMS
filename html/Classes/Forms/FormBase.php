@@ -169,6 +169,16 @@ abstract class FormBase
         return false;
     }
 
+    public function getErrorMessageBody(){
+        var_dump($this->fields);
+    }
+
+    public function getErrorMessageTitle(){
+        var_dump($this->fields);
+        
+        die;
+    }
+
     /**
      * @param $data
      * @return $this

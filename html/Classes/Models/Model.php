@@ -317,4 +317,23 @@ class Model
             echo "ERROR: " . $e->getMessage();
         }
     }
+
+    public function checkInTable($param){
+        try{
+            $this->connect(\ObjectFactoryService::getConfig());
+            $sql = "SELECT article_id FROM articles" . $param;
+            var_dump($sql);
+            $statement = $this->db->prepare($sql);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            var_dump($result);
+            if (false === $result){
+                return true;
+            }else{
+                return false;
+            }
+        }catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
 }
