@@ -3,6 +3,7 @@
 namespace Forms;
 
 use Controllers\configController;
+use Models\Model;
 use Models\selectTagsModel;
 use Validators\AlnumValidator;
 

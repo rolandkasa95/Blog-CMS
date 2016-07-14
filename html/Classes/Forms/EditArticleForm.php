@@ -33,7 +33,7 @@ class EditArticleForm
         ];
         parent::__construct($models, $params);
 
-        $this->models = new editarticleModel();
+        $this->models = new Model();
         $result = $this->models->showArticle();
         //Add username
         $this->addField([

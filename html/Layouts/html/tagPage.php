@@ -20,7 +20,7 @@
             <h1 style="text-align: center; font-style: italic;"><a href="index.php">Back Home</a><hr /></h1>
             <h2>
                 <?php
-                $result = $this->model->getArticles();
+                $result = $this->model->getArticlesByTagName();
                 foreach ($result as $items) {
                     foreach ($items as $key => $value)
                         if ('title' === $key) {

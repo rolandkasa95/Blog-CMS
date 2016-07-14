@@ -167,7 +167,6 @@ class Model
 
     public function editArticlesTags(){
         $this->connect(\ObjectFactoryService::getConfig());
-        $model = new tagpageModel();
         $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
         $sql = "DELETE FROM articles_tags WHERE article_id=$id";
         $insert = $this->db->prepare($sql);
@@ -191,7 +190,6 @@ class Model
 
     public function insertArticlesTags(){
         $this->connect(\ObjectFactoryService::getConfig());
-        $model = new tagpageModel();
         $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
         $title = trim($title,' ');
         $j = 0;
@@ -207,6 +205,56 @@ class Model
                 $insert->bindParam(':tag_id',$this->getTagId(trim($_POST[$tags]),' '),PDO::PARAM_INT);
                 $insert->execute();
             }
+        }
+    }
+
+    public function insertTag(){
+        try{
+            $this->connect(\ObjectFactoryService::getConfig());
+            $button = $_POST['submit'] ?1:0;
+            $tags = filter_input(INPUT_POST,'tag',FILTER_SANITIZE_STRING);
+            if(strpos($tags,',')) {
+                $tags = explode(',', $_POST['tag']);
+                foreach ($tags as $key => $value) {
+                    $value = trim($value,' ');
+                    if($this->inTable($value)) {
+                        $sql = "INSERT INTO tags(name,isVisible) VALUES (:name,:isVisible)";
+                        $statement = $this->db->prepare($sql);
+                        $statement->bindParam(':name', $value,  PDO::PARAM_STR, 100);
+                        $statement->bindParam(':isVisible', $button, PDO::PARAM_BOOL);
+                        $statement->execute();
+                    }
+                }
+            }else{
+                $value = trim($_POST['tag'],' ');
+                if($this->inTable($tags)) {
+                    $sql = "INSERT INTO tags(name,isVisible) VALUES (:name,:isVisible)";
+                    $statement = $this->db->prepare($sql);
+                    $statement->bindParam(':name', $value, PDO::PARAM_STR, 100);
+                    $statement->bindParam(':isVisible', $button, PDO::PARAM_BOOL);
+                    $statement->execute();
+                }
+            }
+            return;
+        }catch (\PDOException $e){
+            echo "Transaction Failed: " . $e->getMessage();
+        }
+    }
+    public function inTable($tags){
+        try{
+            $this->connect(\ObjectFactoryService::getConfig());
+            $sql = "SELECT tag_id FROM tags WHERE name=:name";
+            $statement = $this->db->prepare($sql);
+            $statement->bindParam(':name',$tags,PDO::PARAM_STR,100);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_COLUMN);
+            if(empty($result)){
+                return true;
+            }else{
+                return false;
+            }
+        }catch (\PDOException $e){
+            echo "Transaction failed" . $e->getMessage();
         }
     }
 
