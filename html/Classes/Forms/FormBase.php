@@ -103,6 +103,9 @@ abstract class FormBase
                 $field['label'] ? $newField->setLabel($field['label']) : null;
                 $field['name'] ? $newField->setName($field['name']) : null;
                 $field['validator'] ? $newField->setValidators($field['validator']) : null;
+                if (isset($_POST['errorBody']) && $_POST['errorBody']){
+                    $field['errorMessage'] ? $newField->setError($field['errorMessage']) : null;
+                }
                 break;
             case 'text':
                 require_once CLASSES . 'Forms/Inputs/TextInput.php';
@@ -112,6 +115,9 @@ abstract class FormBase
                 $field['value'] ? $newField->setValue($field['value']) : null;
                 $field['name'] ? $newField->setName($field['name']) : null;
                 $field['validator'] ? $newField->setValidators($field['validator']) : null;
+                if (isset($_POST['errorTitle']) && $_POST['errorTitle'] && isset($field['errorMessage'])){
+                    $field['errorMessage'] ? $newField->setError($field['errorMessage']) : null;
+                }
                 break;
             case 'password':
                 require_once CLASSES . 'Forms/Inputs/PasswordInput.php';

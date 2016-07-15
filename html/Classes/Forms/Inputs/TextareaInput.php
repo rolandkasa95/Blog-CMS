@@ -39,6 +39,10 @@ class TextareaInput extends BaseInput implements InputInterface
      */
     public function getInput()
     {
-        return "<textarea name=\"$this->name\" rows=\"$this->rows\" cols=\"$this->cols\" form=\"$this->form\">$this->value</textarea>";
+        $return = "<textarea name=\"$this->name\" rows=\"$this->rows\" cols=\"$this->cols\" form=\"$this->form\">$this->value</textarea>";
+        if(isset($this->error)){
+            $return .= "<p style='color: red'>$this->error</p>";
+        }
+        return $return;
     }
 }

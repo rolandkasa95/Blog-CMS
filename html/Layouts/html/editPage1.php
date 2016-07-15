@@ -14,6 +14,26 @@
         </div>
     </div>
 </div>
+<?php
+if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){  
+    if (!isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
+        $valid = new \Validators\insertValidate();
+        $result = $valid->validate();
+    }
+    if(!empty($_POST['tag']) && '' !== $_POST['tag']) {
+        $this->model = new \Models\Model();
+        $this->model->insertTag();
+    }
+    if(!empty($_POST['body']) && !empty($_POST['title'])) {
+        $this->model = new \Models\Model();
+        $this->model->insertArticle();
+        $this->model->insertNewTags();
+        $this->model->insertArticlesTags();
+        header("Location: index.php");
+    }
+    header("Location: index.php");
+}
+?>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -23,6 +43,9 @@
                 Please keep in mind: if you add new tags to the article, separate them with a comma! Thank you!
                 </b>
                 <h4>
+                <?php
+                    $this->model = new \Forms\InsertArticleForm(new \Models\Model());
+                ?>
                 <?php echo $this->model->getStartTag()?>
                 <?php foreach($this->model->fields as $field) : ?>
                         <?php echo '<hr />' . $field->getLabelTag();?>
@@ -36,26 +59,6 @@
                     echo $field->getInput();}?>
                 <?php endforeach ?>
                 <?php echo $this->model->getEndTag()?>
-                <?php
-                $valid = new \Validators\insertValidate();
-                $valid->validate();
-                die;
-                if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
-                    $this->model->validate();
-                    if(!empty($_POST['tag']) && '' !== $_POST['tag']) {
-                        $this->model = new \Models\Model();
-                        $this->model->insertTag();
-                    }
-                    if(!empty($_POST['body']) && !empty($_POST['title'])) {
-                        $this->model = new \Models\Model();
-                        $this->model->insertArticle();
-                        $this->model->insertNewTags();
-                        $this->model->insertArticlesTags();
-                        header("Location: index.php");
-                    }
-                    header("Location: index.php");
-                    }
-                ?>
                 </h4>
             </div>
         </div>

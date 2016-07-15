@@ -37,6 +37,7 @@
                     <?php endforeach ?>
                     <?php
                     if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
+                        var_dump($_POST);
                         if(!empty($_POST['tag']) && '' !== $_POST['tag']) {
                             $this->model = new \Models\Model();
                             $this->model->insertTag();
