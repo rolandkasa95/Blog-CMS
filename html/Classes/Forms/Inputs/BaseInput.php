@@ -127,7 +127,7 @@ abstract class BaseInput{
      */
     public function getLabelTag()
     {
-        return "<label for=\"" . strtolower($this->label) . "\">" . ucwords($this->label) . "</label>";
+        return "<label for=\"" . strtolower($this->label) . "\">" . ucwords($this->label) . "</label><br>";
     }
 
     /**

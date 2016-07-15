@@ -47,7 +47,6 @@ class InsertArticleForm
                 'DuplicationValidator',
                 'requiredValidator',
             ],
-            'error' => 'Please Enter a valid title',
         ]);
 
         $this->addField([
@@ -68,7 +67,6 @@ class InsertArticleForm
                 'AlnumValidator',
                 'requiredValidator',
             ],
-            'error' => 'Please enter a valid body',
         ]);
 
         //Add country and data options
