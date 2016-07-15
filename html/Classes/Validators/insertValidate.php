@@ -32,23 +32,25 @@ class insertValidate
             if ($this->validBody($this->body)){
                 $model = new Model();
                 $_GET['id'] = $model->getArticleId($this->title);
-                header('Location: index.php?action=articleShow&id=' . $_GET['id']);
+                $this->view->render('articlePage.php',$model);
             }else{
                 $this->form = new InsertArticleForm(new Model());
                 $_POST['errorBody'] = 1;
-                header('Location: index.php?action=insert');
+                $this->view->render('editPage1.php',$this->form);
             }
         }else{
             $this->form = new InsertArticleForm(new Model());
             $_POST['errorTitle'] = 1;
-            header('Location: index.php?action=insert');
+            $this->view->render('editPage1.php',$this->form);
         }
     }
 
     public function validTitle($title){
         $title = filter_var($title,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
+        var_dump($title);
         $model = new Model();
         $bool = $model->checkInTable(' WHERE title="' . $title . '"');
+        var_dump($bool);
         return $bool;
     }
 

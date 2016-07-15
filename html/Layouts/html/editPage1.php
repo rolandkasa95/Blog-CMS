@@ -15,24 +15,28 @@
     </div>
 </div>
 <?php
-if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){  
+ob_start();
+if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
     if (!isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
         $valid = new \Validators\insertValidate();
         $result = $valid->validate();
     }
-    if(!empty($_POST['tag']) && '' !== $_POST['tag']) {
+    if(!empty($_POST['tag']) && '' !== $_POST['tag'] && !isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
         $this->model = new \Models\Model();
         $this->model->insertTag();
     }
-    if(!empty($_POST['body']) && !empty($_POST['title'])) {
+    if(!empty($_POST['body']) && !empty($_POST['title']) && !isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
         $this->model = new \Models\Model();
         $this->model->insertArticle();
         $this->model->insertNewTags();
         $this->model->insertArticlesTags();
-        header("Location: index.php");
+        $title = $_POST['title'];
+        $title = filter_var($title,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
+        $id = $this->model->getArticleId($title);
+        header('Location: index.php?action=articleShow&id='.$id);
     }
-    header("Location: index.php");
 }
+ob_end_clean();
 ?>
 <div class="container">
     <div class="row">
