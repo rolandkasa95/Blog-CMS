@@ -3,7 +3,11 @@
     <div class="col-md-8" style="padding-top: 20%; text-align: center">
         <h2>
             <h1>Welcome, please login</h1>
-            <?php echo '<p style="position: relative">' . $this->model->getStartTag() . '</p>';?>
+            <?php
+            /**
+             * The form generator for login
+             */
+            echo '<p style="position: relative">' . $this->model->getStartTag() . '</p>';?>
             <h4 style="font-style: italic; text-align: right; position: static"><a href="index.php">Back Home</a></h4><br />
             <?php foreach($this->model->getFields() as $field) : ?>
                 <?php if(method_exists($field, 'getLabelTag')) : ?>
