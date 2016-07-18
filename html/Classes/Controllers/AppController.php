@@ -57,14 +57,23 @@ class AppController
         if (isset($_GET['action'])) {
             $action = $_GET['action'];
             switch ($action) {
+                /**
+                 * This case lists the article
+                 */
                 case 'articleShow' :
                     $this->model = new Model();
                     $view->render('articlePage.php', $this->model);
                     break;
+                /**
+                 * This case list the articles which contain a specific tag
+                 */
                 case 'tag':
                     $this->model = new Model();
                     $view->render('tagPage.php', $this->model);
                     break;
+                /**
+                 * This case is the login
+                 */
                 case 'login' :
                     $this->model = new Model();
                     if (session_start()) {
@@ -75,6 +84,9 @@ class AppController
                     $this->form = new LoginForm($this->model);
                     $view->render('loginpage.php', $this->form);
                     break;
+                /**
+                 * This case validates the login, and enters the session
+                 */
                 case 'validate' :
                     if (isset($_POST['submit'])) {
                         $this->model = new Model();
@@ -89,16 +101,26 @@ class AppController
                         }
                     }
                     break;
+                /**
+                 * This case initiates the insert form
+                 */
                 case 'insert':
                     $this->model = new Model();
                     $this->form = new InsertArticleForm($this->model);
                     $view->render('editPage1.php', $this->form);
                     break;
+                /**
+                 * This case initiates the edit form
+                 */
                 case 'edit' :
                     $this->model = new Model();
                     $this->form = new EditArticleForm($this->model);
                     $view->render('adminEditPage.php', $this->form);
                     break;
+                /**
+                 * The default case is the home page, wich is the list of articles
+                 * descendently
+                 */
                 default:
                     $this->model = new Model();
                     $view->render('homePage.php', $this->model);
