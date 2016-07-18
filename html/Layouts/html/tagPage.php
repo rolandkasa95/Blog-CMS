@@ -20,6 +20,10 @@
             <h1 style="text-align: center; font-style: italic;"><a href="index.php">Back Home</a><hr /></h1>
             <h2>
                 <?php
+                /**
+                 * Listing the article names ordereb by the tag name which was
+                 * selected by the user
+                 */
                 $result = $this->model->getArticlesByTagName();
                 foreach ($result as $items) {
                     foreach ($items as $key => $value)
