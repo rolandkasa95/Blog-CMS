@@ -20,12 +20,18 @@ class editValidate
     public $form;
     public $view;
 
+    /**
+     * editValidate constructor.
+     */
     public function __construct()
     {
         $this->title = $_POST['title'];
         $this->body = $_POST['body'];
     }
 
+    /**
+     * Validate function for the Edit
+     */
     public function validate(){
         $this->view = new View();
         if ($this->validTitle($this->title)){
