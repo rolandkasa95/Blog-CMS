@@ -47,16 +47,13 @@ class insertValidate
 
     public function validTitle($title){
         $title = filter_var($title,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
-        var_dump($title);
         $model = new Model();
         $bool = $model->checkInTable(' WHERE title="' . $title . '"');
-        var_dump($bool);
         return $bool;
     }
 
     public function validBody($body){
         $body = filter_var($body,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
-        var_dump($body);
         return $body;
     }
 }
