@@ -15,6 +15,10 @@
         <?php
         ob_start();
         if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
+            if (!isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
+                $valid = new \Validators\editValidate();
+                $result = $valid->validate();
+            }
             if(!empty($_POST['tag']) && '' !== $_POST['tag']) {
                 $this->model = new \Models\Model();
                 $this->model->insertTag();
