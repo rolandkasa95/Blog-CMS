@@ -134,8 +134,6 @@ class Model
     public function articlesTagsInTable($article_id,$tag_id){
         try{
             $this->connect(\ObjectFactoryService::getConfig());
-            var_dump($article_id);
-            var_dump($tag_id);
             $sql = "SELECT * FROM articles_tags WHERE article_id=:article_id AND tag_id=:tag_id";
             $statement = $this->db->prepare($sql);
             $statement->bindParam(':article_id',$article_id,PDO::PARAM_INT);
@@ -349,11 +347,9 @@ class Model
         try{
             $this->connect(\ObjectFactoryService::getConfig());
             $sql = "SELECT article_id FROM articles" . $param;
-            var_dump($sql);
             $statement = $this->db->prepare($sql);
             $statement->execute();
             $result = $statement->fetch(PDO::FETCH_ASSOC);
-            var_dump($result);
             if (false === $result){
                 return true;
             }else{
