@@ -23,6 +23,9 @@
         <div class="col-md-12">
             <h2>
             <?php
+            /**
+             * Listing the articles descendently
+             */
             if(isset($_SESSION['username'])){
                 echo "<a href='index.php?action=insert'>Insert Article<a/>";
             }
