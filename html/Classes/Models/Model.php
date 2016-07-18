@@ -217,7 +217,14 @@ class Model
         $result = $statement->fetchAll(PDO::FETCH_KEY_PAIR);
         return $result;
     }
-    
+
+    /**
+     * Returns the article id if exists if it doesn't
+     * returns false
+     *
+     * @param $articleTitle string
+     * @return int/bool
+     */
     public function getArticleId($articleTitle){
         $config = \ObjectFactoryService::getConfig();
         $this->connect($config);
@@ -228,6 +235,11 @@ class Model
         return $result;
     }
 
+    /**
+     *
+     * Insert a new article to the table
+     *
+     */
     public function insertArticle(){
         $this->connect(\ObjectFactoryService::getConfig());
         $date = new \DateTime();
@@ -245,6 +257,12 @@ class Model
         $insert->execute();
     }
 
+    /**
+     *
+     * Insert The tags which were selected to the articles_tags
+     * table.
+     *
+     */
     public function editArticlesTags(){
         $this->connect(\ObjectFactoryService::getConfig());
         $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
@@ -268,6 +286,12 @@ class Model
         return;
     }
 
+    /**
+     *
+     * Insert The tags which were selected to the articles_tags
+     * table.
+     *
+     */
     public function insertArticlesTags(){
         $this->connect(\ObjectFactoryService::getConfig());
         $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
@@ -288,6 +312,9 @@ class Model
         }
     }
 
+    /**
+     * Inserts a new tag
+     */
     public function insertTag(){
         try{
             $this->connect(\ObjectFactoryService::getConfig());
@@ -320,6 +347,13 @@ class Model
             echo "Transaction Failed: " . $e->getMessage();
         }
     }
+
+    /**
+     * Checks if the tag is in the table
+     *
+     * @param $tags string
+     * @return bool
+     */
     public function inTable($tags){
         try{
             $this->connect(\ObjectFactoryService::getConfig());
@@ -338,6 +372,11 @@ class Model
         }
     }
 
+    /**
+     *
+     * Connects the articles to the tags
+     *
+     */
     public function insertNewTags(){
         $this->connect(\ObjectFactoryService::getConfig());
         try{
@@ -359,6 +398,11 @@ class Model
         }
     }
 
+    /**
+     * Selects the tag name
+     *
+     * @return array
+     */
     public function selectTags1(){
         $config = \ObjectFactoryService::getConfig();
         try{
@@ -373,6 +417,11 @@ class Model
         }
     }
 
+    /**
+     * Select the articles by tag names
+     *
+     * @return array
+     */
     public function getArticlesByTagName(){
         $config = \ObjectFactoryService::getConfig();
         $this->connect($config);
@@ -384,6 +433,12 @@ class Model
         return $result;
     }
 
+    /**
+     * Get's the username of the user
+     *
+     * @param $param
+     * @return bool
+     */
     public function getUsername($param){
         try{
             $this->connect(\ObjectFactoryService::getConfig());
@@ -401,6 +456,12 @@ class Model
         }
     }
 
+    /**
+     * Checks if the article is in the table or not
+     *
+     * @param $param
+     * @return bool
+     */
     public function checkInTable($param){
         try{
             $this->connect(\ObjectFactoryService::getConfig());
