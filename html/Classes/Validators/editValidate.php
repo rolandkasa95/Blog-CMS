@@ -49,11 +49,19 @@ class editValidate
         }
     }
 
+    /**
+     * @param $title
+     * @return bool
+     */
     public function validTitle($title){
         $title = filter_var($title,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
         return !empty($title);
     }
 
+    /**
+     * @param $body
+     * @return bool
+     */
     public function validBody($body){
         $body = filter_var($body,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
         return !empty($body);

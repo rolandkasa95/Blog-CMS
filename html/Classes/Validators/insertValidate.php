@@ -19,13 +19,19 @@ class insertValidate
     public $body;
     public $form;
     public $view;
-    
+
+    /**
+     * insertValidate constructor.
+     */
     public function __construct()
     {
         $this->title = $_POST['title'];
         $this->body = $_POST['body'];
     }
 
+    /**
+     * insertValidate function
+     */
     public function validate(){
         $this->view = new View();
         if ($this->validTitle($this->title)){
@@ -45,6 +51,12 @@ class insertValidate
         }
     }
 
+    /**
+     * ValidTitle
+     *
+     * @param $title
+     * @return bool
+     */
     public function validTitle($title){
         $title = filter_var($title,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
         $model = new Model();
@@ -52,6 +64,12 @@ class insertValidate
         return $bool;
     }
 
+    /**
+     * ValidBody
+     *
+     * @param $body
+     * @return mixed
+     */
     public function validBody($body){
         $body = filter_var($body,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
         return $body;
