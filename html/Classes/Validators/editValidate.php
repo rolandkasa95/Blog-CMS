@@ -34,24 +34,22 @@ class editValidate
                 $_GET['id'] = $model->getArticleId($this->title);
                 $this->view->render('articlePage.php',$model);
             }else{
-                $this->form = new EditArticleForm(new Model());
                 $_POST['errorBody'] = 1;
-                $this->view->render('adminEditPage.php',$this->form);
+                $this->view->render('adminEditPage.php',new EditArticleForm(new Model()));
             }
         }else{
-            $this->form = new EditArticleForm(new Model());
             $_POST['errorTitle'] = 1;
-            $this->view->render('adminEditPage.php',$this->form);
+            $this->view->render('adminEditPage.php',new EditArticleForm(new Model()));
         }
     }
 
     public function validTitle($title){
         $title = filter_var($title,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
-        return $title;
+        return !empty($title);
     }
 
     public function validBody($body){
         $body = filter_var($body,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
-        return $body;
+        return !empty($body);
     }
 }
