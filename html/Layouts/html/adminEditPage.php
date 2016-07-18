@@ -12,32 +12,32 @@
                 }
                 ?></a>
 </div>
-        <?php
-        ob_start();
-        if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
-            if (!isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
-                $valid = new \Validators\editValidate();
-                $result = $valid->validate();
-            }
-            if(!empty($_POST['tag']) && '' !== $_POST['tag']) {
-                $this->model = new \Models\Model();
-                $this->model->insertTag();
-            }
-            if(!empty($_POST['body']) && !empty($_POST['title'])) {
-                $this->model = new \Models\Model();
-                $this->model->editArticle();
-                $this->model->editArticlesTags();
-                $this->model->editNewTags();
-                $title = $_POST['title'];
-                $title = filter_var($title,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
-                $id = $this->model->getArticleId($title);
-                header('Location: index.php?action=articleShow&id='.$id);
-            }
-        }
-        ob_end_clean();
-        ?>
 </div>
 </div>
+<?php
+ob_start();
+if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
+    if (!isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
+        $valid = new \Validators\editValidate();
+        $result = $valid->validate();
+    }
+    if(!empty($_POST['tag']) && '' !== $_POST['tag'] && !isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
+        $this->model = new \Models\Model();
+        $this->model->insertTag();
+    }
+    if(!empty($_POST['body']) && !empty($_POST['title']) && !isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
+        $this->model = new \Models\Model();
+        $this->model->editArticle();
+        $this->model->editArticlesTags();
+        $this->model->editNewTags();
+        $title = $_POST['title'];
+        $title = filter_var($title,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
+        $id = $this->model->getArticleId($title);
+        header('Location: index.php?action=articleShow&id='.$id);
+    }
+}
+ob_end_clean();
+?>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -47,6 +47,9 @@
                     Please keep in mind: if you add new tags to the article, separate them with a comma! Thank you!
                 </b>
                 <h4>
+                    <?php
+                    $this->model = new \Forms\EditArticleForm(new \Models\Model());
+                    ?>
                     <?php echo $this->model->getStartTag()?>
                     <?php foreach($this->model->fields as $field) : ?>
                     <?php echo '<hr />' . $field->getLabelTag();?>
