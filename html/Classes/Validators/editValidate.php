@@ -10,11 +10,10 @@ namespace Validators;
 
 
 use Forms\EditArticleForm;
-use Forms\InsertArticleForm;
 use Models\Model;
 use Views\View;
 
-class insertValidate
+class editValidate
 {
     public $title;
     public $body;
