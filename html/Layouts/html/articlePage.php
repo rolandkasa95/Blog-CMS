@@ -17,6 +17,9 @@
     <div class="col-md-12">
         <h1 style="text-align: center; font-style: italic;"><a href="index.php">Back Home</a></h1><hr /><hr />
         <?php
+        /**
+         * Getting data from table and listing on the page (articleShow)
+         */
         $result = $this->model->showArticle();
         foreach ($result as $key=>$row){
                 if ('title' === $key){
@@ -30,6 +33,9 @@
         $result = $this->model->tagNameDisplay();
         echo "<h5>";
         $i=0;
+        /**
+         * getting tags and listing them on the page
+         */
         foreach($result as $items)
             foreach($items as $key=>$row) {
                 if ($i != 0) {
