@@ -24,7 +24,7 @@
                 }elseif ('date' === $key){
                     echo '<h2>' . $row . '</h2>';
                 }else{
-                    echo '<h4>' . $row . '</h4>';
+                    print '<h4>' .  $row . '</h4>';
                 }
             }
         $result = $this->model->tagNameDisplay();

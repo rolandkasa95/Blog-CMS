@@ -28,8 +28,8 @@ if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
     if(!empty($_POST['body']) && !empty($_POST['title']) && !isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
         $this->model = new \Models\Model();
         $this->model->insertArticle();
-        $this->model->insertNewTags();
         $this->model->insertArticlesTags();
+        $this->model->insertNewTags();
         $title = $_POST['title'];
         $title = filter_var($title,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
         $id = $this->model->getArticleId($title);

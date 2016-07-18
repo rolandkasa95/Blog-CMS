@@ -59,7 +59,7 @@ class Model
             $bool = $_POST['submit'] ? 1 : 0;
             $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
-            $body = filter_input(INPUT_POST, 'body', FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
+            $body = filter_input(INPUT_POST, 'body', FILTER_SANITIZE_SPECIAL_CHARS  , FILTER_FLAG_STRIP_LOW );
             $sql = "UPDATE articles SET user_id=:user_id, title=:title, author=:author, body=:body, date=:date, isPublished=:isPublished WHERE article_id=:id";
             $insert = $this->db->prepare($sql);
             $insert->bindParam(':user_id', $this->getIdFromUsers(), PDO::PARAM_INT);
@@ -116,15 +116,39 @@ class Model
         try{
             $newTags = filter_input(INPUT_POST,'tag',FILTER_SANITIZE_STRING);
             $newTags = explode(',',$newTags);
+            $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
             foreach ($newTags as $key => $value) {
-                $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (:article_id,:tag_id)";
-                $statement = $this->db->prepare($sql);
-                $statement->bindParam(':article_id',$this->getArticleId($_POST['title']),PDO::PARAM_INT);
-                $statement->bindParam(':tag_id',$this->getTagId(trim($value,' ')),PDO::PARAM_INT);
-                $statement->execute();
+                if($this->articlesTagsInTable($this->getArticleId($title),$this->getTagId(trim($value,' ')))) {
+                    $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (:article_id,:tag_id)";
+                    $statement = $this->db->prepare($sql);
+                    $statement->bindParam(':article_id', $this->getArticleId($title), PDO::PARAM_INT);
+                    $statement->bindParam(':tag_id', $this->getTagId(trim($value, ' ')), PDO::PARAM_INT);
+                    $statement->execute();
+                }
             }
         }catch (\PDOException $e){
             echo "Transaction failed: " . $e->getMessage();
+        }
+    }
+
+    public function articlesTagsInTable($article_id,$tag_id){
+        try{
+            $this->connect(\ObjectFactoryService::getConfig());
+            var_dump($article_id);
+            var_dump($tag_id);
+            $sql = "SELECT * FROM articles_tags WHERE article_id=:article_id AND tag_id=:tag_id";
+            $statement = $this->db->prepare($sql);
+            $statement->bindParam(':article_id',$article_id,PDO::PARAM_INT);
+            $statement->bindParam('tag_id',$tag_id,PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            if(false === $result){
+                return true;
+            }else{
+                return false;
+            }
+        }catch (PDOException $e){
+            echo $e->getMessage();
         }
     }
 
@@ -263,12 +287,15 @@ class Model
         try{
             $newTags = filter_input(INPUT_POST,'tag',FILTER_SANITIZE_STRING);
             $newTags = explode(',',$newTags);
+            $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
             foreach ($newTags as $key => $value) {
-                $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (:article_id,:tag_id)";
-                $statement = $this->db->prepare($sql);
-                $statement->bindParam(':article_id',$this->getArticleId($_POST['title']),PDO::PARAM_INT);
-                $statement->bindParam(':tag_id',$this->getTagId(trim($value,' ')),PDO::PARAM_INT);
-                $statement->execute();
+                if($this->articlesTagsInTable($this->getArticleId($title),$this->getTagId(trim($value,' ')))) {
+                    $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (:article_id,:tag_id)";
+                    $statement = $this->db->prepare($sql);
+                    $statement->bindParam(':article_id', $this->getArticleId($_POST['title']), PDO::PARAM_INT);
+                    $statement->bindParam(':tag_id', $this->getTagId(trim($value, ' ')), PDO::PARAM_INT);
+                    $statement->execute();
+                }
             }
 
         }catch (\PDOException $e){
