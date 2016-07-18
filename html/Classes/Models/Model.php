@@ -113,6 +113,12 @@ class Model
         return $result;
     }
 
+    /**
+     * Retruns the number of the tags inside of the
+     * table
+     *
+     * @return int
+     */
     public function count(){
         try{
             $this->connect(\ObjectFactoryService::getConfig());
@@ -130,6 +136,12 @@ class Model
         }
     }
 
+    /**
+     * Returns the tagId of a tag by it's name
+     *
+     * @param $tagName string
+     * @return int
+     */
     public function getTagId($tagName){
         $this->connect(\ObjectFactoryService::getConfig());
         $sql = "SELECT tag_id FROM tags WHERE name=\"" . $tagName . "\"";
@@ -139,6 +151,11 @@ class Model
         return $result;
     }
 
+    /**
+     *
+     * Inserts the new tags to the article given by the user
+     *
+     */
     public function editNewTags(){
         $this->connect(\ObjectFactoryService::getConfig());
         try{
@@ -159,6 +176,13 @@ class Model
         }
     }
 
+    /**
+     * Checks if the article is connected with the tag
+     *
+     * @param $article_id int
+     * @param $tag_id int
+     * @return bool
+     */
     public function articlesTagsInTable($article_id,$tag_id){
         try{
             $this->connect(\ObjectFactoryService::getConfig());
@@ -178,6 +202,12 @@ class Model
         }
     }
 
+    /**
+     * Show exactly  articles which is affected by the offset
+     *
+     * @param $offset int
+     * @return array
+     */
     public function getArticles($offset){
         $config = \ObjectFactoryService::getConfig();
         $this->connect($config);
