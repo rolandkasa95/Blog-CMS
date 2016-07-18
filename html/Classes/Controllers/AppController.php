@@ -21,12 +21,35 @@ use Views\View;
  */
 class AppController
 {
+    /**
+     * @var object
+     */
     public $view;
+    /**
+     * @var object
+     */
     public $model;
+    /**
+     * @var object
+     */
     public $form;
+    /**
+     * @var object
+     */
     public $loginController;
+    /**
+     * @var object
+     */
     public $session;
+    /**
+     * @var session
+     */
 
+    /**
+     * Init function.
+     *
+     * This is the controller for the whole application
+     */
     public function init()
     {
         $view = new View();
