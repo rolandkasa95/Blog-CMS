@@ -43,7 +43,14 @@
         </div>
         <div class="col-md-6">
             <?php
-                if(isset($offset) && 0 != $offset ){
+            if (isset($offset) && 1 === $offset){
+                ?>
+                <p style="text-align: left"><a href="index.php">Previous 5 articles</a></p>
+                <?php
+            }else
+                ?>
+            <?php
+                if(isset($offset) && 1 != $offset ){
             ?>
             <p style="text-align: left"><a href="index.php?offset=<?php echo --$offset ?>">Previous 5 articles</a></p>
             <?php

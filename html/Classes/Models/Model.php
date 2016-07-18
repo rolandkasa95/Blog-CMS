@@ -18,6 +18,11 @@ class Model
      */
     protected $db;
 
+    /**
+     * Connection to database
+     *
+     * @param $config array
+     */
     public function connect($config){
         try {
             $this->db = new \PDO($config['dsn'], $config['user'], $config['pass']);
@@ -25,6 +30,12 @@ class Model
             echo "error: " . $e->getMessage();
         }
     }
+
+    /**
+     * Displays the tagname by the id of the article
+     *
+     * @return array
+     */
     public function tagNameDisplay(){
         $config = \ObjectFactoryService::getConfig();
         $this->connect($config);
@@ -36,6 +47,12 @@ class Model
         return $result;
     }
 
+    /**
+     * Returns the article title date and body by it's
+     * id
+     *
+     * @return array
+     */
     public function showArticle(){
         try {
             $config = \ObjectFactoryService::getConfig();
@@ -52,6 +69,12 @@ class Model
         }
     }
 
+    /**
+     *
+     * Edit The article by the parameters given
+     * by the post and get
+     *
+     */
     public function editArticle(){
         try {
             $this->connect(\ObjectFactoryService::getConfig());
@@ -76,6 +99,11 @@ class Model
         }
     }
 
+    /**
+     * Returns the id of the user currently logged in
+     *
+     * @return mixed
+     */
     public function getIdFromUsers(){
         $this->connect(\ObjectFactoryService::getConfig());
         $sql = "SELECT user_id FROM users WHERE username='" . $_SESSION['username'] ."'";
