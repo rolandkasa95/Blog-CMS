@@ -16,6 +16,11 @@
 </div>
 <?php
 ob_start();
+/**
+ * The form
+ *
+ * Validation and generation
+ */
 if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
     if (!isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
         $valid = new \Validators\insertValidate();
@@ -48,6 +53,9 @@ ob_end_clean();
                 </b>
                 <h4>
                 <?php
+                /**
+                 * The instantiation itself
+                 */
                     $this->model = new \Forms\InsertArticleForm(new \Models\Model());
                 ?>
                 <?php echo $this->model->getStartTag()?>
