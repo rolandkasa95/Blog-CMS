@@ -31,3 +31,7 @@
 #p_right {
     text-align: right;
 }
+
+#p_tag {
+    padding: 5px 10px 10px 5px;
+}

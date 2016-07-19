@@ -2,7 +2,7 @@
 <div class="container">
     <div class="jumbotron">
         <h1>You are browsing: <?php echo $_GET['name'] ?></h1>
-        <div align="right">
+        <div id="header_div">
             <a href="index.php?action=login">
                 <?php
                 if(session_start() && isset($_SESSION['username'])) {
@@ -17,7 +17,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 style="text-align: center; font-style: italic;"><a href="index.php">Back Home</a><hr /></h1>
+            <h1 id="h1"><a href="index.php">Back Home</a><hr /></h1>
             <h2>
                 <?php
                 /**
@@ -28,7 +28,7 @@
                 foreach ($result as $items) {
                     foreach ($items as $key => $value)
                         if ('title' === $key) {
-                            echo "<hr /><p style='padding: 5px 10px 10px 5px'><a href=index.php?action=articleShow&id=" . $this->model->getArticleId($value) . " >" . $value . '</a><br /></p>';
+                            echo "<hr /><p id='p_tag'><a href=index.php?action=articleShow&id=" . $this->model->getArticleId($value) . " >" . $value . '</a><br /></p>';
                         }
                 }
                 ?>
