@@ -58,6 +58,7 @@ class manageTagsForm
             'priority' => 2,
             'required' => false,
             'value' => '',
+            'options' => $result,
             'validator' => [
               'InArrayValidator' => $result,
             ],
