@@ -17,10 +17,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <strong>If you want to add a new article: <hr /><a href='index.php?action=insert'>Insert Article<a/></strong>
-            <strong>If you want to manage some tags: <hr /><a href="index.php?action=tags">Manage Tags</a></strong>
+            <h3>
+                <strong>If you want to add a new article: <a href='index.php?action=insert'>Insert Article</a></strong><hr />
+                <strong>If you want to manage some tags: <a href="index.php?action=tags">Manage Tags</a></strong><hr />
+            </h3>
         </div>
         <div class="col-md-6">
+            <h4>
             <?php
                 $this->model = new \Models\Model();
                 $result = $this->model->getArticles(0);
@@ -33,6 +36,7 @@
                 echo $key . '<br /><hr />';
                 }
             ?>
+            </h4>
         </div>
     </div>
 </div>
