@@ -11,3 +11,11 @@
 #header_div{
     text-align: right;
 }
+
+#edit_div {
+    font-size: x-small;
+    float: right;
+    width: 30px;
+    height: 30px;
+    background-color: greenyellow;
+}

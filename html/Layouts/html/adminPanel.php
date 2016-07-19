@@ -3,7 +3,7 @@
 <div class="container">
     <div class="jumbotron">
         <h1>My Blog</h1>
-        <div align="right">
+        <div id="header_div">
             <a href="index.php?action=login"> <?php
                 if(session_start() && isset($_SESSION['username'])){
                     echo $_SESSION['username'] . '   Logout';
@@ -30,7 +30,7 @@
                 foreach($result as $row => $key)
                 {
                 if(isset($_SESSION['username'])) {
-                echo "<a href='index.php?action=edit&id=" . $this->model->getArticleId($row) . "'><div style='font-size: x-small; float: right; width: 30px;height: 30px; background-color: greenyellow'></div></a>";
+                echo "<a href='index.php?action=edit&id=" . $this->model->getArticleId($row) . "'><div id='edit_div'></div></a>";
                 }
                 echo "<a href=index.php?action=articleShow&id=" . $this->model->getArticleId($row) . " >" . $row . '</a><br />';
                 echo $key . '<br /><hr />';
