@@ -46,7 +46,7 @@ ob_end_clean();
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 style="text-align: center; font-style: italic;"><a href="index.php">Back Home</a></h1><hr />
+            <h1><a href="index.php">Back Home</a></h1><hr />
             <div id="content">
                 <strong style="color: red;">
                     Please keep in mind: if you add new tags to the article, separate them with a comma! Thank you!
