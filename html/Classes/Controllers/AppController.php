@@ -102,6 +102,12 @@ class AppController
                     }
                     break;
                 /**
+                 * This lead to the adminPanel
+                 */
+                case 'adminPanel':
+                    $view->render('adminPanel.php',new Model());
+                    break;
+                /**
                  * This case initiates the insert form
                  */
                 case 'insert':
