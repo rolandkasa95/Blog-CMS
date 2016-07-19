@@ -45,8 +45,8 @@ class manageTagsForm
             'value' => '',
             'options' => $result,
             'validator' => [
-                'InArray' => $result,
-                'required',
+                'InArrayValidator' => $result,
+                'requiredValidator',
             ],
         ]);
 
@@ -59,7 +59,7 @@ class manageTagsForm
             'required' => false,
             'value' => '',
             'validator' => [
-              'InArray' => $result,
+              'InArrayValidator' => $result,
             ],
         ]);
 
@@ -93,5 +93,13 @@ class manageTagsForm
                 'requiredValidator',
             ],
         ]);
+
+
+        //Adjust the button attributes
+        $button = $this->getField('Submit');
+        $button->setValue('Publish');
+
+        //Sort the fields by priority
+        ksort($this->fields);
     }
 }
