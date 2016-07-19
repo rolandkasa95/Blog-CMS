@@ -2,7 +2,7 @@
 <div class="container">
     <div class="jumbotron">
         <h1>My Blog</h1>
-        <div align="right">
+        <div id="header_div">
             <a href="index.php?action=login"> <?php
                 if(session_start() && isset($_SESSION['username'])){
                     echo $_SESSION['username'] . '   Logout';
@@ -15,7 +15,7 @@
 </div>
 <div class="container">
     <div class="col-md-12">
-        <h1 style="text-align: center; font-style: italic;"><a href="index.php">Back Home</a></h1><hr /><hr />
+        <h1 id="h1"><a href="index.php">Back Home</a></h1><hr /><hr />
         <?php
         /**
          * Getting data from table and listing on the page (articleShow)
@@ -26,7 +26,7 @@
         }
         foreach ($result as $key=>$row){
                 if ('title' === $key){
-                    echo '<h1 style="text-align: center">' . $row . '</h1>';
+                    echo '<h1 id="article_h1">' . $row . '</h1>';
                 }elseif ('date' === $key){
                     echo '<h2>' . $row . '</h2>';
                 }else{
