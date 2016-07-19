@@ -478,5 +478,35 @@ class Model
             echo $e->getMessage();
         }
     }
-    
+
+    public function deleteTag(){
+        try{
+            $this->connect(\ObjectFactoryService::getConfig());
+            $delete = filter_input(INPUT_POST,'delete',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
+            $delete = trim($delete,' ');
+            $sql = "DELETE FROM tags WHERE name=:name";
+            $statement = $this->db->prepare($sql);
+            $statement->bindParam(':name',$delete,PDO::PARAM_STR,100);
+            $statement->execute();
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function updateTag(){
+        try{
+            $this->connect(\ObjectFactoryService::getConfig());
+            $update = filter_input(INPUT_POST,'update',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
+            $update = trim($update,' ');
+            $updateTo = filter_input(INPUT_POST,'updateTo',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
+            $updateTo = trim($updateTo,' ');
+            $sql = "Update tags SET name=:name WHERE tag_id=:id";
+            $statement = $this->db->prepare($sql);
+            $statement->bindParam(':name',$updateTo,PDO::PARAM_STR,100);
+            $statement->bindParam(':id',$this->getTagId($update),PDO::PARAM_INT);
+            $statement->execute();
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
 }

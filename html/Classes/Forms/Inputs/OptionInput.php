@@ -50,6 +50,13 @@ class Option
     public function getOptions($options)
     {
         $results = null;
+        $this->setSelected(true);
+        $this->setValue('');
+        $this->setDisabled(true);
+        $this->setOptionString('Choose from below');
+        $results[] = $this->getOption();
+        $this->setDisabled(false);
+        $this->setSelected(false);
         foreach ($options as $option) {
             $value = ucwords($option);
             $this->value = $value;
