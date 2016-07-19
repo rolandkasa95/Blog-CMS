@@ -14,3 +14,8 @@
         </div>
     </div>
 </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <strong>If you want to add a new article: <br /><a href='index.php?action=insert'>Insert Article<a/></strong>
+        </div>
