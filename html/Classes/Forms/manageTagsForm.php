@@ -41,8 +41,7 @@ class manageTagsForm
             'type' => 'select',
             'name' => 'delete',
             'multiple' => false,
-            'priority' => 7,
-            'required' => true,
+            'priority' => 1,
             'value' => '',
             'options' => $result,
             'validator' => [
@@ -51,5 +50,48 @@ class manageTagsForm
             ],
         ]);
 
+        $this->addField([
+            'label' => 'Tag To Update: ',
+            'type' => 'select',
+            'name' => 'update',
+            'multiple' => false,
+            'priority' => 2,
+            'required' => false,
+            'value' => '',
+            'validator' => [
+              'InArray' => $result,
+            ],
+        ]);
+
+        $this->addField([
+           'label' => 'Update To: ',
+            'type' => 'text',
+            'name' => 'updateTo',
+            'required' => false,
+            'priority' => 3,
+            'value' => '',
+            'validator' =>[
+                'AlphaValidator',
+                'requiredValidator',
+            ],
+        ]);
+
+        $this->addField([
+            'label' => 'Tag Name to add: ',
+            'type' => 'text',
+            'name' => 'tag',
+            'priority' => 8,
+            'required' => true,
+            'value' => '',
+            'validator' => [
+                'StringLengthValidator' => [
+                    'minimum' => 2,
+                    'maximum' => 100,
+                ],
+                'AlphaValidator',
+                'DuplicationValidator',
+                'requiredValidator',
+            ],
+        ]);
     }
 }
