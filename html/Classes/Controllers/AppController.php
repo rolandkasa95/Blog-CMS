@@ -5,6 +5,7 @@ namespace Controllers;
 use Forms\EditArticleForm;
 use Forms\InsertArticleForm;
 use Forms\LoginForm;
+use Forms\manageTagsForm;
 use Forms\RegisterForm;
 use Models\articlepageModel;
 use Models\homepageModel;
@@ -102,8 +103,8 @@ class AppController
                     }
                     break;
                 case 'tags':
-                    $this->model = ne
-                    $view->render('manageTagsPage.php',$this->form)
+                    $this->model = new manageTagsForm(new Model());
+                    $view->render('manageTagsPage.php',$this->model);
                     break;
                 /**
                  * This lead to the adminPanel
