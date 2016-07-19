@@ -27,7 +27,7 @@
              * Listing the articles descendently
              */
             if(isset($_SESSION['username'])){
-                echo "<a href='index.php?action=insert'>Insert Article<a/>";
+                echo "<a href='index.php?action=adminPanel'>Admin Panel<a/>";
             }
             if(isset($_GET['offset'])){
                 $result = $this->model->getArticles($offset * 5);
