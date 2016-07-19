@@ -61,14 +61,14 @@ class insertValidate
         $title = filter_var($title,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
         $model = new Model();
         $bool = $model->checkInTable(' WHERE title="' . $title . '"');
-        if($bool){
-            return $bool;
-        }elseif(!empty($title)){
-            return !empty($title);
-        }else{
+        if(false === $bool){
             return false;
         }
-    }
+        if(empty($title)) {
+            return false;
+        }
+        return true;
+        }
 
     /**
      * ValidBody

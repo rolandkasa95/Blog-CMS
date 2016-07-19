@@ -21,6 +21,9 @@
          * Getting data from table and listing on the page (articleShow)
          */
         $result = $this->model->showArticle();
+        if(empty($result)){
+            header('Location: index.php');
+        }
         foreach ($result as $key=>$row){
                 if ('title' === $key){
                     echo '<h1 style="text-align: center">' . $row . '</h1>';
