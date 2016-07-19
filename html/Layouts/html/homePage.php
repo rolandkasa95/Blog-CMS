@@ -2,7 +2,7 @@
     <div class="container">
         <div class="jumbotron">
             <h1>My Blog</h1>
-            <div align="right">
+            <div id="header_div">
                 <a href="index.php?action=login"><?php
                     if (isset($_GET['offset'])) {
                         $offset = (int)$_GET['offset'];
@@ -38,7 +38,7 @@
             foreach($result as $row => $key)
             {
                 if(isset($_SESSION['username'])) {
-                    echo "<a href='index.php?action=edit&id=" . $this->model->getArticleId($row) . "'><div style='font-size: x-small; float: right; width: 30px;height: 30px; background-color: greenyellow'></div></a>";
+                    echo "<a href='index.php?action=edit&id=" . $this->model->getArticleId($row) . "'><div id=\"edit_div\"'></div></a>";
                 }
                 echo "<a href=index.php?action=articleShow&id=" . $this->model->getArticleId($row) . " >" . $row . '</a><br />';
                 echo $key . '<br /><hr />';
@@ -51,14 +51,14 @@
             <?php
             if (isset($offset) && 1 === $offset){
                 ?>
-                <p style="text-align: left"><a href="index.php">Previous 5 articles</a></p>
+                <p id="p_left"><a href="index.php">Previous 5 articles</a></p>
                 <?php
             }else
                 ?>
             <?php
                 if(isset($offset) && 1 != $offset ){
             ?>
-            <p style="text-align: left"><a href="index.php?offset=<?php echo --$offset ?>">Previous 5 articles</a></p>
+            <p id="p_left"><a href="index.php?offset=<?php echo --$offset ?>">Previous 5 articles</a></p>
             <?php
                 }
             ?>
@@ -75,10 +75,10 @@
                         $offset = (int)$_GET['offset'];
                     }
                     ?>
-                    <p style="text-align: right"><a href="index.php?offset=<?php echo ++$offset ?>">Next 5 articles</a>
+                    <p id="p_right""><a href="index.php?offset=<?php echo ++$offset ?>">Next 5 articles</a>
                     </p>
                 <?php } else { ?>
-                    <p style="text-align: right"><a href="index.php?offset=1">Next 5 articles</a></p>
+                    <p id="p_right"><a href="index.php?offset=1">Next 5 articles</a></p>
                 <?php }
             }
             ?>

@@ -3,7 +3,7 @@
 <div class="container">
     <div class="jumbotron">
         <h1>My Blog</h1>
-        <div align="right">
+        <div id="header_div">
             <a href="index.php?action=login"> <?php
                 if(session_start() && isset($_SESSION['username'])){
                     echo $_SESSION['username'] . '   Logout';
@@ -38,7 +38,7 @@ ob_end_clean();
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 style="text-align: center; font-style: italic;"><a href="index.php">Back Home</a></h1><hr />
+            <h1 id="h1"><a href="index.php">Back Home</a></h1><hr />
             <div id="content">
                 <h4>
                     <?php

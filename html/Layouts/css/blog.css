@@ -23,3 +23,11 @@
 #article_h1 {
     text-align: center;
 }
+
+#p_left {
+    text-align: left;
+}
+
+#p_right {
+    text-align: right;
+}
