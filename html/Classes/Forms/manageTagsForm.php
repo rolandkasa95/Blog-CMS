@@ -1,0 +1,55 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: roland
+ * Date: 13.07.2016
+ * Time: 16:01
+ */
+
+namespace Forms;
+
+
+use Models\editarticleModel;
+use Models\Model;
+use Models\selectTagsModel;
+
+class manageTagsForm
+    extends FormCommon implements FormInterface
+{
+    /**
+     * RegisterForm constructor.
+     *
+     * This constructor sets the fields taken from
+     * FormBase to the EditArticle output.
+     * @param $models
+     */
+    public function __construct($models)
+    {
+        $params = [
+            'name' => 'manageTags',
+            'id' => 'form1',
+            'method' => 'post',
+            'action' => '#',
+        ];
+        parent::__construct($models, $params);
+
+        $this->models = new Model();
+        $result = $this->models->selectTags1();
+        //Add username
+        $this->addField([
+            'label' => 'Tag to Delete',
+            'type' => 'select',
+            'name' => 'delete',
+            'multiple' => false,
+            'priority' => 7,
+            'required' => true,
+            'value' => '',
+            'options' => $result,
+            'validator' => [
+                'InArray' => $result,
+                'required',
+            ],
+        ]);
+
+    }
+}

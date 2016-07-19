@@ -101,6 +101,10 @@ class AppController
                         }
                     }
                     break;
+                case 'tags':
+                    $this->model = ne
+                    $view->render('manageTagsPage.php',$this->form)
+                    break;
                 /**
                  * This lead to the adminPanel
                  */
