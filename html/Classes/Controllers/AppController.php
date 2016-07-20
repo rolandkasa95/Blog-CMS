@@ -133,9 +133,7 @@ class AppController
                  * descendently
                  */
                 default:
-                    $this->model = new Model();
-                    $view->render('homePage.php', $this->model);
-                    break;
+                    $view->render('Page404.php',new Model());
             }
         }else{
             $this->model = new Model();
