@@ -80,20 +80,6 @@ class EditArticleForm
 
         //Add country and data options
         $this->models = new Model();
-        $title = $this->models->selectTags1();
-        $this->addField([
-            'label' => 'Please Select the Tags: ',
-            'type' => 'checkbox',
-            'name' => 'tags',
-            'priority' => 7,
-            'required' => true,
-            'value' => 1,
-            'options' => $title,
-            'validator' => [
-                'InArrayValidator' => $title,
-                'requiredValidator',
-            ],
-        ]);
 
         $this->addField([
             'label' => 'Tag Name: ',
@@ -101,7 +87,7 @@ class EditArticleForm
             'name' => 'tag',
             'priority' => 8,
             'required' => true,
-            'value' => '',
+            'value' => implode(',',$this->models->selectArticleTagNames()),
             'validator' => [
                 'StringLengthValidator' => [
                     'minimum' => 2,

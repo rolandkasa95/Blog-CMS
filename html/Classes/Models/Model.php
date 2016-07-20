@@ -417,6 +417,21 @@ class Model
         }
     }
 
+    public function selectArticleTagNames(){
+        try{
+            $this->connect(\ObjectFactoryService::getConfig());
+            $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+            $sql = 'SELECT tags.name FROM articles  INNER JOIN articles_tags ON articles.article_id = articles_tags.article_id INNER JOIN tags ON articles_tags.tag_id = tags.tag_id  WHERE articles_tags.article_id=:article_id';
+            $statement = $this->db->prepare($sql);
+            $statement->bindParam(':article_id',$id,PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_COLUMN);
+            return $result;
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
     /**
      * Select the articles by tag names
      *
