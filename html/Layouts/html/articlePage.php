@@ -26,6 +26,9 @@
         }
         foreach ($result as $key=>$row){
                 if ('title' === $key){
+                    if(isset($_SESSION['username'])) {
+                        echo "<a href='index.php?action=edit&id=" . $this->model->getArticleId($row) . "'><div id=\"edit_div\"'></div></a>";
+                        }
                     echo '<h1 id="article_h1">' . $row . '</h1>';
                 }elseif ('date' === $key){
                     echo '<h2>' . $row . '</h2>';
