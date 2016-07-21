@@ -84,11 +84,9 @@ class AppController
                     $class->init();
                     break;
                 case 'tags':
-                    
+                    $class = new ManageTagsController();
+                    $class->init();
                     break;
-                /**
-                 * This lead to the adminPanel
-                 */
                 case 'adminPanel':
                     $view->render('adminPanel.php',new Model());
                     break;
