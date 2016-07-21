@@ -137,7 +137,7 @@ class AppController
                     break;
                 /**
                  * The default case is the home page, wich is the list of articles
-                 * descendently
+                 * in descendant order
                  */
                 default:
                     $view->render('Page404.php',new Model());

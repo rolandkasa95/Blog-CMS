@@ -32,13 +32,13 @@ if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
     if(isset($_POST['tag']) && !empty($_POST['tag'])){
         $this->model->insertTag();
     }
+    ob_end_clean();
 }
-ob_end_clean();
 ?>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 id="h1"><a href="index.php">Back Home</a></h1><hr />
+            <h1 id="h1"><a href="index.php?action=adminPanel">Back Home</a></h1><hr />
             <div id="content">
                 <h4>
                     <?php

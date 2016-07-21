@@ -4,17 +4,19 @@
             <h1>My Blog</h1>
             <div id="header_div">
                 <a href="index.php?action=login"><?php
-                    if (isset($_GET['offset'])) {
-                        $offset = (int)$_GET['offset'];
+                    if(1 === session_status()) {
+                        session_start();
                     }
-                    if(empty($_SESSION['username'])){
-                        echo 'Login';
-                    }
-                    elseif(session_status()  && isset($_SESSION['username'])) {
-                        echo $_SESSION['username'] . '   Logout';
-                    }else{
-                        echo "Login";
-                    }
+                        if (isset($_GET['offset'])) {
+                            $offset = (int)$_GET['offset'];
+                        }
+                        if (empty($_SESSION['username'])) {
+                            echo 'Login';
+                        } elseif (session_status() && isset($_SESSION['username'])) {
+                            echo $_SESSION['username'] . '   Logout';
+                        } else {
+                            echo "Login";
+                        }
                     ?></a>
             </div>
         </div>
