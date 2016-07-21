@@ -91,18 +91,11 @@ class AppController
                     $class = new AdminPanelController();
                     $class->init();
                     break;
-                /**
-                 * This case initiates the insert form
-                 */
                 case 'insert':
+                    $class = new InsertController();
+                    $class->init();
                     break;
-                /**
-                 * This case initiates the edit form
-                 */
                 case 'edit' :
-                    $this->model = new Model();
-                    $this->form = new EditArticleForm($this->model);
-                    $view->render('adminEditPage.php', $this->form);
                     break;
                 /**
                  * The default case is the home page, wich is the list of articles
