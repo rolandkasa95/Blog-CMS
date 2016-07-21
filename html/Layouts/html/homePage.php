@@ -7,10 +7,10 @@
                     if (isset($_GET['offset'])) {
                         $offset = (int)$_GET['offset'];
                     }
-                    if(isset($_SESSION)){
-                        echo $_SESSION['username'] . '   Logout';
+                    if(empty($_SESSION['username'])){
+                        echo 'Login';
                     }
-                    elseif(session_start()  && isset($_SESSION['username'])) {
+                    elseif(session_status()  && isset($_SESSION['username'])) {
                         echo $_SESSION['username'] . '   Logout';
                     }else{
                         echo "Login";

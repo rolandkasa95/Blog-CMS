@@ -57,9 +57,6 @@ ob_end_clean();
                  * The instantiation itself
                  */
                     $this->model = new \Forms\InsertArticleForm(new \Models\Model());
-global $sapte;
-
-                echo $sapte;
                 ?>
                 <?php echo $this->model->getStartTag()?>
                 <?php foreach($this->model->fields as $field) : ?>
