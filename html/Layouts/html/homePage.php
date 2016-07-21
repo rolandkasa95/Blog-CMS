@@ -40,7 +40,7 @@
             }else
                 ?>
             <?php
-                if(isset($offset) && 1 != $offset ){
+                if(isset($offset) && 1 < $offset ){
             ?>
             <p id="p_left"><a href="index.php?offset=<?php echo --$offset ?>">Previous 5 articles</a></p>
             <?php
