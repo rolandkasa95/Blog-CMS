@@ -9,7 +9,16 @@
 namespace Controllers;
 
 
-class EditController
-{
+use Forms\EditArticleForm;
+use Models\Model;
+use Views\View;
 
+class EditController extends AppController
+{
+    public function init(){
+        $view = new View();
+        $this->model = new Model();
+        $this->form = new EditArticleForm($this->model);
+        $view->render('adminEditPage.php', $this->form);
+    }
 }
