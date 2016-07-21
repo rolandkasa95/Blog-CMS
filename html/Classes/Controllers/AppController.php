@@ -95,9 +95,6 @@ class AppController
                  * This case initiates the insert form
                  */
                 case 'insert':
-                    $this->model = new Model();
-                    $this->form = new InsertArticleForm($this->model);
-                    $view->render('editPage1.php', $this->form);
                     break;
                 /**
                  * This case initiates the edit form
