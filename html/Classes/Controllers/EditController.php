@@ -20,7 +20,11 @@ class EditController extends AppController
         $view = new View();
         $this->model = new Model();
         $this->form = new EditArticleForm($this->model);
+        ob_start();
         $view->render('adminEditPage.php', $this->form);
+        if(isset($_POST['errorBody'])  && isset($_POST['errorTitle'])){
+            ob_end_clean();
+        }
         $this->edit();
     }
 
@@ -30,7 +34,6 @@ class EditController extends AppController
      * validation and integration in the database
      */
     public function edit(){
-        ob_start();
         if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
             if (!isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
                 $valid = new editValidate();
@@ -51,6 +54,6 @@ class EditController extends AppController
                 header('Location: index.php?action=articleShow&id='.$id);
             }
         }
-        ob_end_clean();
+
     }
 }

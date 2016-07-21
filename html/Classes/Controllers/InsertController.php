@@ -14,7 +14,11 @@ class InsertController extends AppController
         $view = new View();
         $this->model = new Model();
         $this->form = new InsertArticleForm($this->model);
+        ob_start();
         $view->render('editPage1.php', $this->form);
+        if(isset($_POST['errorBody'])  && isset($_POST['errorTitle'])){
+            ob_end_clean();
+        }
         $this->insertData();
     }
 
@@ -24,7 +28,6 @@ class InsertController extends AppController
      * Validation and generation
      */
     public function insertData(){
-        ob_start();
         if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
             if (!isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
                 $valid = new insertValidate();
@@ -45,6 +48,5 @@ class InsertController extends AppController
                 header('Location: index.php?action=articleShow&id='.$id);
             }
         }
-        ob_end_clean();
     }
 }

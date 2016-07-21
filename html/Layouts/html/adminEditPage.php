@@ -4,10 +4,16 @@
         <h1>My Blog</h1>
         <div id='header_div'>
             <a href="index.php?action=login"> <?php
-                if(session_start() && isset($_SESSION['username'])){
-                    echo $_SESSION['username'] . '   Logout';
+                if(1 === session_status()) {
+                    if (session_start() && isset($_SESSION['username'])) {
+                        echo $_SESSION['username'] . '   Logout';
+                    } else {
+                        header("Location: index.php?action=login ");
+                    }
                 }else{
-                    header("Location: index.php?action=login ");
+                    if (isset($_SESSION['username'])) {
+                        echo $_SESSION['username'] . '   Logout';
+                    }
                 }
                 ?></a>
 </div>
