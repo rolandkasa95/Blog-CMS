@@ -76,25 +76,9 @@ class AppController
                  * This case is the login
                  */
                 case 'login' :
-                    session_start();
-                    if(!isset($_SESSION['username'])) {
-                        $this->model = new Model();
-                        if (session_start()) {
-
-                            session_unset();
-                            session_destroy();
-                        }
-                        $this->form = new LoginForm($this->model);
-                        $view->render('loginpage.php', $this->form);
-                    }else{
-                        session_unset();
-                        session_destroy();
-                        $view->render('homePage.php',new Model());
-                    }
+                    $class = new LoginController();
+                    $class->init();
                     break;
-                /**
-                 * This case validates the login, and enters the session
-                 */
                 case 'validate' :
                     if (isset($_POST['submit'])) {
                         $this->model = new Model();
