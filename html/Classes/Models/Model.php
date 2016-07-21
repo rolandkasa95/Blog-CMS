@@ -23,8 +23,9 @@ class Model
      *
      * @param $config array
      */
-    public function connect($config){
+    public function connect(){
         try {
+            $config = \ObjectFactoryService::getConfig();
             $this->db = new \PDO($config['dsn'], $config['user'], $config['pass']);
         }catch (\PDOException $e){
             echo "error: " . $e->getMessage();
