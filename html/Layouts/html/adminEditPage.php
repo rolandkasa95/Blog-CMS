@@ -1,24 +1,3 @@
-<body>
-<div class="container">
-    <div class="jumbotron">
-        <h1>My Blog</h1>
-        <div id='header_div'>
-            <a href="index.php?action=login"> <?php
-                if(PHP_SESSION_ACTIVE !== session_status()) {
-                    if (session_start() && isset($_SESSION['username'])) {
-                        echo $_SESSION['username'] . '   Logout';
-                    } else {
-                        header("Location: index.php?action=login ");
-                    }
-                }else{
-                    if (isset($_SESSION['username'])) {
-                        echo $_SESSION['username'] . '   Logout';
-                    }
-                }
-                ?></a>
-</div>
-</div>
-</div>
 <div class="container">
     <div class="row">
         <div class="col-md-12">

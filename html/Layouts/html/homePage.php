@@ -1,33 +1,15 @@
-<body>
-    <div class="container">
-        <div class="jumbotron">
-            <h1>My Blog</h1>
-            <div id="header_div">
-                <a href="index.php?action=login"><?php
-                    if(1 === session_status()) {
-                        session_start();
-                    }
-                        if (isset($_GET['offset'])) {
-                            $offset = (int)$_GET['offset'];
-                        }
-                        if (empty($_SESSION['username'])) {
-                            echo 'Login';
-                        } elseif (session_status() && isset($_SESSION['username'])) {
-                            echo $_SESSION['username'] . '   Logout';
-                        } else {
-                            echo "Login";
-                        }
-                    ?></a>
-            </div>
-        </div>
-    </div>
-    <div class="container">
+ <div class="container">
         <div class="col-md-12">
             <h2>
             <?php
             /**
              * Listing the articles descendently
              */
+            if(isset($_GET['offset'])) {
+                $offset = (int)$_GET['offset'];
+            }else{
+                $offset=0;
+            }
             if(isset($_SESSION['username'])){
                 echo "<a href='index.php?action=adminPanel'>Admin Panel<a/>";
             }
