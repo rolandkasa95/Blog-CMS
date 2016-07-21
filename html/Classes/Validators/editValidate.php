@@ -55,6 +55,7 @@ class editValidate
      */
     public function validTitle($title){
         $title = filter_var($title,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
+        $title = trim($title,' ');
         return !empty($title);
     }
 
@@ -64,6 +65,7 @@ class editValidate
      */
     public function validBody($body){
         $body = filter_var($body,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
+        $body = trim($body,' ');
         return !empty($body);
     }
 }

@@ -59,6 +59,7 @@ class insertValidate
      */
     public function validTitle($title){
         $title = filter_var($title,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
+        $title = trim($title,' ');
         $model = new Model();
         $bool = $model->checkInTable(' WHERE title="' . $title . '"');
         if(false === $bool){
@@ -78,6 +79,7 @@ class insertValidate
      */
     public function validBody($body){
         $body = filter_var($body,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
+        $body = trim($body,' ');
         return !empty($body);
     }
 }
