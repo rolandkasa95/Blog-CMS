@@ -14,35 +14,6 @@
         </div>
     </div>
 </div>
-<?php
-ob_start();
-/**
- * The form
- *
- * Validation and generation
- */
-if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
-    if (!isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
-        $valid = new \Validators\insertValidate();
-        $result = $valid->validate();
-    }
-    if(!empty($_POST['tag']) && '' !== $_POST['tag'] && !isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
-        $this->model = new \Models\Model();
-        $this->model->insertTag();
-    }
-    if(!empty($_POST['body']) && !empty($_POST['title']) && !isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
-        $this->model = new \Models\Model();
-        $this->model->insertArticle();
-        $this->model->insertArticlesTags();
-        $this->model->insertNewTags();
-        $title = $_POST['title'];
-        $title = filter_var($title,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
-        $id = $this->model->getArticleId($title);
-        header('Location: index.php?action=articleShow&id='.$id);
-    }
-}
-ob_end_clean();
-?>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
