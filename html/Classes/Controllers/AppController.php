@@ -59,10 +59,12 @@ class AppController
             $action = $_GET['action'];
             switch ($action) {
                 case 'articleShow' :
-                    $this->model = new Model();
-                    $view->render('articlePage.php', $this->model);
+                    $class = new ArticleShowController();
+                    $class->init();
                     break;
                 case 'tag':
+                    $class = new TagShowController();
+                    $class->init();
                     break;
                 case 'login' :
                     $class = new LoginController();
