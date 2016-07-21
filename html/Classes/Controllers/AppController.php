@@ -88,7 +88,8 @@ class AppController
                     $class->init();
                     break;
                 case 'adminPanel':
-                    $view->render('adminPanel.php',new Model());
+                    $class = new AdminPanelController();
+                    $class->init();
                     break;
                 /**
                  * This case initiates the insert form
