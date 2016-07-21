@@ -3,6 +3,8 @@
 namespace Controllers;
 
 
+use Forms\LoginForm;
+use Models\Model;
 use Views\View;
 
 class LoginController extends AppController
