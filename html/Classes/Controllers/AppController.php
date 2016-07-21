@@ -96,17 +96,13 @@ class AppController
                     $class->init();
                     break;
                 case 'edit' :
+                    $class = new EditController();
+                    $class->init();
                     break;
-                /**
-                 * The default case is the home page, wich is the list of articles
-                 * in descendant order
-                 */
                 default:
                     $view->render('Page404.php',new Model());
             }
         }else{
-            $this->model = new Model();
-            $view->render('homePage.php', $this->model);
         }
     }
 }
