@@ -58,23 +58,12 @@ class AppController
         if (isset($_GET['action'])) {
             $action = $_GET['action'];
             switch ($action) {
-                /**
-                 * This case lists the article
-                 */
                 case 'articleShow' :
                     $this->model = new Model();
                     $view->render('articlePage.php', $this->model);
                     break;
-                /**
-                 * This case list the articles which contain a specific tag
-                 */
                 case 'tag':
-                    $this->model = new Model();
-                    $view->render('tagPage.php', $this->model);
                     break;
-                /**
-                 * This case is the login
-                 */
                 case 'login' :
                     $class = new LoginController();
                     $class->init();
@@ -103,6 +92,8 @@ class AppController
                     $view->render('Page404.php',new Model());
             }
         }else{
+            $class = new HomeController();
+            $class->init();
         }
     }
 }
