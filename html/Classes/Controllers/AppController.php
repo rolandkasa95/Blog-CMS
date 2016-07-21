@@ -84,8 +84,7 @@ class AppController
                     $class->init();
                     break;
                 case 'tags':
-                    $this->model = new manageTagsForm(new Model());
-                    $view->render('manageTagsPage.php',$this->model);
+                    
                     break;
                 /**
                  * This lead to the adminPanel
