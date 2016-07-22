@@ -20,8 +20,6 @@ class InsertController extends AppController
         if(isset($_POST['errorBody'])  && isset($_POST['errorTitle'])){
             ob_end_clean();
         }
-        var_dump($_FILES);
-        die;
         $this->insertData();
     }
 
@@ -32,25 +30,28 @@ class InsertController extends AppController
      */
     public function insertData(){
         if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
+            $result = 1;
             if (!isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
                 $valid = new insertValidate();
-                $result = $valid->validate();
+                $valid->validate();
                 $valid = new ImageValidator();
                 $result = $valid->imagePathing();
             }
-            if(!empty($_POST['tag']) && '' !== $_POST['tag'] && !isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
-                $this->model = new \Models\Model();
-                $this->model->insertTag();
-            }
-            if(!empty($_POST['body']) && !empty($_POST['title']) && !isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
-                $this->model = new \Models\Model();
-                $this->model->insertArticle();
-                $this->model->insertArticlesTags();
-                $this->model->insertNewTags();
-                $title = $_POST['title'];
-                $title = filter_var($title,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
-                $id = $this->model->getArticleId($title);
-                header('Location: index.php?action=articleShow&id='.$id);
+            if($result) {
+                if (!empty($_POST['tag']) && '' !== $_POST['tag'] && !isset($_POST['errorBody']) && !isset($_POST['errorTitle'])) {
+                    $this->model = new \Models\Model();
+                    $this->model->insertTag();
+                }
+                if (!empty($_POST['body']) && !empty($_POST['title']) && !isset($_POST['errorBody']) && !isset($_POST['errorTitle'])) {
+                    $this->model = new \Models\Model();
+                    $this->model->insertArticle();
+                    $this->model->insertArticlesTags();
+                    $this->model->insertNewTags();
+                    $title = $_POST['title'];
+                    $title = filter_var($title, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
+                    $id = $this->model->getArticleId($title);
+                    header('Location: index.php?action=articleShow&id=' . $id);
+                }
             }
         }
     }

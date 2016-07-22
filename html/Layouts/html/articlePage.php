@@ -17,11 +17,12 @@
                     echo '<h1 id="article_h1">' . $row . '</h1>';
                 }elseif ('date' === $key){
                     echo '<h2>' . $row . '</h2>';
+                }elseif('imagePath' === $key && !empty($row)){
+                    echo "<img src='$row' class='img-responsive'>";
                 }else{
                     print '<h4>' .  $row . '</h4>';
                 }
             }
-        $dir = '/Layouts/uploads/snapshoteditArticle.jpg';
         $result = $this->model->tagNameDisplay();
         echo "<h5>";
         $i=0;

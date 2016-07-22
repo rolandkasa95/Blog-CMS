@@ -29,7 +29,7 @@ class ImageValidator
         }
 
         // Check file size
-        if ($_FILES["fileToUpload"]["size"] > 500000) {
+        if ($_FILES["fileToUpload"]["size"] > 10000000) {
             echo "Sorry, your file is too large.";
             $uploadOk = 0;
         }
@@ -51,7 +51,6 @@ class ImageValidator
                 echo "Sorry, there was an error uploading your file.";
             }
         }
-        var_dump($uploadOk);
-        die;
+        return $uploadOk;
     }
 }

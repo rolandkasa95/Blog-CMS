@@ -35,3 +35,8 @@
 #p_tag {
     padding: 5px 10px 10px 5px;
 }
+
+.img-responsive{
+    max-width: 25%;
+    max-height: 25%;
+}
