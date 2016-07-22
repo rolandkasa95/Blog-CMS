@@ -5,6 +5,7 @@ namespace Controllers;
 
 use Forms\InsertArticleForm;
 use Models\Model;
+use Validators\ImageValidator;
 use Validators\insertValidate;
 use Views\View;
 
@@ -20,8 +21,6 @@ class InsertController extends AppController
             ob_end_clean();
         }
         var_dump($_FILES);
-        var_dump($_POST);
-        die;
         $this->insertData();
     }
 
@@ -35,8 +34,8 @@ class InsertController extends AppController
             if (!isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
                 $valid = new insertValidate();
                 $result = $valid->validate();
-                $valid = new 
-                $result = 
+                $valid = new ImageValidator();
+                $result = $valid->imagePathing();
             }
             if(!empty($_POST['tag']) && '' !== $_POST['tag'] && !isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
                 $this->model = new \Models\Model();
