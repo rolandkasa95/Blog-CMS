@@ -117,6 +117,9 @@ abstract class FormBase
                 $field['type'] ? $newField->setType($field['type']) : null;
                 $field['label'] ? $newField->setLabel($field['label']) : null;
                 $field['name'] ? $newField->setName($field['name']) : null;
+                if (isset($_POST['errorFile']) && $_POST['errorFile']){
+                    $field['errorMessage'] ? $newField->setError($field['errorMessage']) : null;
+                }
                 break;
             case 'text':
                 require_once CLASSES . 'Forms/Inputs/TextInput.php';

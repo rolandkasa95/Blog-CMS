@@ -36,9 +36,15 @@ class insertValidate
         $this->view = new View();
         if ($this->validTitle($this->title)){
             if ($this->validBody($this->body)){
-                $model = new Model();
-                $_GET['id'] = $model->getArticleId($this->title);
-                $this->view->render('articlePage.php',$model);
+                if($this->validFile($_FILES)) {
+                    $model = new Model();
+                    $_GET['id'] = $model->getArticleId($this->title);
+                    $this->view->render('articlePage.php', $model);
+                }else{
+                    $this->form = new InsertArticleForm(new Model());
+                    $_POST['errorFile'] = 1;
+                    $this->view->render('editPage1.php',$this->form);
+                }
             }else{
                 $this->form = new InsertArticleForm(new Model());
                 $_POST['errorBody'] = 1;
@@ -81,5 +87,18 @@ class insertValidate
         $body = filter_var($body,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
         $body = trim($body,' ');
         return !empty($body);
+    }
+
+    public function validFile($file){
+        if('image/jpeg' !== $file['fileToUpload']['type']){
+            return false;
+        }
+        if($file['fileToUpload']['error']){
+            return false;
+        }
+        if(empty($file)){
+            return false;
+        }
+        return true;
     }
 }

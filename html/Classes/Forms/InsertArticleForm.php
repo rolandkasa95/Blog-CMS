@@ -82,6 +82,8 @@ class InsertArticleForm
             'value' => '',
             'required' => false,
             'priority' => 3,
+            'error' => 1,
+            'errorMessage' => 'Please Insert a Valid File',
         ]);
 
         //Add country and data options

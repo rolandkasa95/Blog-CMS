@@ -24,10 +24,12 @@ class FileInput extends BaseInput
     /**
      * @return string
      */
-    public function getInput()
-    {
-        $required = $this->required ? ' required' : null;
-        return "<input type='$this->type' name='$this->name'/ accept='$this->accept'>";
+    public function getInput(){
+        $return = "<input type='$this->type' name='$this->name' accept='$this->accept'>";
+        if(isset($this->error)){
+            $return .= "<p style='color: red'>$this->error</p>";
+        }
+        return $return;
     }
 
 }
