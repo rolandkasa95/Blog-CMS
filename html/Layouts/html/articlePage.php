@@ -21,6 +21,7 @@
                     print '<h4>' .  $row . '</h4>';
                 }
             }
+        $dir = '/Layouts/uploads/snapshoteditArticle.jpg';
         $result = $this->model->tagNameDisplay();
         echo "<h5>";
         $i=0;

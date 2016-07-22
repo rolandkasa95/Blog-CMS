@@ -21,6 +21,7 @@ class InsertController extends AppController
             ob_end_clean();
         }
         var_dump($_FILES);
+        die;
         $this->insertData();
     }
 
