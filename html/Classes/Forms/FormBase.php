@@ -107,6 +107,14 @@ abstract class FormBase
                     $field['errorMessage'] ? $newField->setError($field['errorMessage']) : null;
                 }
                 break;
+            case 'file':
+                require_once CLASSES . 'Forms/Inputs/FileInput.php';
+                $field['type'] ? $newField->setType($field['type']) : null;
+                $field['label'] ? $newField->setLabel($field['label']) : null;
+                $field['value'] ? $newField->setValue($field['value']) : null;
+                $field['name'] ? $newField->setName($field['name']) : null;
+                $newField = new FileInput.php;
+                break;
             case 'text':
                 require_once CLASSES . 'Forms/Inputs/TextInput.php';
                 $newField = new Text();
