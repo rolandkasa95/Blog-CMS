@@ -78,6 +78,7 @@ class InsertArticleForm
            'label' => 'Image:',
             'type' => 'file',
             'name' => 'fileToUpload',
+            'accept' => 'image/*',
             'value' => '',
             'required' => false,
             'priority' => 3,

@@ -37,7 +37,7 @@ class EditController extends AppController
         if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
             if (!isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
                 $valid = new editValidate();
-                $result = $valid->validate();
+                $valid->validate();
             }
             if(!empty($_POST['tag']) && '' !== $_POST['tag'] && !isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
                 $this->model = new \Models\Model();

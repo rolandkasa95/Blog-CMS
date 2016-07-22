@@ -29,6 +29,7 @@ class EditArticleForm
             'name' => 'insertArticle',
             'id' => 'form1',
             'method' => 'post',
+            'enctype' => 'multipart/form-data',
             'action' => '#',
         ];
         parent::__construct($models, $params);
@@ -80,18 +81,6 @@ class EditArticleForm
 
         //Add country and data options
         $this->models = new Model();
-        $imagePath = $this->models->showArticle();
-
-
-        $this->addField([
-            'label' => 'Image:',
-            'type' => 'file',
-            'name' => 'fileToUpload',
-            'value' => $imagePath['imagePath'],
-            'required' => false,
-            'priority' => 3,
-        ]);
-
 
         $this->addField([
             'label' => 'Tag Name: ',

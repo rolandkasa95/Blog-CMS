@@ -112,6 +112,8 @@ abstract class FormBase
             case 'file':
                 require_once CLASSES . 'Forms/Inputs/FileInput.php';
                 $newField = new FileInput();
+                $field['accept'] ? $newField->setAccept($field['accept']) : null;
+                $field['value'] ? $newField->setValue($field['value']): null;
                 $field['type'] ? $newField->setType($field['type']) : null;
                 $field['label'] ? $newField->setLabel($field['label']) : null;
                 $field['name'] ? $newField->setName($field['name']) : null;
