@@ -80,6 +80,7 @@ class Model
         try {
             $this->connect(\ObjectFactoryService::getConfig());
             $date = new \DateTime();
+            $date->modify('+3 hours');
             $bool = $_POST['submit'] ? 1 : 0;
             $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
@@ -244,6 +245,7 @@ class Model
     public function insertArticle(){
         $this->connect(\ObjectFactoryService::getConfig());
         $date = new \DateTime();
+        $date->modify('+3 hours');
         $bool = $_POST['submit']?1:0;
         $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
         $body = filter_input(INPUT_POST,'body',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);

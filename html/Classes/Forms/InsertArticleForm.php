@@ -73,6 +73,15 @@ class InsertArticleForm
             'errorMessage' => 'Please Enter a valid Body',
         ]);
 
+        $this->addField([
+           'label' => 'Image:',
+            'type' => 'file',
+            'name' => 'fileToUpload',
+            'value' => '',
+            'required' => false,
+            'priority' => 3,
+        ]);
+
         //Add country and data options
         $this->models = new Model();
 
