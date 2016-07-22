@@ -90,7 +90,16 @@ class insertValidate
     }
 
     public function validFile($file){
-        if('image/jpeg' !== $file['fileToUpload']['type']){
+        $target_dir = LAYOUTS . "/uploads/";
+        $target_file = $target_dir . basename($file["fileToUpload"]["name"]);
+        $check = getimagesize($file["fileToUpload"]["tmp_name"]);
+        if (false === $check) {
+            return false;
+        }
+        if('image/jpeg' !== $file['fileToUpload']['type'] && 'image/gif' !== $file['fileToUpload']['type']){
+            return false;
+        }
+        if (10000000 < $file["fileToUpload"]["size"]) {
             return false;
         }
         if($file['fileToUpload']['error']){
@@ -99,6 +108,10 @@ class insertValidate
         if(empty($file)){
             return false;
         }
-        return true;
+        if (move_uploaded_file($file["fileToUpload"]["tmp_name"], $target_file)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

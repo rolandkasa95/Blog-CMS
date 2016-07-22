@@ -31,18 +31,15 @@ class InsertController extends AppController
     public function insertData(){
         if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
             $result = 1;
-            if (!isset($_POST['errorBody'])  && !isset($_POST['errorTitle'])) {
+            if (!isset($_POST['errorBody'])  && !isset($_POST['errorTitle']) && !isset($_POST['errorFile'])) {
                 $valid = new insertValidate();
                 $valid->validate();
-                $valid = new ImageValidator();
-                $result = $valid->imagePathing();
             }
-            if($result) {
-                if (!empty($_POST['tag']) && '' !== $_POST['tag'] && !isset($_POST['errorBody']) && !isset($_POST['errorTitle'])) {
+                if (!empty($_POST['tag']) && '' !== $_POST['tag'] && !isset($_POST['errorBody']) && !isset($_POST['errorTitle']) && !isset($_POST['errorFile'])) {
                     $this->model = new \Models\Model();
                     $this->model->insertTag();
                 }
-                if (!empty($_POST['body']) && !empty($_POST['title']) && !isset($_POST['errorBody']) && !isset($_POST['errorTitle'])) {
+                if (!empty($_POST['body']) && !empty($_POST['title']) && !isset($_POST['errorBody']) && !isset($_POST['errorTitle']) && !isset($_POST['errorFile'])) {
                     $this->model = new \Models\Model();
                     $this->model->insertArticle();
                     $this->model->insertArticlesTags();
@@ -51,7 +48,6 @@ class InsertController extends AppController
                     $title = filter_var($title, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
                     $id = $this->model->getArticleId($title);
                     header('Location: index.php?action=articleShow&id=' . $id);
-                }
             }
         }
     }
