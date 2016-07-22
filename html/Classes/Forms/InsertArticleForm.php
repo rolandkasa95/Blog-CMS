@@ -26,6 +26,7 @@ class InsertArticleForm
             'name' => 'insertArticle',
             'id' => 'form1',
             'method' => 'post',
+            'enctype' => 'multipart/form-data',
             'action' => '#',
         ];
         parent::__construct($models, $params);

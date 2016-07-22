@@ -22,7 +22,7 @@ class FileInput extends BaseInput
     public function getInput()
     {
         $required = $this->required ? ' required' : null;
-        return "<input type='$this->type' name='$this->name' value='$this->value'/>";
+        return "<input type='$this->type' name='$this->name'/>";
     }
 
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace Forms;
+use Forms\Inputs\FileInput;
 use Forms\Inputs\Text;
 use Forms\Inputs\TextareaInput;
 
@@ -51,6 +52,7 @@ abstract class FormBase
         $form .= $config['id'] ? " id=\"{$config['id']}\"" : null;
         $form .= $config['name'] ? " name=\"{$config['name']}\"" : null;
         $form .= $config['action'] ? " action=\"{$config['action']}\"" :null;
+        $form .= $config['enctype'] ? " enctype=\"{$config['enctype']}\"" : null;
         $form .= $config['method'] ? " method=\"{$config['method']}\"" : null;
         $form .=">";
         return $form;
@@ -109,11 +111,10 @@ abstract class FormBase
                 break;
             case 'file':
                 require_once CLASSES . 'Forms/Inputs/FileInput.php';
+                $newField = new FileInput();
                 $field['type'] ? $newField->setType($field['type']) : null;
                 $field['label'] ? $newField->setLabel($field['label']) : null;
-                $field['value'] ? $newField->setValue($field['value']) : null;
                 $field['name'] ? $newField->setName($field['name']) : null;
-                $newField = new FileInput.php;
                 break;
             case 'text':
                 require_once CLASSES . 'Forms/Inputs/TextInput.php';
