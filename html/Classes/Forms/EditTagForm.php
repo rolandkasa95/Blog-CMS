@@ -19,7 +19,7 @@ class EditTagForm extends FormCommon
             'name' => 'manageTags',
             'id' => 'form1',
             'method' => 'post',
-            'action' => '#',
+            'action' => 'index.php?action=deleteTags',
         ];
         parent::__construct($models, $params);
 
@@ -28,7 +28,7 @@ class EditTagForm extends FormCommon
         $result = $this->models->selectTags1();
         //Add username
         $this->addField([
-            'label' => 'Tag to Delete',
+            'label' => 'Tag to Manage: ',
             'type' => 'select',
             'name' => 'delete',
             'multiple' => false,

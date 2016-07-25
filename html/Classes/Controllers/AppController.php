@@ -74,10 +74,6 @@ class AppController
                     $class = new ValidateLoginController();
                     $class->init();
                     break;
-                case 'tags':
-                    $class = new ManageTagsController();
-                    $class->init();
-                    break;
                 case 'adminPanel':
                     $class = new AdminPanelController();
                     $class->init();
@@ -88,6 +84,10 @@ class AppController
                     break;
                 case 'edit' :
                     $class = new EditController();
+                    $class->init();
+                    break;
+                case 'deleteTags':
+                    $class = new ManageTagsController();
                     $class->init();
                     break;
                 default:
