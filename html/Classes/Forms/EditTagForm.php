@@ -15,6 +15,7 @@ class EditTagForm extends FormCommon
 {
     public function __construct($models){
 
+        $this->models = new Model();
         $params = [
             'name' => 'manageTags',
             'id' => 'form1',
@@ -24,7 +25,6 @@ class EditTagForm extends FormCommon
         parent::__construct($models, $params);
 
 
-        $this->models = new Model();
         $result = $this->models->selectTags1();
         //Add username
         $this->addField([
@@ -43,7 +43,7 @@ class EditTagForm extends FormCommon
 
         //Adjust the button attributes
         $button = $this->getField('Submit');
-        $button->setValue('Publish');
+        $button->setValue('Modify');
 
         //Sort the fields by priority
         ksort($this->fields);
