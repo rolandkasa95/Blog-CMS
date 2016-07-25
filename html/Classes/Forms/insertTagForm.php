@@ -24,7 +24,7 @@ class insertTagForm
         $params = [
             'name' => 'register',
             'id' => 'form1',
-            'method' => 'post',
+            'method' => 'POST',
             'action' => '#',
         ];
         parent::__construct($models, $params);

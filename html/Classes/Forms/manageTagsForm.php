@@ -29,7 +29,7 @@ class manageTagsForm
             'name' => 'manageTags',
             'id' => 'form1',
             'method' => 'post',
-            'action' => '#',
+            'action' => 'index.php?action=deleteTags',
         ];
         parent::__construct($models, $params);
 
@@ -48,7 +48,7 @@ class manageTagsForm
 
         $button = $this->getField('Submit');
         $button->setValue('Update');
-        
+
 
         //Sort the fields by priority
         ksort($this->fields);
