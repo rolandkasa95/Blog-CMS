@@ -42,3 +42,8 @@
     min-width: 40%;
     min-height: 40%;
 }
+
+.img-responsive.edit {
+    width: 50px;
+    height: 200px;
+}

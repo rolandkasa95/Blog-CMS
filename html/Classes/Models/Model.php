@@ -87,18 +87,32 @@ class Model
             $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
             $body = filter_input(INPUT_POST, 'body', FILTER_SANITIZE_SPECIAL_CHARS  , FILTER_FLAG_STRIP_LOW );
-            $sql = "UPDATE articles SET user_id=:user_id, title=:title, author=:author, body=:body, date=:date, isPublished=:isPublished, imagePath=:imagePath WHERE article_id=:id";
-            $insert = $this->db->prepare($sql);
-            $insert->bindParam(':user_id', $this->getIdFromUsers(), PDO::PARAM_INT);
-            $insert->bindParam(':title', trim($title, ' '), PDO::PARAM_STR, 100);
-            $insert->bindParam(':author', $_SESSION['username'], PDO::PARAM_STR, 100);
-            $insert->bindParam(':body', trim($body, ' '), PDO::PARAM_STR, 100);
-            $insert->bindParam(':date', $date->format('Y-m-d H:i:sP'));
-            $insert->bindParam('isPublished', $bool, PDO::PARAM_BOOL);
-            $insert->bindParam(':imagePath',$imagePath,200);
-            $insert->bindParam(':id', $id, PDO::PARAM_INT);
-            $insert->execute();
-            return;
+            if("/Layouts/uploads/" === $imagePath){
+                $sql = "UPDATE articles SET user_id=:user_id, title=:title, author=:author, body=:body, date=:date, isPublished=:isPublished WHERE article_id=:id";
+                $insert = $this->db->prepare($sql);
+                $insert->bindParam(':user_id', $this->getIdFromUsers(), PDO::PARAM_INT);
+                $insert->bindParam(':title', trim($title, ' '), PDO::PARAM_STR, 100);
+                $insert->bindParam(':author', $_SESSION['username'], PDO::PARAM_STR, 100);
+                $insert->bindParam(':body', trim($body, ' '), PDO::PARAM_STR, 100);
+                $insert->bindParam(':date', $date->format('Y-m-d H:i:sP'));
+                $insert->bindParam('isPublished', $bool, PDO::PARAM_BOOL);
+                $insert->bindParam(':id', $id, PDO::PARAM_INT);
+                $insert->execute();
+                return;
+            }else {
+                $sql = "UPDATE articles SET user_id=:user_id, title=:title, author=:author, body=:body, date=:date, isPublished=:isPublished, imagePath=:imagePath WHERE article_id=:id";
+                $insert = $this->db->prepare($sql);
+                $insert->bindParam(':user_id', $this->getIdFromUsers(), PDO::PARAM_INT);
+                $insert->bindParam(':title', trim($title, ' '), PDO::PARAM_STR, 100);
+                $insert->bindParam(':author', $_SESSION['username'], PDO::PARAM_STR, 100);
+                $insert->bindParam(':body', trim($body, ' '), PDO::PARAM_STR, 100);
+                $insert->bindParam(':date', $date->format('Y-m-d H:i:sP'));
+                $insert->bindParam('isPublished', $bool, PDO::PARAM_BOOL);
+                $insert->bindParam(':imagePath', $imagePath, 200);
+                $insert->bindParam(':id', $id, PDO::PARAM_INT);
+                $insert->execute();
+                return;
+            }
         }catch (\PDOException $e){
             echo $e->getMessage();
         }

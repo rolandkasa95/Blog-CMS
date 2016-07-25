@@ -52,6 +52,7 @@ class EditController extends AppController
                 $title = filter_var($title,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
                 $id = $this->model->getArticleId($title);
                 header('Location: index.php?action=articleShow&id='.$id);
+                die;
             }
         }
 
