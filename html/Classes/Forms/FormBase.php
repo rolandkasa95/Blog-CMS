@@ -1,9 +1,15 @@
 <?php
 
 namespace Forms;
+
+use Forms\Inputs\CheckboxInput;
 use Forms\Inputs\FileInput;
+use Forms\Inputs\Hidden;
+use Forms\Inputs\Select;
+use Forms\Inputs\Submit;
 use Forms\Inputs\Text;
 use Forms\Inputs\TextareaInput;
+use Forms\Inputs;
 
 
 /**
@@ -20,7 +26,7 @@ abstract class FormBase
      */
     public $config = [];
     /**
-     * @var array
+     * @var CheckboxInput[]|Hidden[]|Select[]|string[]|Submit[]|Text[]
      */
     public $fields = [];
     /**
@@ -52,44 +58,19 @@ abstract class FormBase
         $form .= $config['id'] ? " id=\"{$config['id']}\"" : null;
         $form .= $config['name'] ? " name=\"{$config['name']}\"" : null;
         $form .= $config['action'] ? " action=\"{$config['action']}\"" :null;
-        $form .= $config['enctype'] ? " enctype=\"{$config['enctype']}\"" : null;
+        $form .= isset($config['enctype']) && $config['enctype'] ? " enctype=\"{$config['enctype']}\"" : null;
         $form .= $config['method'] ? " method=\"{$config['method']}\"" : null;
         $form .=">";
         return $form;
     }
 
-    /**
-     * Generates fields from a configuration array
-     * @return bool
-     */
-    public function generateFields()
-    {
-        $config = $this->config;
-        $newField = null;
-        foreach ($config['fields'] as $field) {
-            $newField = $this->generateField($field);
-        }
-
-        if (!$newField) {
-            return false;
-        } else {
-            //Set common fields
-            !empty($field['value']) ? $newField->setValue($field['value']) : null;
-            !empty($field['name']) ? $newField->setName($field['name']) : null;
-            !empty($field['required']) ? $newField->setRequired($field['required']) : null;
-            !empty($field['priority']) ? $this->fields[$field['priority']] = $newField : null;
-        }
-
-        ksort($this->fields);
-        return true;
-    }
 
     /**
      * This function checks the type
      * of the input and sets the field for themm
      *
      * @param $field
-     * @return Checkbox|Hidden|Select|string|Submit|Text
+     * @return CheckboxInput|Hidden|Select|string|Submit|Text
      */
     public function generateField($field)
     {
@@ -212,29 +193,38 @@ abstract class FormBase
      */
     public function validate()
     {
-        $invalidCount = 0;
-        foreach ($this->data as $key => $value) {
-            foreach ($this->fields as $field) {
-                if ($field->getName() == $key && $key !== 'submit') {
-                    foreach($field->getValidators() as $validator){
-                        if (!$validator->validate($value)) {
-                            $invalidCount++;
-                        }
-                    }
-                    if ( ! $invalidCount ) {
-                        $field->setValid();
-                        break;
-                    }
+        $valid = true;
+
+        foreach ( $this->fields as $field ) {
+            if ( $this->isFieldPosted( $field ) ) {
+
+                if ( ! $field->isValid() ) {
+                    $valid = false;
                 }
             }
         }
-       if ($invalidCount){
-           return false;
-       }else{
-           return true;
-       }
+
+       return $valid;
 
     }
+
+    /**
+     * @param Checkbox|Hidden|Select|string|Submit|Text $field
+     * @return bool
+     */
+    private function isFieldPosted( $field )
+    {
+
+        return array_key_exists( $field->getName(), $this->data ) && $field->getName() !== 'submit';
+    }
+
+    //
+
+    //                foreach($field->getValidators() as $validator){
+//                    if (!$validator->validate($value)) {
+//                        $invalidCount++;
+//                    }
+//                }
 
     /**
      * @return array

@@ -13,7 +13,7 @@ abstract class BaseInput{
     /**
      * @var string
      */
-    public $name;
+    public $name = '';
     /**
      * @var
      */

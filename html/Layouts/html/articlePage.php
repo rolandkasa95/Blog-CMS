@@ -17,13 +17,20 @@
                     echo '<h1 id="article_h1">' . $row . '</h1>';
                 }elseif ('date' === $key){
                     echo '<h2>' . $row . '</h2>';
+
                 }elseif('imagePath' === $key && !empty($row)){
+                    echo "<div class='col-md-6'>";
                     echo "<img src='$row' class='img-responsive'>";
                 }else{
+                    echo "<div class='col-md-6'>";
                     print '<h4>' .  $row . '</h4>';
+                    echo "</div>";
                 }
+
             }
         $result = $this->model->tagNameDisplay();
+
+        echo "<hr>";
         echo "<h5>";
         $i=0;
         /**
