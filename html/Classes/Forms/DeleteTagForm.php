@@ -17,12 +17,12 @@ class DeleteTagForm extends FormCommon implements FormInterface
             'name' => 'manageTags',
             'id' => 'form1',
             'method' => 'post',
-            'action' => '#',
+            'action' => 'index.php?action=deleteTags',
         ];
         parent::__construct($models, $params);
 
         $button = $this->getField('Submit');
-        $button->setValue('Update');
+        $button->setValue('Delete');
 
 
         //Sort the fields by priority
