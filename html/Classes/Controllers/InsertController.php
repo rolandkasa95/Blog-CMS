@@ -5,7 +5,6 @@ namespace Controllers;
 
 use Forms\InsertArticleForm;
 use Models\Model;
-use Validators\ImageValidator;
 use Validators\insertValidate;
 use Views\View;
 
@@ -30,7 +29,6 @@ class InsertController extends AppController
      */
     public function insertData(){
         if(isset($_POST['submit']) && $_POST['submit'] === 'Publish'){
-            $result = 1;
             if (!isset($_POST['errorBody'])  && !isset($_POST['errorTitle']) && !isset($_POST['errorFile'])) {
                 $valid = new insertValidate();
                 $valid->validate();

@@ -159,7 +159,7 @@ abstract class FormBase
 
     /**
      * @param $field
-     * @return bool|Checkbox|Hidden|Select|string|Submit|Text
+     * @return bool|Hidden|Select|string|Submit|Text|CheckboxInput
      */
     public function addField($field)
     {
@@ -209,7 +209,7 @@ abstract class FormBase
     }
 
     /**
-     * @param Checkbox|Hidden|Select|string|Submit|Text $field
+     * @param Hidden|Select|string|Submit|Text $field
      * @return bool
      */
     private function isFieldPosted( $field )
