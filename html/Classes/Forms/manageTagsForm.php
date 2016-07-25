@@ -32,7 +32,7 @@ class manageTagsForm
             'action' => '#',
         ];
         parent::__construct($models, $params);
-        
+
         $this->addField([
            'label' => 'Update To: ',
             'type' => 'text',
@@ -47,7 +47,8 @@ class manageTagsForm
         ]);
 
         $button = $this->getField('Submit');
-        $button->setValue('Delete');
+        $button->setValue('Update');
+        
 
         //Sort the fields by priority
         ksort($this->fields);
