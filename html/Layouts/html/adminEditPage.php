@@ -24,7 +24,11 @@
                         }
                     }else{
                         echo $field->getInput();}?>
-                    <?php endforeach ?>
+                    <?php endforeach;
+                    $result = $this->model->showArticle();
+                    $row = $result['imagePath'];
+                    echo "<img src='$row' class='img-responsive'>";
+                    ?>
                 </h4>
             </div>
         </div>
