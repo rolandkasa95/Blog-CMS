@@ -38,8 +38,7 @@ class Model
      * @return array
      */
     public function tagNameDisplay(){
-        $config = \ObjectFactoryService::getConfig();
-        $this->connect($config);
+        $this->connect();
         $id = $_GET['id'];
         $sql='SELECT name FROM articles  INNER JOIN articles_tags ON articles.article_id = articles_tags.article_id INNER JOIN tags ON articles_tags.tag_id = tags.tag_id WHERE articles.article_id=' .$id . ' AND articles.isPublished=1';
         $statement = $this->db->prepare($sql);
@@ -56,8 +55,7 @@ class Model
      */
     public function showArticle(){
         try {
-            $config = \ObjectFactoryService::getConfig();
-            $this->connect($config);
+            $this->connect();
             $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
             $sql = 'SELECT title,date,body,imagePath FROM articles WHERE article_id=:id';
             $statement = $this->db->prepare($sql);
@@ -78,7 +76,7 @@ class Model
      */
     public function editArticle(){
         try {
-            $this->connect(\ObjectFactoryService::getConfig());
+            $this->connect();
             $date = new \DateTime();
             $date->modify('+3 hours');
             $imagePath = "/Layouts/uploads/";
@@ -124,7 +122,7 @@ class Model
      * @return mixed
      */
     public function getIdFromUsers(){
-        $this->connect(\ObjectFactoryService::getConfig());
+        $this->connect();
         $sql = "SELECT user_id FROM users WHERE username='" . $_SESSION['username'] ."'";
         $select = $this->db->prepare($sql);
         $select->execute();
@@ -140,7 +138,7 @@ class Model
      */
     public function count(){
         try{
-            $this->connect(\ObjectFactoryService::getConfig());
+            $this->connect();
             $sql = "SELECT tag_id FROM tags";
             $statement = $this->db->prepare($sql);
             $statement->execute();
@@ -162,7 +160,7 @@ class Model
      * @return int
      */
     public function getTagId($tagName){
-        $this->connect(\ObjectFactoryService::getConfig());
+        $this->connect();
         $sql = "SELECT tag_id FROM tags WHERE name=\"" . $tagName . "\"";
         $statement = $this->db->prepare($sql);
         $statement->execute();
@@ -176,7 +174,7 @@ class Model
      *
      */
     public function editNewTags(){
-        $this->connect(\ObjectFactoryService::getConfig());
+        $this->connect();
         try{
             $newTags = filter_input(INPUT_POST,'tag',FILTER_SANITIZE_STRING);
             $newTags = explode(',',$newTags);
@@ -204,7 +202,7 @@ class Model
      */
     public function articlesTagsInTable($article_id,$tag_id){
         try{
-            $this->connect(\ObjectFactoryService::getConfig());
+            $this->connect();
             $sql = "SELECT * FROM articles_tags WHERE article_id=:article_id AND tag_id=:tag_id";
             $statement = $this->db->prepare($sql);
             $statement->bindParam(':article_id',$article_id,PDO::PARAM_INT);
@@ -228,8 +226,7 @@ class Model
      * @return array
      */
     public function getArticles($offset){
-        $config = \ObjectFactoryService::getConfig();
-        $this->connect($config);
+        $this->connect();
         $sql = 'SELECT title,date FROM articles WHERE isPublished=1 ORDER BY date DESC LIMIT 5 OFFSET ' . $offset;
         $statement = $this->db->prepare($sql);
         $statement->execute();
@@ -245,8 +242,7 @@ class Model
      * @return int/bool
      */
     public function getArticleId($articleTitle){
-        $config = \ObjectFactoryService::getConfig();
-        $this->connect($config);
+        $this->connect();
         $sql="SELECT article_id FROM articles WHERE title='" .$articleTitle . "'";
         $statement = $this->db->prepare($sql);
         $statement->execute();
@@ -260,7 +256,7 @@ class Model
      *
      */
     public function insertArticle(){
-        $this->connect(\ObjectFactoryService::getConfig());
+        $this->connect();
         $date = new \DateTime();
         $date->modify('+3 hours');
         $imagePath = "/Layouts/uploads/";
@@ -287,7 +283,7 @@ class Model
      *
      */
     public function editArticlesTags(){
-        $this->connect(\ObjectFactoryService::getConfig());
+        $this->connect();
         $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
         $sql = "DELETE FROM articles_tags WHERE article_id=$id";
         $insert = $this->db->prepare($sql);
@@ -316,7 +312,7 @@ class Model
      *
      */
     public function insertArticlesTags(){
-        $this->connect(\ObjectFactoryService::getConfig());
+        $this->connect();
         $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
         $title = trim($title,' ');
         $j = 0;
@@ -340,7 +336,7 @@ class Model
      */
     public function insertTag(){
         try{
-            $this->connect(\ObjectFactoryService::getConfig());
+            $this->connect();
             $button = $_POST['submit'] ?1:0;
             $tags = filter_input(INPUT_POST,'tag',FILTER_SANITIZE_STRING);
             if(strpos($tags,',')) {
@@ -379,7 +375,7 @@ class Model
      */
     public function inTable($tags){
         try{
-            $this->connect(\ObjectFactoryService::getConfig());
+            $this->connect();
             $sql = "SELECT tag_id FROM tags WHERE name=:name";
             $statement = $this->db->prepare($sql);
             $statement->bindParam(':name',$tags,PDO::PARAM_STR,100);
@@ -401,7 +397,7 @@ class Model
      *
      */
     public function insertNewTags(){
-        $this->connect(\ObjectFactoryService::getConfig());
+        $this->connect();
         try{
             $newTags = filter_input(INPUT_POST,'tag',FILTER_SANITIZE_STRING);
             $newTags = explode(',',$newTags);
@@ -427,9 +423,8 @@ class Model
      * @return array
      */
     public function selectTags1(){
-        $config = \ObjectFactoryService::getConfig();
         try{
-            $this->connect($config);
+            $this->connect();
             $sql = 'SELECT name FROM tags';
             $statement = $this->db->prepare($sql);
             $statement->execute();
@@ -442,7 +437,7 @@ class Model
 
     public function selectArticleTagNames(){
         try{
-            $this->connect(\ObjectFactoryService::getConfig());
+            $this->connect();
             $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
             $sql = 'SELECT tags.name FROM articles  INNER JOIN articles_tags ON articles.article_id = articles_tags.article_id INNER JOIN tags ON articles_tags.tag_id = tags.tag_id  WHERE articles_tags.article_id=:article_id';
             $statement = $this->db->prepare($sql);
@@ -461,8 +456,7 @@ class Model
      * @return array
      */
     public function getArticlesByTagName(){
-        $config = \ObjectFactoryService::getConfig();
-        $this->connect($config);
+        $this->connect();
         $name = filter_input(INPUT_GET,'name',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
         $sql = 'SELECT title,date FROM articles  INNER JOIN articles_tags ON articles.article_id = articles_tags.article_id INNER JOIN tags ON articles_tags.tag_id = tags.tag_id  WHERE tags.name="' . $_GET['name'] . '" AND articles.isPublished=1 AND tags.isVisible=1 ORDER BY date DESC';
         $statement = $this->db->prepare($sql);
@@ -479,7 +473,7 @@ class Model
      */
     public function getUsername($param){
         try{
-            $this->connect(\ObjectFactoryService::getConfig());
+            $this->connect();
             $sql = "SELECT * FROM users WHERE  username='" . $param ."'";
             $statement = $this->db->prepare($sql);
             $statement->execute();
@@ -502,7 +496,7 @@ class Model
      */
     public function checkInTable($param){
         try{
-            $this->connect(\ObjectFactoryService::getConfig());
+            $this->connect();
             $sql = "SELECT article_id FROM articles" . $param;
             $statement = $this->db->prepare($sql);
             $statement->execute();
@@ -519,7 +513,7 @@ class Model
 
     public function deleteTag($tagToManage){
         try{
-            $this->connect(\ObjectFactoryService::getConfig());
+            $this->connect();
             $delete = filter_var($tagToManage,FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
             $delete = trim($delete,' ');
             $sql = "DELETE FROM tags WHERE name=:name";
@@ -534,7 +528,7 @@ class Model
 
     public function updateTag($tagToManage){
         try{
-            $this->connect(\ObjectFactoryService::getConfig());
+            $this->connect();
             $update = filter_var($tagToManage,FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
             $update = trim($update,' ');
             $updateTo = filter_input(INPUT_POST,'updateTo',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
