@@ -3,6 +3,10 @@
         <div class="col-md-6">
             <h3>
                 <strong>If you want to add a new article: <a href='index.php?action=insert'>Insert Article</a></strong><hr />
+                <?php
+                    $this->model = new Forms\EditTagForm(new Models\Model());
+                    
+                ?>
                 <strong>If you want to manage some tags: <a href="index.php?action=tags">Manage Tags</a></strong><hr />
             </h3>
         </div>
