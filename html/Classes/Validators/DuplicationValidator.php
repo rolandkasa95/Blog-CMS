@@ -4,6 +4,9 @@ namespace Validators;
 
 class DuplicationValidator implements ValidatorInterface
 {
+    /**
+     * @var \PDO
+     */
     protected $db;
 
     public function connect($config)

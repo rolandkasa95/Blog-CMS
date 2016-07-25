@@ -15,7 +15,7 @@
                     if(isset($_POST['delete']) && !empty($_POST['delete'])) {
                         $_SESSION['delete'] = $_POST['delete'];
                     }
-                    echo "<h3><strong>The tag which you selected was: <u>" . $_SESSION['delete'] . "</strong></u></h3><hr>";
+                    echo "<h3><strong>The tag which you selected was: <span>" . $_SESSION['delete'] . "</span></strong></h3><hr>";
                     ?>
                     <?php echo $this->model->getStartTag()?>
                     <?php foreach($this->model->fields as $field) : ?>
@@ -42,4 +42,3 @@
         </div>
     </div>
 </div>
-</body>

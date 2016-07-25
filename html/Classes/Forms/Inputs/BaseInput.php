@@ -2,6 +2,8 @@
 
 namespace Forms\Inputs;
 
+use Validators;
+
 /**
  * Abstract BaseInput Class
  */

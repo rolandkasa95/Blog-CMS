@@ -37,10 +37,10 @@
 }
 
 .img-responsive{
-    max-width: 80%;
-    max-height: 60%;
-    min-width: 40%;
-    min-height: 40%;
+    max-width: 400px;
+    max-height: 400px;
+    min-width: 50px;
+    min-height: 200px;
 }
 
 .img-responsive.edit {

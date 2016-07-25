@@ -30,6 +30,7 @@
             }
         $result = $this->model->tagNameDisplay();
 
+        echo "</div>";
         echo "<hr>";
         echo "<h5>";
         $i=0;
@@ -47,5 +48,4 @@
             }
         echo "</h5>";
         ?>
-    </div>
 </div>
