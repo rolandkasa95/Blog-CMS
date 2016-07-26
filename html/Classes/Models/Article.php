@@ -19,7 +19,7 @@ class Article extends Model
     private $body;
     private $urlImage;
 
-    public function __construct($param)
+    public function __construct($param = null)
     {
         if(is_integer($param)){
             $this->setId($param);
@@ -102,6 +102,60 @@ class Article extends Model
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }catch (\PDOException $e){
             echo $e->getMessage();
+        }
+    }
+    
+    public function getByTitle()
+    {
+        try{
+            $this->connect();
+            $qurey = "SELECT * FROM articles WHERE title=:title";
+            $stmt = $this->db->prepare($qurey);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function save($bool)
+    {
+        if($this->id){
+            try {
+                $this->connect();
+                $date = new \DateTime();
+                $date->modify('+3 hours');
+                if("/Layouts/uploads/" === $this->urlImage){
+                    $sql = "UPDATE articles SET user_id=:user_id, title=:title, author=:author, body=:body, date=:date, isPublished=:isPublished WHERE article_id=:id";
+                    $insert = $this->db->prepare($sql);
+                    $insert->bindParam(':user_id', $this->getIdFromUsers(), PDO::PARAM_INT);
+                    $insert->bindParam(':title', trim($this->title, ' '), PDO::PARAM_STR, 100);
+                    $insert->bindParam(':author', $_SESSION['username'], PDO::PARAM_STR, 100);
+                    $insert->bindParam(':body', trim($this->body, ' '), PDO::PARAM_STR, 100);
+                    $insert->bindParam(':date', $date->format('Y-m-d H:i:sP'));
+                    $insert->bindParam('isPublished', $bool, PDO::PARAM_BOOL);
+                    $insert->bindParam(':id', $this->id, PDO::PARAM_INT);
+                    $insert->execute();
+                    return;
+                }else {
+                    $sql = "UPDATE articles SET user_id=:user_id, title=:title, author=:author, body=:body, date=:date, isPublished=:isPublished, imagePath=:imagePath WHERE article_id=:id";
+                    $insert = $this->db->prepare($sql);
+                    $insert->bindParam(':user_id', $this->getIdFromUsers(), PDO::PARAM_INT);
+                    $insert->bindParam(':title', trim($this->title, ' '), PDO::PARAM_STR, 100);
+                    $insert->bindParam(':author', $_SESSION['username'], PDO::PARAM_STR, 100);
+                    $insert->bindParam(':body', trim($this->body, ' '), PDO::PARAM_STR, 100);
+                    $insert->bindParam(':date', $date->format('Y-m-d H:i:sP'));
+                    $insert->bindParam('isPublished', $bool, PDO::PARAM_BOOL);
+                    $insert->bindParam(':imagePath', $this->urlImage, 200);
+                    $insert->bindParam(':id', $this->id, PDO::PARAM_INT);
+                    $insert->execute();
+                    return;
+                }
+            }catch (\PDOException $e){
+                echo $e->getMessage();
+            }
+        }else{
+            
         }
     }
 }
