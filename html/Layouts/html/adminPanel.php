@@ -17,15 +17,16 @@
         <div class="col-md-6">
             <h4>
             <?php
-                $this->model = new \Models\Model();
-                $result = $this->model->getArticles(0);
-                foreach($result as $row => $key)
+                $this->model = new \Models\Article();
+                $results = $this->model->getAllArticles();
+                foreach($results as $result)
                 {
+                    $this->model->setId($result['article_id']);
                 if(isset($_SESSION['username'])) {
-                echo "<a href='index.php?action=edit&id=" . $this->model->getArticleId($row) . "'><div id='edit_div'></div></a>";
+                echo "<a href='index.php?action=edit&id=" . $this->model->getId() . "'><div id='edit_div'></div></a>";
                 }
-                echo "<a href=index.php?action=articleShow&id=" . $this->model->getArticleId($row) . " >" . $row . '</a><br />';
-                echo $key . '<br /><hr />';
+                echo "<a href=index.php?action=articleShow&id=" . $this->model->getId() . " >" . $result['title'] . '</a><br />';
+                echo $result['date'] . '<br /><hr />';
                 }
             ?>
             </h4>

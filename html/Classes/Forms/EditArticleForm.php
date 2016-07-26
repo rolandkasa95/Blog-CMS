@@ -9,6 +9,7 @@
 namespace Forms;
 
 
+use Models\Article;
 use Models\editarticleModel;
 use Models\Model;
 use Models\selectTagsModel;
@@ -34,8 +35,10 @@ class EditArticleForm
         ];
         parent::__construct($models, $params);
 
-        $this->models = new Model();
-        $result = $this->models->showArticle();
+        $this->models = new Article();
+        $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        $this->models->setId($id);
+        $result = $this->models->getById();
         //Add username
         $this->addField([
             'label' => 'Title: ',

@@ -56,7 +56,6 @@ class Model
     public function showArticle(){
         try {
             $this->connect();
-            $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
             $sql = 'SELECT title,date,body,imagePath FROM articles WHERE article_id=:id';
             $statement = $this->db->prepare($sql);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
@@ -78,11 +77,15 @@ class Model
         $article = new Article();        
         $imagePath = "/Layouts/uploads/";
         $imagePath .= $_FILES['fileToUpload']['name'];
+        $article->setUrlImage($imagePath);
         $bool = $_POST['submit'] ? 1 : 0;
         $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        $article->setId($id);
         $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
+        $article->setTitle($title);
         $body = filter_input(INPUT_POST, 'body', FILTER_SANITIZE_SPECIAL_CHARS  , FILTER_FLAG_STRIP_LOW );
-
+        $article->setBody($body);
+        $article->save($bool);
     }
 
     /**
@@ -121,21 +124,7 @@ class Model
             echo $e->getMessage();
         }
     }
-
-    /**
-     * Returns the tagId of a tag by it's name
-     *
-     * @param $tagName string
-     * @return int
-     */
-    public function getTagId($tagName){
-        $this->connect();
-        $sql = "SELECT tag_id FROM tags WHERE name=\"" . $tagName . "\"";
-        $statement = $this->db->prepare($sql);
-        $statement->execute();
-        $result = $statement->fetch(PDO::FETCH_COLUMN);
-        return $result;
-    }
+    
 
     /**
      *
@@ -202,47 +191,23 @@ class Model
         $result = $statement->fetchAll(PDO::FETCH_KEY_PAIR);
         return $result;
     }
-
-    /**
-     * Returns the article id if exists if it doesn't
-     * returns false
-     *
-     * @param $articleTitle string
-     * @return int/bool
-     */
-    public function getArticleId($articleTitle){
-        $this->connect();
-        $sql="SELECT article_id FROM articles WHERE title='" .$articleTitle . "'";
-        $statement = $this->db->prepare($sql);
-        $statement->execute();
-        $result = $statement->fetch(PDO::FETCH_COLUMN);
-        return $result;
-    }
-
+    
     /**
      *
      * Insert a new article to the table
      *
      */
     public function insertArticle(){
-        $this->connect();
-        $date = new \DateTime();
-        $date->modify('+3 hours');
+        $article = new Article();
         $imagePath = "/Layouts/uploads/";
         $imagePath .= $_FILES['fileToUpload']['name'];
+        $article->setUrlImage($imagePath);
         $bool = $_POST['submit']?1:0;
         $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
+        $article->setTitle($title);
         $body = filter_input(INPUT_POST,'body',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
-        $sql="INSERT INTO articles(user_id,title,author,body,date,isPublished,imagePath) VALUES (:user_id,:title,:author,:body,:date,:isPublished,:imagePath)";
-        $insert = $this->db->prepare($sql);
-        $insert->bindParam(':user_id',$this->getIdFromUsers(),PDO::PARAM_INT);
-        $insert->bindParam(':title',trim($title,' '),PDO::PARAM_STR,100);
-        $insert->bindParam(':author',$_SESSION['username'],PDO::PARAM_STR,100);
-        $insert->bindParam(':body',trim($body,' '),PDO::PARAM_STR,100);
-        $insert->bindParam(':date',$date->format('Y-m-d H:i:sP'));
-        $insert->bindParam('isPublished',$bool,PDO::PARAM_BOOL);
-        $insert->bindParam(':imagePath',$imagePath,200);
-        $insert->execute();
+        $article->setBody($body);
+        $article->save($bool);
     }
 
     /**

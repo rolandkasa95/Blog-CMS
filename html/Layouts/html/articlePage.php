@@ -5,32 +5,30 @@
         /**
          * Getting data from table and listing on the page (articleShow)
          */
-        $result = $this->model->showArticle();
+        $article = new \Models\Article();
+        $id=filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT);
+        $article->setId($id);
+        $result = $article->getById();
         if(empty($result)){
             header('Location: index.php');
         }
-        foreach ($result as $key=>$row){
-                if ('title' === $key){
-                    if(isset($_SESSION['username'])) {
-                        echo "<a href='index.php?action=edit&id=" . $this->model->getArticleId($row) . "'><div id=\"edit_div\"'></div></a>";
-                        }
-                    echo '<h1 id="article_h1">' . $row . '</h1>';
-                }elseif ('date' === $key){
-                    echo '<h2>' . $row . '</h2>';
 
-                }elseif('imagePath' === $key && !empty($row)){
-                    echo "<div class='col-md-6'>";
-                    echo "<img src='$row' class='img-responsive'>";
-                }else{
-                    echo "<div class='col-md-6'>";
-                    print '<h4>' .  $row . '</h4>';
-                    echo "</div>";
-                }
-
+        if(isset($_SESSION['username'])) {
+            echo "<a href='index.php?action=edit&id=" . $article->getId() . "'><div id=\"edit_div\"'></div></a>";
             }
+        echo '<h1 id="article_h1">' . $result['title'] . '</h1>';
+        echo '<h2>' . $result['date'] . '</h2>';
+        echo "</div>";
+        echo "<div class='col-md-6'>";
+        print '<h4>' .  $result['body'] . '</h4>';
+        echo "</div>";
+        echo "<div class=row>";
+        echo "<div class='col-md-6'>";
+        $imageURL = $result['imagePath'];
+        echo "<img src='$imageURL' class='img-responsive'>";
+
         $result = $this->model->tagNameDisplay();
 
-        echo "</div>";
         echo "<hr>";
         echo "<h5>";
         $i=0;
