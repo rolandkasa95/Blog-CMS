@@ -329,6 +329,23 @@ class Model
                 $insert->execute();
             }
         }
+
+        $tags = filter_input(INPUT_POST,'tag',FILTER_SANITIZE_STRING);
+        $tags = explode(',', $tags);
+        $real_tags = [];
+        
+        foreach ($tags as $value) {
+
+            $value = trim($value, ' ');
+            $tag = new Tag($value);
+            $real_tags[] = $tag;
+
+            $tag->save();
+            
+        }
+        
+   //     $article->setTags( $real_tags );
+
     }
 
     /**
@@ -339,10 +356,16 @@ class Model
             $this->connect();
             $button = $_POST['submit'] ?1:0;
             $tags = filter_input(INPUT_POST,'tag',FILTER_SANITIZE_STRING);
-            if(strpos($tags,',')) {
-                $tags = explode(',', $_POST['tag']);
-                foreach ($tags as $key => $value) {
+                $tags = explode(',', $tags);
+                foreach ($tags as $value) {
+
                     $value = trim($value,' ');
+
+                    $tag = new Tag($value);
+
+
+
+
                     if($this->inTable($value)) {
                         $sql = "INSERT INTO tags(name,isVisible) VALUES (:name,:isVisible)";
                         $statement = $this->db->prepare($sql);
@@ -351,16 +374,6 @@ class Model
                         $statement->execute();
                     }
                 }
-            }else{
-                $value = trim($_POST['tag'],' ');
-                if($this->inTable($tags)) {
-                    $sql = "INSERT INTO tags(name,isVisible) VALUES (:name,:isVisible)";
-                    $statement = $this->db->prepare($sql);
-                    $statement->bindParam(':name', $value, PDO::PARAM_STR, 100);
-                    $statement->bindParam(':isVisible', $button, PDO::PARAM_BOOL);
-                    $statement->execute();
-                }
-            }
             return;
         }catch (\PDOException $e){
             echo "Transaction Failed: " . $e->getMessage();
