@@ -14,18 +14,21 @@
                 echo "<a href='index.php?action=adminPanel'>Admin Panel<a/>";
             }
             if(isset($_GET['offset'])){
-                $result = $this->model->getArticles($offset * 5);
+                $results = $this->model->getArticles($offset * 5);
             }else{
-                $result = $this->model->getArticles(0);
+                $results = $this->model->getArticles(0);
             }
             echo "<hr />";
-            foreach($result as $row => $key)
+            foreach($results as $result)
             {
+                var_dump($result);
+                $this->model = new \Models\Article();
+                $this->model->setId($result['article_id']);
                 if(isset($_SESSION['username'])) {
-                    echo "<a href='index.php?action=edit&id=" . $this->model->getArticleId($row) . "'><div id=\"edit_div\"'></div></a>";
+                    echo "<a href='index.php?action=edit&id=" . $this->model->getId() . "'><div id='edit_div'></div></a>";
                 }
-                echo "<a href=index.php?action=articleShow&id=" . $this->model->getArticleId($row) . " >" . $row . '</a><br />';
-                echo $key . '<br /><hr />';
+                echo "<a href=index.php?action=articleShow&id=" . $this->model->getId() . " >" . $result['title'] . '</a><br />';
+                echo $result['date'] . '<br /><hr />';
             }
             ?>
                 <hr />

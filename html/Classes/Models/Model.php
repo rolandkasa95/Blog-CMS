@@ -56,6 +56,7 @@ class Model
     public function showArticle(){
         try {
             $this->connect();
+            $id=filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT);
             $sql = 'SELECT title,date,body,imagePath FROM articles WHERE article_id=:id';
             $statement = $this->db->prepare($sql);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
@@ -188,7 +189,7 @@ class Model
         $sql = 'SELECT title,date FROM articles WHERE isPublished=1 ORDER BY date DESC LIMIT 5 OFFSET ' . $offset;
         $statement = $this->db->prepare($sql);
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_KEY_PAIR);
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
     
