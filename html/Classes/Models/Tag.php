@@ -10,8 +10,8 @@ class Tag extends Model {
 
     public function __construct( $name = null, $id = null )
     {
-        $this->setId($id);
         $this->setName($name);
+        $this->setId($id);
     }
     
     /**
@@ -75,20 +75,53 @@ class Tag extends Model {
         }
     }
     
-    public function save()
+    public function save($value,$button)
     {
-
-        return true;
+        if($this->inTable($this->name)) {
+            $sql = "INSERT INTO tags(name,isVisible) VALUES (:name,:isVisible)";
+            $statement = $this->db->prepare($sql);
+            $statement->bindParam(':name', $value,  PDO::PARAM_STR, 100);
+            $statement->bindParam(':isVisible', $button, PDO::PARAM_BOOL);
+            $statement->execute();
+            return true;
+        }else{
+            return false;
+        }
     }
 
-    public function delete()
+    public function deleteById($tagToManage)
     {
-            
+        try{
+            $this->connect();
+            $delete = filter_var($tagToManage,FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
+            $delete = trim($delete,' ');
+            $query = "DELETE FROM tags WHERE tag_id=:tag_id";
+            $statement = $this->db->prepare($query);
+            $statement->bindParam('tag_id',$this->getTagId($delete),PDO::PARAM_INT);
+            $statement->execute();
+            return true;
+        }catch (\PDOException $e){
+            echo $e->getMessage();
+        }
     }
 
-    public function insert()
+    public function update($tagToManage)
     {
-        
+        try{
+            $this->connect();
+            $update = filter_var($tagToManage,FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
+            $update = trim($update,' ');
+            $updateTo = filter_input(INPUT_POST,'updateTo',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
+            $updateTo = trim($updateTo,' ');
+            $sql = "Update tags SET name=:name WHERE tag_id=:id";
+            $statement = $this->db->prepare($sql);
+            $statement->bindParam(':name',$updateTo,PDO::PARAM_STR,100);
+            $statement->bindParam(':id',$this->getTagId($update),PDO::PARAM_INT);
+            $statement->execute();
+            return true;
+        }catch(\PDOException $e){
+            echo $e->getMessage();
+        }
     }
 
 }

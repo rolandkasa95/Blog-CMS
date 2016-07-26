@@ -358,23 +358,11 @@ class Model
             $tags = filter_input(INPUT_POST,'tag',FILTER_SANITIZE_STRING);
                 $tags = explode(',', $tags);
                 foreach ($tags as $value) {
-
                     $value = trim($value,' ');
-
-                    $tag = new Tag($value);
-
-
-
-
-                    if($this->inTable($value)) {
-                        $sql = "INSERT INTO tags(name,isVisible) VALUES (:name,:isVisible)";
-                        $statement = $this->db->prepare($sql);
-                        $statement->bindParam(':name', $value,  PDO::PARAM_STR, 100);
-                        $statement->bindParam(':isVisible', $button, PDO::PARAM_BOOL);
-                        $statement->execute();
+                    $tag = new Tag();
+                    $tag->setName($value);
+                    $tag->save($value,$button);
                     }
-                }
-            return;
         }catch (\PDOException $e){
             echo "Transaction Failed: " . $e->getMessage();
         }
@@ -527,29 +515,9 @@ class Model
     public function deleteTag($tagToManage){
         try{
             $this->connect();
-            $delete = filter_var($tagToManage,FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
-            $delete = trim($delete,' ');
             $sql = "DELETE FROM tags WHERE name=:name";
             $statement = $this->db->prepare($sql);
             $statement->bindParam(':name',$delete,PDO::PARAM_STR,100);
-            $statement->execute();
-            return;
-        }catch(PDOException $e){
-            echo $e->getMessage();
-        }
-    }
-
-    public function updateTag($tagToManage){
-        try{
-            $this->connect();
-            $update = filter_var($tagToManage,FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
-            $update = trim($update,' ');
-            $updateTo = filter_input(INPUT_POST,'updateTo',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
-            $updateTo = trim($updateTo,' ');
-            $sql = "Update tags SET name=:name WHERE tag_id=:id";
-            $statement = $this->db->prepare($sql);
-            $statement->bindParam(':name',$updateTo,PDO::PARAM_STR,100);
-            $statement->bindParam(':id',$this->getTagId($update),PDO::PARAM_INT);
             $statement->execute();
             return;
         }catch(PDOException $e){

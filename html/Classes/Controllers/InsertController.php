@@ -33,19 +33,19 @@ class InsertController extends AppController
                 $valid = new insertValidate();
                 $valid->validate();
             }
-                if (!empty($_POST['tag']) && '' !== $_POST['tag'] && !isset($_POST['errorBody']) && !isset($_POST['errorTitle']) && !isset($_POST['errorFile'])) {
-                    $this->model = new \Models\Model();
-                    $this->model->insertTag();
-                }
-                if (!empty($_POST['body']) && !empty($_POST['title']) && !isset($_POST['errorBody']) && !isset($_POST['errorTitle']) && !isset($_POST['errorFile'])) {
-                    $this->model = new \Models\Model();
-                    $this->model->insertArticle();
-                    $this->model->insertArticlesTags();
-                    $this->model->insertNewTags();
-                    $title = $_POST['title'];
-                    $title = filter_var($title, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
-                    $id = $this->model->getArticleId($title);
-                    header('Location: index.php?action=articleShow&id=' . $id);
+            if (!empty($_POST['tag']) && '' !== $_POST['tag'] && !isset($_POST['errorBody']) && !isset($_POST['errorTitle']) && !isset($_POST['errorFile'])) {
+                $this->model = new \Models\Model();
+                $this->model->insertTag();
+            }
+            if (!empty($_POST['body']) && !empty($_POST['title']) && !isset($_POST['errorBody']) && !isset($_POST['errorTitle']) && !isset($_POST['errorFile'])) {
+                $this->model = new \Models\Model();
+                $this->model->insertArticle();
+                $this->model->insertArticlesTags();
+                $this->model->insertNewTags();
+                $title = $_POST['title'];
+                $title = filter_var($title, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
+                $id = $this->model->getArticleId($title);
+                header('Location: index.php?action=articleShow&id=' . $id);
             }
         }
     }

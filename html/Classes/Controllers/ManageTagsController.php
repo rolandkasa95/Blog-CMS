@@ -5,6 +5,7 @@ namespace Controllers;
 
 use Forms\manageTagsForm;
 use Models\Model;
+use Models\Tag;
 use Views\View;
 
 class ManageTagsController extends AppController
@@ -27,14 +28,12 @@ class ManageTagsController extends AppController
     {
         ob_start();
         header_remove();
-        $this->model = new \Models\Model();
-        var_dump(isset($_POST['submit']) && $_POST['submit'] === 'Delete');
+        $this->model = new Tag();
         if (isset($_POST['submit']) && $_POST['submit'] === 'Delete') {
-            $this->model->deleteTag($_SESSION['delete']);
+            $this->model->deleteById($_SESSION['delete']);
         }
-        var_dump(isset($_POST['submit']) && $_POST['submit'] === 'Update' && isset($_POST['updateTo']) && !empty($_POST['updateTo']));
         if (isset($_POST['submit']) && $_POST['submit'] === 'Update' && isset($_POST['updateTo']) && !empty($_POST['updateTo'])) {
-            $this->model->updateTag($_SESSION['delete']);
+            $this->model->update($_SESSION['delete']);
         }
         ob_end_clean();
     }

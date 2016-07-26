@@ -37,9 +37,7 @@ class insertValidate
         if ($this->validTitle($this->title)){
             if ($this->validBody($this->body)){
                 if($this->validFile($_FILES)) {
-                    $model = new Model();
-                    $_GET['id'] = $model->getArticleId($this->title);
-                    $this->view->render('articlePage.php', $model);
+                    
                 }else{
                     $this->form = new InsertArticleForm(new Model());
                     $_POST['errorFile'] = 1;
