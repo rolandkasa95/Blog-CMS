@@ -8,10 +8,13 @@ class Tag extends Model {
     
     private $name;
 
-    public function __construct( $name = null, $id = null )
+    public function __construct( $param = null )
     {
-        $this->setName($name);
-        $this->setId($id);
+        if(is_integer($param)){
+            $this->setId($param);
+        }elseif(is_string($param)){
+            $this->setName($param);
+        }
     }
     
     /**
@@ -47,7 +50,7 @@ class Tag extends Model {
         $this->name = $name;
     }
 
-    public function getByName( $name )
+    public function getByName()
     {
         try{
             $this->connect();
@@ -75,17 +78,35 @@ class Tag extends Model {
         }
     }
     
-    public function save($value,$button)
+    public function save($value,$button = null)
     {
-        if($this->inTable($this->name)) {
-            $sql = "INSERT INTO tags(name,isVisible) VALUES (:name,:isVisible)";
-            $statement = $this->db->prepare($sql);
-            $statement->bindParam(':name', $value,  PDO::PARAM_STR, 100);
-            $statement->bindParam(':isVisible', $button, PDO::PARAM_BOOL);
-            $statement->execute();
-            return true;
+        if($this->id) {
+            if ($this->inTable($this->name)) {
+                $sql = "INSERT INTO tags(name,isVisible) VALUES (:name,:isVisible)";
+                $statement = $this->db->prepare($sql);
+                $statement->bindParam(':name', $value, PDO::PARAM_STR, 100);
+                $statement->bindParam(':isVisible', $button, PDO::PARAM_BOOL);
+                $statement->execute();
+                return true;
+            } else {
+                return false;
+            }
         }else{
-            return false;
+            try{
+                $this->connect();
+                $update = filter_var($this->name,FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
+                $update = trim($update,' ');
+                $updateTo = filter_input(INPUT_POST,'updateTo',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
+                $updateTo = trim($updateTo,' ');
+                $sql = "Update tags SET name=:name WHERE tag_id=:id";
+                $statement = $this->db->prepare($sql);
+                $statement->bindParam(':name',$updateTo,PDO::PARAM_STR,100);
+                $statement->bindParam(':id',$this->getTagId($update),PDO::PARAM_INT);
+                $statement->execute();
+                return true;
+            }catch(\PDOException $e){
+                echo $e->getMessage();
+            }
         }
     }
 
@@ -104,24 +125,4 @@ class Tag extends Model {
             echo $e->getMessage();
         }
     }
-
-    public function update($tagToManage)
-    {
-        try{
-            $this->connect();
-            $update = filter_var($tagToManage,FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
-            $update = trim($update,' ');
-            $updateTo = filter_input(INPUT_POST,'updateTo',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
-            $updateTo = trim($updateTo,' ');
-            $sql = "Update tags SET name=:name WHERE tag_id=:id";
-            $statement = $this->db->prepare($sql);
-            $statement->bindParam(':name',$updateTo,PDO::PARAM_STR,100);
-            $statement->bindParam(':id',$this->getTagId($update),PDO::PARAM_INT);
-            $statement->execute();
-            return true;
-        }catch(\PDOException $e){
-            echo $e->getMessage();
-        }
-    }
-
 }

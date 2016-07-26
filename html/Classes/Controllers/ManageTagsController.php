@@ -33,7 +33,8 @@ class ManageTagsController extends AppController
             $this->model->deleteById($_SESSION['delete']);
         }
         if (isset($_POST['submit']) && $_POST['submit'] === 'Update' && isset($_POST['updateTo']) && !empty($_POST['updateTo'])) {
-            $this->model->update($_SESSION['delete']);
+            $this->model->setName($_SESSION['delete']);
+            $this->model->save($_SESSION['delete']);
         }
         ob_end_clean();
     }

@@ -359,7 +359,7 @@ class Model
                 $tags = explode(',', $tags);
                 foreach ($tags as $value) {
                     $value = trim($value,' ');
-                    $tag = new Tag();
+                    $tag = new Tag($this->getTagId($value));
                     $tag->setName($value);
                     $tag->save($value,$button);
                     }
