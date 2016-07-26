@@ -187,5 +187,16 @@ class Article extends Model
         }
     }
 
-    
+    public function delete()
+    {
+        try{
+            $this->connect();
+            $query = "DELETE FROM articles WHERE title=:title";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam('title',$this->title,PDO::PARAM_STR,100);
+            $stmt->execute();
+        }catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
 }
