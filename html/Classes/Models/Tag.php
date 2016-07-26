@@ -49,18 +49,25 @@ class Tag extends Model {
 
     public function getByName( $name )
     {
-        $query = 'query';
-        
-        return $this;
+        try{
+            $this->connect();
+            $query = "SELECT * FROM tags WHERE name=:name";
+            $statement = $this->db->prepare($query);
+            $statement->bindParam(":name",$this->name,PDO::PARAM_STR);
+            $statement->execute();
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        }catch (\PDOException $e){
+            echo $e->getMessage();
+        }
     }
 
     public function getById()
     {
         try{
             $this->connect();
-            $query = "SELECT * FROM tags WHERE name=:name";
+            $query = "SELECT * FROM tags WHERE tag_id=:tag_id";
             $statement = $this->db->prepare($query);
-            $statement->bindParam(":name",$this->name,PDO::PARAM_STR,100);
+            $statement->bindParam(":tag_id",$this->id,PDO::PARAM_INT);
             $statement->execute();
             return $statement->fetch(PDO::FETCH_ASSOC);
         }catch (\PDOException $e){
