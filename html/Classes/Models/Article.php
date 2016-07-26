@@ -8,6 +8,9 @@
 
 namespace Models;
 
+use PDO;
+use PDOException;
+
 
 class Article extends Model
 {
@@ -92,7 +95,13 @@ class Article extends Model
     public function getById()
     {
         try{
-
-        }catch (\PDOException $e)
+            $this->connect();
+            $query = "SELECT * FROM artciles WHERE article_id=:article_id";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }catch (\PDOException $e){
+            echo $e->getMessage();
+        }
     }
 }
