@@ -186,7 +186,7 @@ class Model
      */
     public function getArticles($offset){
         $this->connect();
-        $sql = 'SELECT title,date FROM articles WHERE isPublished=1 ORDER BY date DESC LIMIT 5 OFFSET ' . $offset;
+        $sql = 'SELECT title,date,article_id FROM articles WHERE isPublished=1 ORDER BY date DESC LIMIT 5 OFFSET ' . $offset;
         $statement = $this->db->prepare($sql);
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -248,8 +248,7 @@ class Model
      */
     public function insertArticlesTags(){
         $this->connect();
-        $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
-        $title = trim($title,' ');
+
         $j = 0;
         for($j=0;$j<=$this->count();$j++){
             $tags = 'tags_' . $j;
@@ -264,7 +263,8 @@ class Model
                 $insert->execute();
             }
         }
-
+        $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
+        $title = trim($title,' ');
         $tags = filter_input(INPUT_POST,'tag',FILTER_SANITIZE_STRING);
         $tags = explode(',', $tags);
         $real_tags = [];

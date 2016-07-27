@@ -21,7 +21,6 @@
             echo "<hr />";
             foreach($results as $result)
             {
-                var_dump($result);
                 $this->model = new \Models\Article();
                 $this->model->setId($result['article_id']);
                 if(isset($_SESSION['username'])) {
