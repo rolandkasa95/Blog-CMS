@@ -126,6 +126,7 @@ class Article extends Model
             $this->connect();
             $qurey = "SELECT article_id FROM articles WHERE title=:title";
             $stmt = $this->db->prepare($qurey);
+            $stmt->bindParam(":title",$this->title,PDO::PARAM_STR,100);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }catch (PDOException $e){
