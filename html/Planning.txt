@@ -34,3 +34,14 @@ Controllers:
         -save() -> saves the tag
         -checkInTable() -> verifies if the tag is in the table
         -delete() -> deletes the tag
+
+Validators:
+    -UserValidator() -> returns true if valid, returns error message if not
+    -ArticleValidator -> -----||------
+    -TagValidator -> -------||-------
+
+Views:
+    -renderArticle() -> shows a single article
+    -renderArticles() -> shows more articles
+    -renderInsert() -> shows the insert/edit form
+    -renderTagManage() -> shows the tag Manage Page
