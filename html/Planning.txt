@@ -7,10 +7,10 @@ Controllers:
 -Models:
     -UserModel
         -username (public setter+getter)
-        -user_id (private setter+getter)
+        -user_id (primary, private getter)
         -getUser() -> Selects the user by id/by username
     -ArticleModel
-        -article_id (private setter+getter)
+        -article_id (primary, private getter)
         -title (public setter+getter)
         -body (public setter+getter)
         -imageUrl (public setter+getter)
@@ -27,7 +27,7 @@ Controllers:
         -getWithLimitation() -> Extracts data from article table with limitation
         -getWithSelectedTag() -> Gets the articles with the selected data
     -TagModel
-        -tag_id (private setter + getter)
+        -tag_id (primary, private getter)
         -name (private setter+getter)
         -getByName() -> gets the tag id
         -getById() -> get the name
