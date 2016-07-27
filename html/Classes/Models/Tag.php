@@ -101,7 +101,7 @@ class Tag extends Model {
                 $sql = "Update tags SET name=:name WHERE tag_id=:id";
                 $statement = $this->db->prepare($sql);
                 $statement->bindParam(':name',$updateTo,PDO::PARAM_STR,100);
-                $statement->bindParam(':id',$this->getTagId($update),PDO::PARAM_INT);
+                $statement->bindParam(':id',$this->getById($update),PDO::PARAM_INT);
                 $statement->execute();
                 return true;
             }catch(\PDOException $e){

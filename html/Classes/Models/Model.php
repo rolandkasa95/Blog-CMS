@@ -247,41 +247,17 @@ class Model
      *
      */
     public function insertArticlesTags(){
-        $this->connect();
-
-        $j = 0;
-        for($j=0;$j<=$this->count();$j++){
-            $tags = 'tags_' . $j;
-            echo $j;
-            if (isset($_POST[$tags])) {
-                echo $j;
-                $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
-                $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (:article_id,:tag_id)";
-                $insert = $this->db->prepare($sql);
-                $insert->bindParam(':article_id',$this->getArticleId($title),PDO::PARAM_INT);
-                $insert->bindParam(':tag_id',$this->getTagId(trim($_POST[$tags]),' '),PDO::PARAM_INT);
-                $insert->execute();
-            }
-        }
         $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
         $title = trim($title,' ');
         $tags = filter_input(INPUT_POST,'tag',FILTER_SANITIZE_STRING);
         $tags = explode(',', $tags);
-        $real_tags = [];
-        
         foreach ($tags as $value) {
-
             $value = trim($value, ' ');
             $tag = new Tag($value);
             $real_tags[] = $tag;
-
-            $tag->save();
-            
+            $tag->save($value);
+            }
         }
-        
-   //     $article->setTags( $real_tags );
-
-    }
 
     /**
      * Inserts a new tag

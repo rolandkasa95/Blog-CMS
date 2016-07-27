@@ -18,6 +18,7 @@ class Article extends Model
     private $id;
     private $body;
     private $urlImage;
+    private $tag;
 
     public function __construct($param = null)
     {
@@ -123,7 +124,7 @@ class Article extends Model
     {
         try{
             $this->connect();
-            $qurey = "SELECT * FROM articles WHERE title=:title";
+            $qurey = "SELECT article_id FROM articles WHERE title=:title";
             $stmt = $this->db->prepare($qurey);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -198,5 +199,37 @@ class Article extends Model
         }catch (PDOException $e){
             echo $e->getMessage();
         }
+    }
+
+    public function insertArticlesTags()
+    {
+        try {
+            $this->connect();
+            $articleTag = new Tag();
+            $articleTag->setName($this->tag);
+            $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (:article_id,:tag_id)";
+            $insert = $this->db->prepare($sql);
+            $insert->bindParam(':article_id', $this->getByTitle(), PDO::PARAM_INT);
+            $insert->bindParam(':tag_id', $articleTag->getByName(), PDO::PARAM_INT);
+            $insert->execute();
+        }catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+    /**
+     * @param mixed $tag
+     */
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
     }
 }
