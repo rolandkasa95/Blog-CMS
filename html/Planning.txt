@@ -1,8 +1,8 @@
 Controllers:
 -Appcontroller:
-    -ArticleController
-    -UserController
-    -TagController
+    -ArticleController (AtrticleModel/ArticlesModel) - > articleValidator
+    -UserController (UserModel) -> UserValidator
+    -TagController (TagModel) -> TagValidator
 
 -Models:
     -UserModel
