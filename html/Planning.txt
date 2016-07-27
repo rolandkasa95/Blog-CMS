@@ -1,6 +1,6 @@
 Controllers:
 -Appcontroller:
-    -ArticleController (AtrticleModel/ArticlesModel) - > articleValidator
+    -ArticleController (ArticleModel/ArticlesModel) - > articleValidator
     -UserController (UserModel) -> UserValidator
     -TagController (TagModel) -> TagValidator
 
@@ -36,9 +36,12 @@ Controllers:
         -delete() -> deletes the tag
 
 Validators:
-    -UserValidator() -> returns true if valid, returns error message if not
-    -ArticleValidator -> -----||------
-    -TagValidator -> -------||-------
+    -UserValidator
+        -valid() -> returns true if valid, returns error message if not
+    -ArticleValidator
+        -valid() -> -----||------
+    -TagValidator
+        -valid() -> -------||-------
 
 Views:
     -renderArticle() -> shows a single article
