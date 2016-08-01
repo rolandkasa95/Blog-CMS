@@ -1,6 +1,7 @@
 <?php
 
 namespace Models;
+use PDO;
 
 
 class User extends Model
@@ -13,6 +14,11 @@ class User extends Model
     private $username;
 
     private $user_id;
+
+    public function __construct()
+    {
+
+    }
 
     /**
      * @return mixed
@@ -38,15 +44,16 @@ class User extends Model
         return $this->user_id;
     }
 
-    public function getUser($param){
+    public function getUser(){
         try{
             $this->connect();
-            $sql = "SELECT * FROM users WHERE  username='" . $param ."'";
+            $sql = "SELECT * FROM users WHERE  username=:username";
             $statement = $this->db->prepare($sql);
+            $statement->bindParam(':username',$this->getUsername(),PDO::PARAM_STR,100);
             $statement->execute();
             $result = $statement->fetch(PDO::FETCH_ASSOC);
             if($result && password_verify($_POST['password'], $result['password'])){
-                return true;
+                return $result;
             }else{
                 return false;
             }
