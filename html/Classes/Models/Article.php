@@ -106,20 +106,7 @@ class Article extends Model
             echo $e->getMessage();
         }
     }
-
-    public function getAllArticles()
-    {
-        try{
-            $this->connect();
-            $query = "SELECT title,article_id,date FROM articles ORDER BY date DESC LIMIT 10";
-            $stmt = $this->db->prepare($query);
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }catch (PDOException $e){
-            echo $e->getMessage();
-        }
-    }
-
+    
     public function getByTitle()
     {
         try{

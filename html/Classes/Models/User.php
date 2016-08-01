@@ -15,9 +15,11 @@ class User extends Model
 
     private $user_id;
 
-    public function __construct()
+    public function __construct($param = null)
     {
-
+        if(is_string($param)){
+            $this->setUsername($param);
+        }
     }
 
     /**
