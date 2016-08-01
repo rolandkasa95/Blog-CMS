@@ -3,13 +3,34 @@
 namespace Models;
 
 
-class User
+class User extends Model
 {
     /**
      *
      * Username storing
-     * 
+     *
      */
-    public $username;
+    private $username;
+
+    private $user_id;
+
+    /**
+     * @return mixed
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param mixed $username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
+
+    
 
 }
