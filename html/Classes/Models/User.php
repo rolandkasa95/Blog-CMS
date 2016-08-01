@@ -38,7 +38,22 @@ class User extends Model
         return $this->user_id;
     }
 
-
+    public function getUser($param){
+        try{
+            $this->connect();
+            $sql = "SELECT * FROM users WHERE  username='" . $param ."'";
+            $statement = $this->db->prepare($sql);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            if($result && password_verify($_POST['password'], $result['password'])){
+                return true;
+            }else{
+                return false;
+            }
+        }catch (\PDOException $e){
+            echo "ERROR: " . $e->getMessage();
+        }
+    }
     
 
 }
