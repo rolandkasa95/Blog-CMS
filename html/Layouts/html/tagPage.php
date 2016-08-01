@@ -8,13 +8,14 @@
                  * Listing the article names ordereb by the tag name which was
                  * selected by the user
                  */
-                $article= new \Models\Article();
-                $result = $this->model->getArticlesByTagName();
+                $articles = new \Models\Articles();
+                $articles->getWithSelectedTag($_GET['name']);
+                $result = $articles->articleArray;
                 foreach ($result as $items) {
                     foreach ($items as $key => $value)
                         if ('title' === $key) {
+                            $article = new \Models\Article();
                             $article->setTitle($value);
-                            var_dump($article->getByTitle());
                             echo "<hr /><p id='p_tag'><a href=index.php?action=articleShow&id=" . $article->getByTitle()['article_id'] . " >" . $value . '</a><br /></p>';
                         }
                 }
