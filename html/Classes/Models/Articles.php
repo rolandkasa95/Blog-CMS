@@ -36,7 +36,11 @@ class Articles extends Model
 
     public function getAll(){
         try{
-
+            $this->connect();
+            $sql = 'SELECT * FROM articles';
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }catch (\PDOException $e){
             echo $e->getMessage();
         }
