@@ -30,6 +30,14 @@ class User extends Model
         $this->username = $username;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getUserId()
+    {
+        return $this->user_id;
+    }
+
 
     
 
