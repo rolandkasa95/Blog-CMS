@@ -27,6 +27,8 @@
         $imageURL = $result['imagePath'];
         echo "<img src='$imageURL' class='img-responsive'>";
 
+
+        $this->model = new Models\Article();
         $result = $this->model->tagNameDisplay();
 
         echo "<hr>";

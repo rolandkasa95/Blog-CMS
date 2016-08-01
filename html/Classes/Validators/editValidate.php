@@ -10,6 +10,7 @@ namespace Validators;
 
 
 use Forms\EditArticleForm;
+use Models\Article;
 use Models\Model;
 use Views\View;
 
@@ -36,8 +37,9 @@ class editValidate
         $this->view = new View();
         if ($this->validTitle($this->title)){
             if ($this->validBody($this->body)){
-                $model = new Model();
-                $_GET['id'] = $model->getArticleId($this->title);
+                $article = new Article();
+                $article->setTitle($this->title);
+                $_GET['id'] = $article->getByTitle();
                 $this->view->render('articlePage.php',$model);
             }else{
                 $_POST['errorBody'] = 1;
