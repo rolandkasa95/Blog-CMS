@@ -3,6 +3,8 @@
 namespace Controllers;
 
 
+use Models\Article;
+use Models\Articles;
 use Models\User;
 use Views\View;
 
@@ -13,15 +15,17 @@ class UserController
     public function init()
     {
         if (isset($_GET['action'])){
-            if('login' === $_GET['action']){
-                $class = new User();
-                $class->setUsername($_POST['username']);
-                if($class->getUser()){
-                    $_SESSION['username'] = $class->getUser()['username'];
-                    session_start();
-                };
-                $view = new View();
-                $view->render('homepage.php',new ArticlesModel());
+            if('validate' === $_GET['action']){
+                if(isset($_POST['submit'])) {
+                    $class = new User();
+                    $class->setUsername($_POST['username']);
+                    $username = $class->getUser();
+                    if (!empty($username)) {
+                        session_start();
+                        $_SESSION['username'] = $username['username'];
+                    };
+                    header('Location: index.php');
+                }
             }
         }
     }

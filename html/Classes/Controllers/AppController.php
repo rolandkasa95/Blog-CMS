@@ -71,7 +71,7 @@ class AppController
                     $class->init();
                     break;
                 case 'validate' :
-                    $class = new ValidateLoginController();
+                    $class = new UserController();
                     $class->init();
                     break;
                 case 'adminPanel':
