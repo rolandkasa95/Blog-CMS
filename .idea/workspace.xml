@@ -4,7 +4,11 @@
     <bookmark url="file://$PROJECT_DIR$/html/Classes/Controllers/InsertController.php" description="                $this-&gt;model-&gt;insertNewTags();&#10;   ..." line="43" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="707efae0-590d-4f81-b24d-0d0b69a3ec62" name="Default" comment="" />
+    <list default="true" id="707efae0-590d-4f81-b24d-0d0b69a3ec62" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/Classes/Models/Article.php" afterPath="$PROJECT_DIR$/html/Classes/Models/Article.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/Classes/Models/Model.php" afterPath="$PROJECT_DIR$/html/Classes/Models/Model.php" />
+    </list>
     <ignored path="blog-CMS.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -35,8 +39,8 @@
       <file leaf-file-name="Tag.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/Classes/Models/Tag.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1422">
-              <caret line="80" column="20" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="20" />
+            <state relative-caret-position="178">
+              <caret line="83" column="26" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="30" />
               <folding>
                 <marker date="1469615507867" expanded="true" signature="887:922" ph="SELECT * FRO... tags" />
                 <marker date="1469615507867" expanded="true" signature="1328:1367" ph="SELECT * FRO... tags" />
@@ -61,27 +65,25 @@
       <file leaf-file-name="Model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/Classes/Models/Model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4518">
-              <caret line="257" column="19" selection-start-line="257" selection-start-column="19" selection-end-line="257" selection-end-column="19" />
+            <state relative-caret-position="234">
+              <caret line="280" column="4" selection-start-line="280" selection-start-column="4" selection-end-line="280" selection-end-column="4" />
               <folding>
                 <element signature="e#109#117#0#PHP" expanded="true" />
-                <marker date="1470071331128" expanded="true" signature="773:992" ph="SELECT name articles" />
-                <marker date="1470071331128" expanded="true" signature="1444:1511" ph="SELECT title... " />
-                <marker date="1470071331128" expanded="true" signature="2798:2869" ph="SELECT user_... users" />
-                <marker date="1470071331128" expanded="true" signature="3226:3249" ph="SELECT tag_i... tags" />
-                <marker date="1470071331128" expanded="true" signature="4190:4263" ph="INSERT INTO articles_tags... " />
-                <marker date="1470071331128" expanded="true" signature="5000:5075" ph="SELECT * FRO... articles_tags" />
-                <marker date="1470071331128" expanded="true" signature="5797:5894" ph="SELECT title... " />
-                <marker date="1470071331128" expanded="true" signature="6961:7004" ph="DELETE FROM " />
-                <marker date="1470071331128" expanded="true" signature="7476:7550" ph="INSERT INTO articles_tags... " />
-                <marker date="1470071331128" expanded="true" signature="9301:9341" ph="SELECT tag_i... tags" />
-                <marker date="1470071331128" expanded="true" signature="10356:10429" ph="INSERT INTO articles_tags... " />
-                <marker date="1470071331128" expanded="true" signature="11067:11088" ph="SELECT name tags" />
-                <marker date="1470071331128" expanded="true" signature="11562:11730" ph="SELECT title... " />
-                <marker date="1470071331128" expanded="true" signature="11562:11739" ph="SELECT title... " />
-                <marker date="1470071331128" expanded="true" signature="11562:11766" ph="SELECT title... articles" />
-                <marker date="1470071331128" expanded="true" signature="12104:12183" ph="/** * Select... " />
-                <marker date="1470071331128" expanded="true" signature="12518:12549" ph="SELECT artic... articles" />
+                <marker date="1470131440382" expanded="true" signature="773:992" ph="SELECT name articles" />
+                <marker date="1470131440382" expanded="true" signature="1444:1511" ph="SELECT title... " />
+                <marker date="1470131440382" expanded="true" signature="2798:2869" ph="SELECT user_... users" />
+                <marker date="1470131440382" expanded="true" signature="3226:3249" ph="SELECT tag_i... tags" />
+                <marker date="1470131440382" expanded="true" signature="4190:4263" ph="INSERT INTO articles_tags... " />
+                <marker date="1470131440382" expanded="true" signature="5000:5075" ph="SELECT * FRO... articles_tags" />
+                <marker date="1470131440382" expanded="true" signature="5797:5894" ph="SELECT title... " />
+                <marker date="1470131440382" expanded="true" signature="6961:7004" ph="DELETE FROM " />
+                <marker date="1470131440382" expanded="true" signature="7476:7550" ph="INSERT INTO articles_tags... " />
+                <marker date="1470131440382" expanded="true" signature="9659:9732" ph="INSERT INTO articles_tags... " />
+                <marker date="1470131440382" expanded="true" signature="10370:10391" ph="SELECT name tags" />
+                <marker date="1470131440382" expanded="true" signature="10865:11033" ph="SELECT title... " />
+                <marker date="1470131440382" expanded="true" signature="10865:11042" ph="SELECT title... " />
+                <marker date="1470131440382" expanded="true" signature="10865:11069" ph="SELECT title... articles" />
+                <marker date="1470131440382" expanded="true" signature="11407:11486" ph="/** * Select... " />
               </folding>
             </state>
           </provider>
@@ -90,7 +92,7 @@
       <file leaf-file-name="Articles.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/Classes/Models/Articles.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1116">
+            <state relative-caret-position="529">
               <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
               <folding>
                 <marker date="1470073101040" expanded="true" signature="570:592" ph="SELECT * FRO... articles" />
@@ -157,17 +159,18 @@
       <file leaf-file-name="Article.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/html/Classes/Models/Article.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="187" column="34" selection-start-line="187" selection-start-column="34" selection-end-line="187" selection-end-column="34" />
+            <state relative-caret-position="353">
+              <caret line="228" column="5" selection-start-line="228" selection-start-column="5" selection-end-line="228" selection-end-column="5" />
               <folding>
                 <element signature="e#109#117#0#PHP" expanded="true" />
-                <marker date="1470070224331" expanded="true" signature="1506:1557" ph="SELECT * FRO... articles" />
-                <marker date="1470070224331" expanded="true" signature="1953:2003" ph="SELECT * FRO... articles" />
-                <marker date="1470070224331" expanded="true" signature="2563:2700" ph="UPDATE artic... " />
-                <marker date="1470070224331" expanded="true" signature="3490:3649" ph="UPDATE artic... " />
-                <marker date="1470070224331" expanded="true" signature="4661:4804" ph="INSERT INTO articles... " />
-                <marker date="1470070224331" expanded="true" signature="5670:5709" ph="DELETE FROM " />
-                <marker date="1470070224331" expanded="true" signature="6141:6214" ph="INSERT INTO articles_tags... " />
+                <marker date="1470129577016" expanded="true" signature="1506:1557" ph="SELECT * FRO... articles" />
+                <marker date="1470129577016" expanded="true" signature="1953:2003" ph="SELECT * FRO... articles" />
+                <marker date="1470129577016" expanded="true" signature="2563:2700" ph="UPDATE artic... " />
+                <marker date="1470129577016" expanded="true" signature="3490:3649" ph="UPDATE artic... " />
+                <marker date="1470129577016" expanded="true" signature="4661:4804" ph="INSERT INTO articles... " />
+                <marker date="1470129577016" expanded="true" signature="5670:5709" ph="DELETE FROM " />
+                <marker date="1470129577016" expanded="true" signature="6138:6211" ph="INSERT INTO articles_tags... " />
+                <marker date="1470129577016" expanded="true" signature="6770:6801" ph="SELECT artic... articles" />
               </folding>
             </state>
           </provider>
@@ -243,8 +246,6 @@
         <option value="$PROJECT_DIR$/html/Classes/Validators/editValidate.php" />
         <option value="$PROJECT_DIR$/html/Layouts/html/articlePage.php" />
         <option value="$PROJECT_DIR$/html/Classes/Models/User.php" />
-        <option value="$PROJECT_DIR$/html/Classes/Models/Article.php" />
-        <option value="$PROJECT_DIR$/html/Classes/Models/Model.php" />
         <option value="$PROJECT_DIR$/html/Layouts/html/tagPage.php" />
         <option value="$PROJECT_DIR$/html/Classes/Models/Articles.php" />
         <option value="$PROJECT_DIR$/html/Classes/Controllers/ValidateLoginController.php" />
@@ -252,6 +253,8 @@
         <option value="$PROJECT_DIR$/html/Classes/Controllers/AppController.php" />
         <option value="$PROJECT_DIR$/html/Classes/Controllers/UserController.php" />
         <option value="$PROJECT_DIR$/html/Layouts/html/homePage.php" />
+        <option value="$PROJECT_DIR$/html/Classes/Models/Article.php" />
+        <option value="$PROJECT_DIR$/html/Classes/Models/Model.php" />
       </list>
     </option>
   </component>
@@ -296,8 +299,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -552,6 +553,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -637,7 +640,8 @@
       <workItem from="1469555426758" duration="649000" />
       <workItem from="1469610995612" duration="8280000" />
       <workItem from="1470068271247" duration="7866000" />
-      <workItem from="1470079508007" duration="170000" />
+      <workItem from="1470079508007" duration="1009000" />
+      <workItem from="1470128551080" duration="1441000" />
     </task>
     <task id="LOCAL-00142" summary="Update: image Validation complete">
       <created>1469193536882</created>
@@ -986,19 +990,19 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="228391000" />
+    <option name="totallyTimeSpent" value="230671000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18021005" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18242122" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37446353" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33261803" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33261803" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32832617" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1389,20 +1393,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/Classes/Models/Articles.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1116">
-          <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
-          <folding>
-            <marker date="1470073101040" expanded="true" signature="570:592" ph="SELECT * FRO... articles" />
-            <marker date="1470073101040" expanded="true" signature="985:1042" ph="SELECT * FRO... articles" />
-            <marker date="1470073101040" expanded="true" signature="1581:1760" ph="SELECT title... " />
-            <marker date="1470073101040" expanded="true" signature="1581:1836" ph="SELECT title... " />
-            <marker date="1470073101040" expanded="true" signature="1581:1888" ph="SELECT title... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/ManageTagsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
@@ -1421,37 +1411,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/Classes/Models/Model.php">
+    <entry file="file://$PROJECT_DIR$/html/Classes/Models/Articles.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4518">
-          <caret line="257" column="19" selection-start-line="257" selection-start-column="19" selection-end-line="257" selection-end-column="19" />
+        <state relative-caret-position="529">
+          <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
           <folding>
-            <element signature="e#109#117#0#PHP" expanded="true" />
-            <marker date="1470071331128" expanded="true" signature="773:992" ph="SELECT name articles" />
-            <marker date="1470071331128" expanded="true" signature="1444:1511" ph="SELECT title... " />
-            <marker date="1470071331128" expanded="true" signature="2798:2869" ph="SELECT user_... users" />
-            <marker date="1470071331128" expanded="true" signature="3226:3249" ph="SELECT tag_i... tags" />
-            <marker date="1470071331128" expanded="true" signature="4190:4263" ph="INSERT INTO articles_tags... " />
-            <marker date="1470071331128" expanded="true" signature="5000:5075" ph="SELECT * FRO... articles_tags" />
-            <marker date="1470071331128" expanded="true" signature="5797:5894" ph="SELECT title... " />
-            <marker date="1470071331128" expanded="true" signature="6961:7004" ph="DELETE FROM " />
-            <marker date="1470071331128" expanded="true" signature="7476:7550" ph="INSERT INTO articles_tags... " />
-            <marker date="1470071331128" expanded="true" signature="9301:9341" ph="SELECT tag_i... tags" />
-            <marker date="1470071331128" expanded="true" signature="10356:10429" ph="INSERT INTO articles_tags... " />
-            <marker date="1470071331128" expanded="true" signature="11067:11088" ph="SELECT name tags" />
-            <marker date="1470071331128" expanded="true" signature="11562:11730" ph="SELECT title... " />
-            <marker date="1470071331128" expanded="true" signature="11562:11739" ph="SELECT title... " />
-            <marker date="1470071331128" expanded="true" signature="11562:11766" ph="SELECT title... articles" />
-            <marker date="1470071331128" expanded="true" signature="12104:12183" ph="/** * Select... " />
-            <marker date="1470071331128" expanded="true" signature="12518:12549" ph="SELECT artic... articles" />
+            <marker date="1470073101040" expanded="true" signature="570:592" ph="SELECT * FRO... articles" />
+            <marker date="1470073101040" expanded="true" signature="985:1042" ph="SELECT * FRO... articles" />
+            <marker date="1470073101040" expanded="true" signature="1581:1760" ph="SELECT title... " />
+            <marker date="1470073101040" expanded="true" signature="1581:1836" ph="SELECT title... " />
+            <marker date="1470073101040" expanded="true" signature="1581:1888" ph="SELECT title... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html/Classes/Models/Tag.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1422">
-          <caret line="80" column="20" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="20" />
+        <state relative-caret-position="178">
+          <caret line="83" column="26" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="30" />
           <folding>
             <marker date="1469615507867" expanded="true" signature="887:922" ph="SELECT * FRO... tags" />
             <marker date="1469615507867" expanded="true" signature="1328:1367" ph="SELECT * FRO... tags" />
@@ -1462,19 +1439,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/Classes/Models/Article.php">
+    <entry file="file://$PROJECT_DIR$/html/Classes/Models/Model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="187" column="34" selection-start-line="187" selection-start-column="34" selection-end-line="187" selection-end-column="34" />
+        <state relative-caret-position="234">
+          <caret line="280" column="4" selection-start-line="280" selection-start-column="4" selection-end-line="280" selection-end-column="4" />
           <folding>
             <element signature="e#109#117#0#PHP" expanded="true" />
-            <marker date="1470070224331" expanded="true" signature="1506:1557" ph="SELECT * FRO... articles" />
-            <marker date="1470070224331" expanded="true" signature="1953:2003" ph="SELECT * FRO... articles" />
-            <marker date="1470070224331" expanded="true" signature="2563:2700" ph="UPDATE artic... " />
-            <marker date="1470070224331" expanded="true" signature="3490:3649" ph="UPDATE artic... " />
-            <marker date="1470070224331" expanded="true" signature="4661:4804" ph="INSERT INTO articles... " />
-            <marker date="1470070224331" expanded="true" signature="5670:5709" ph="DELETE FROM " />
-            <marker date="1470070224331" expanded="true" signature="6141:6214" ph="INSERT INTO articles_tags... " />
+            <marker date="1470131440382" expanded="true" signature="773:992" ph="SELECT name articles" />
+            <marker date="1470131440382" expanded="true" signature="1444:1511" ph="SELECT title... " />
+            <marker date="1470131440382" expanded="true" signature="2798:2869" ph="SELECT user_... users" />
+            <marker date="1470131440382" expanded="true" signature="3226:3249" ph="SELECT tag_i... tags" />
+            <marker date="1470131440382" expanded="true" signature="4190:4263" ph="INSERT INTO articles_tags... " />
+            <marker date="1470131440382" expanded="true" signature="5000:5075" ph="SELECT * FRO... articles_tags" />
+            <marker date="1470131440382" expanded="true" signature="5797:5894" ph="SELECT title... " />
+            <marker date="1470131440382" expanded="true" signature="6961:7004" ph="DELETE FROM " />
+            <marker date="1470131440382" expanded="true" signature="7476:7550" ph="INSERT INTO articles_tags... " />
+            <marker date="1470131440382" expanded="true" signature="9659:9732" ph="INSERT INTO articles_tags... " />
+            <marker date="1470131440382" expanded="true" signature="10370:10391" ph="SELECT name tags" />
+            <marker date="1470131440382" expanded="true" signature="10865:11033" ph="SELECT title... " />
+            <marker date="1470131440382" expanded="true" signature="10865:11042" ph="SELECT title... " />
+            <marker date="1470131440382" expanded="true" signature="10865:11069" ph="SELECT title... articles" />
+            <marker date="1470131440382" expanded="true" signature="11407:11486" ph="/** * Select... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/Classes/Models/Article.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="228" column="5" selection-start-line="228" selection-start-column="5" selection-end-line="228" selection-end-column="5" />
+          <folding>
+            <element signature="e#109#117#0#PHP" expanded="true" />
+            <marker date="1470129577016" expanded="true" signature="1506:1557" ph="SELECT * FRO... articles" />
+            <marker date="1470129577016" expanded="true" signature="1953:2003" ph="SELECT * FRO... articles" />
+            <marker date="1470129577016" expanded="true" signature="2563:2700" ph="UPDATE artic... " />
+            <marker date="1470129577016" expanded="true" signature="3490:3649" ph="UPDATE artic... " />
+            <marker date="1470129577016" expanded="true" signature="4661:4804" ph="INSERT INTO articles... " />
+            <marker date="1470129577016" expanded="true" signature="5670:5709" ph="DELETE FROM " />
+            <marker date="1470129577016" expanded="true" signature="6138:6211" ph="INSERT INTO articles_tags... " />
+            <marker date="1470129577016" expanded="true" signature="6770:6801" ph="SELECT artic... articles" />
           </folding>
         </state>
       </provider>

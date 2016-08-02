@@ -189,7 +189,7 @@ class Article extends Model
         }
     }
 
-    public function insertArticlesTags()
+    public function saveArticleTags()
     {
         try {
             $this->connect();
@@ -200,6 +200,29 @@ class Article extends Model
             $insert->bindParam(':article_id', $this->getByTitle(), PDO::PARAM_INT);
             $insert->bindParam(':tag_id', $articleTag->getByName(), PDO::PARAM_INT);
             $insert->execute();
+        }catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    /**
+     * Checks if the article is in the table or not
+     *
+     * @param $param
+     * @return bool
+     */
+    public function checkInTable($param){
+        try{
+            $this->connect();
+            $sql = "SELECT article_id FROM articles" . $param;
+            $statement = $this->db->prepare($sql);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            if (false === $result){
+                return true;
+            }else{
+                return false;
+            }
         }catch (PDOException $e){
             echo $e->getMessage();
         }

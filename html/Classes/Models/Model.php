@@ -278,30 +278,7 @@ class Model
             echo "Transaction Failed: " . $e->getMessage();
         }
     }
-
-    /**
-     * Checks if the tag is in the table
-     *
-     * @param $tags string
-     * @return bool
-     */
-    public function inTable($tags){
-        try{
-            $this->connect();
-            $sql = "SELECT tag_id FROM tags WHERE name=:name";
-            $statement = $this->db->prepare($sql);
-            $statement->bindParam(':name',$tags,PDO::PARAM_STR,100);
-            $statement->execute();
-            $result = $statement->fetch(PDO::FETCH_COLUMN);
-            if(empty($result)){
-                return true;
-            }else{
-                return false;
-            }
-        }catch (\PDOException $e){
-            echo "Transaction failed" . $e->getMessage();
-        }
-    }
+    
 
     /**
      *
@@ -375,27 +352,4 @@ class Model
      * @return bool
      */
     
-    
-    /**
-     * Checks if the article is in the table or not
-     *
-     * @param $param
-     * @return bool
-     */
-    public function checkInTable($param){
-        try{
-            $this->connect();
-            $sql = "SELECT article_id FROM articles" . $param;
-            $statement = $this->db->prepare($sql);
-            $statement->execute();
-            $result = $statement->fetch(PDO::FETCH_ASSOC);
-            if (false === $result){
-                return true;
-            }else{
-                return false;
-            }
-        }catch (PDOException $e){
-            echo $e->getMessage();
-        }
-    }
 }
