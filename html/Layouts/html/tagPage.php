@@ -9,7 +9,7 @@
                  * selected by the user
                  */
                 $articles = new \Models\Articles();
-                $articles->getWithSelectedTag($_GET['name']);
+                $articles->getWithSelectedTag($this->model->getName());
                 $result = $articles->articleArray;
                 foreach ($result as $items) {
                     foreach ($items as $key => $value)

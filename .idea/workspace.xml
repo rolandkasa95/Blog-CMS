@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/html/Classes/Controllers/InsertController.php" description="                $this-&gt;model-&gt;insertNewTags();&#10;   ..." line="43" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="707efae0-590d-4f81-b24d-0d0b69a3ec62" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/Classes/Controllers/TagController.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/html/Classes/Controllers/AdminPanelController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/html/Classes/Controllers/ArticleShowController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/html/Classes/Controllers/EditController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/html/Classes/Controllers/HomeController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/html/Classes/Controllers/InsertController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/html/Classes/Controllers/LoginController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/html/Classes/Controllers/ManageTagsController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/html/Classes/Controllers/TagShowController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/html/Classes/Controllers/ValidateLoginController.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/Classes/Controllers/AppController.php" afterPath="$PROJECT_DIR$/html/Classes/Controllers/AppController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/Classes/Models/Article.php" afterPath="$PROJECT_DIR$/html/Classes/Models/Article.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/Classes/Models/Model.php" afterPath="$PROJECT_DIR$/html/Classes/Models/Model.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/Layouts/html/tagPage.php" afterPath="$PROJECT_DIR$/html/Layouts/html/tagPage.php" />
     </list>
     <ignored path="blog-CMS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,7 +48,7 @@
       <file leaf-file-name="Tag.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/Classes/Models/Tag.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
+            <state relative-caret-position="-810">
               <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
               <folding>
                 <marker date="1470131660107" expanded="true" signature="887:922" ph="SELECT * FRO... tags" />
@@ -53,42 +62,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ManageTagsController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/ManageTagsController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/Classes/Models/Model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+            <state relative-caret-position="421">
+              <caret line="75" column="4" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="4" />
               <folding>
                 <element signature="e#109#117#0#PHP" expanded="true" />
-                <marker date="1470132501827" expanded="true" signature="773:992" ph="SELECT name articles" />
-                <marker date="1470132501827" expanded="true" signature="1444:1511" ph="SELECT title... " />
-                <marker date="1470132501827" expanded="true" signature="2798:2869" ph="SELECT user_... users" />
-                <marker date="1470132501827" expanded="true" signature="4225:4298" ph="INSERT INTO articles_tags... " />
-                <marker date="1470132501827" expanded="true" signature="4936:4957" ph="SELECT name tags" />
-                <marker date="1470132501827" expanded="true" signature="5431:5599" ph="SELECT title... " />
-                <marker date="1470132501827" expanded="true" signature="5431:5608" ph="SELECT title... " />
-                <marker date="1470132501827" expanded="true" signature="5431:5635" ph="SELECT title... articles" />
-                <marker date="1470132501827" expanded="true" signature="5973:6052" ph="/** * Select... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EditController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/EditController.php">
+      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
+            <state relative-caret-position="396">
+              <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -110,63 +100,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html/Classes/Models/User.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="864">
-              <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
-              <folding>
-                <marker date="1470070149335" expanded="true" signature="767:802" ph="SELECT * FRO... users" />
-                <marker date="1470070149335" expanded="true" signature="767:803" ph="SELECT * FRO... users" />
-                <marker date="1470070149335" expanded="true" signature="767:812" ph="SELECT * FRO... users" />
-                <marker date="1470070149335" expanded="true" signature="767:813" ph="SELECT * FRO... users" />
-                <marker date="1470070149335" expanded="true" signature="767:864" ph="SELECT * FRO... users" />
-                <marker date="1470070149335" expanded="true" signature="767:1097" ph="SELECT * FRO... users" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InsertController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/InsertController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="702">
-              <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
-              <folding>
-                <element signature="e#32#60#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="homePage.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html/Layouts/html/homePage.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Article.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Article.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/Classes/Models/Article.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="498">
-              <caret line="212" column="5" selection-start-line="212" selection-start-column="5" selection-end-line="212" selection-end-column="5" />
+            <state relative-caret-position="264">
+              <caret line="199" column="22" selection-start-line="199" selection-start-column="22" selection-end-line="199" selection-end-column="22" />
               <folding>
                 <element signature="e#109#117#0#PHP" expanded="true" />
-                <marker date="1470132501835" expanded="true" signature="1506:1557" ph="SELECT * FRO... articles" />
-                <marker date="1470132501835" expanded="true" signature="1953:2003" ph="SELECT * FRO... articles" />
-                <marker date="1470132501835" expanded="true" signature="2563:2700" ph="UPDATE artic... " />
-                <marker date="1470132501835" expanded="true" signature="3490:3649" ph="UPDATE artic... " />
-                <marker date="1470132501835" expanded="true" signature="4661:4804" ph="INSERT INTO articles... " />
-                <marker date="1470132501835" expanded="true" signature="5670:5709" ph="DELETE FROM " />
-                <marker date="1470132501835" expanded="true" signature="6146:6169" ph="SELECT tag_i... tags" />
-                <marker date="1470132501835" expanded="true" signature="6641:6695" ph="DELETE FROM " />
-                <marker date="1470132501835" expanded="true" signature="7006:7080" ph="INSERT INTO articles_tags... " />
-                <marker date="1470132501835" expanded="true" signature="7557:7630" ph="INSERT INTO articles_tags... " />
-                <marker date="1470132501835" expanded="true" signature="8189:8220" ph="SELECT artic... articles" />
+                <marker date="1470132611886" expanded="true" signature="1506:1557" ph="SELECT * FRO... articles" />
+                <marker date="1470132611886" expanded="true" signature="1953:2003" ph="SELECT * FRO... articles" />
+                <marker date="1470132611886" expanded="true" signature="2563:2700" ph="UPDATE artic... " />
+                <marker date="1470132611886" expanded="true" signature="3490:3649" ph="UPDATE artic... " />
+                <marker date="1470132611886" expanded="true" signature="4661:4804" ph="INSERT INTO articles... " />
+                <marker date="1470132611886" expanded="true" signature="5670:5709" ph="DELETE FROM " />
+                <marker date="1470132611886" expanded="true" signature="6149:6368" ph="SELECT name articles" />
+                <marker date="1470132611886" expanded="true" signature="6738:6761" ph="SELECT tag_i... tags" />
+                <marker date="1470132611886" expanded="true" signature="7233:7287" ph="DELETE FROM " />
+                <marker date="1470132611886" expanded="true" signature="7598:7672" ph="INSERT INTO articles_tags... " />
+                <marker date="1470132611886" expanded="true" signature="8149:8222" ph="INSERT INTO articles_tags... " />
+                <marker date="1470132611886" expanded="true" signature="8781:8812" ph="SELECT artic... articles" />
               </folding>
             </state>
           </provider>
@@ -175,11 +127,33 @@
       <file leaf-file-name="AppController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/AppController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1116">
-              <caret line="74" column="30" selection-start-line="74" selection-start-column="30" selection-end-line="74" selection-end-column="30" />
+            <state relative-caret-position="606">
+              <caret line="90" column="36" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="36" />
               <folding>
                 <element signature="e#31#57#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TagController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/TagController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="26" column="52" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
+              <folding>
+                <element signature="e#115#130#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tagPage.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/Layouts/html/tagPage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -200,7 +174,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/html/Layouts/html/homesimple.php" />
         <option value="$PROJECT_DIR$/html/Classes/Forms/Inputs/OptionInput.php" />
         <option value="$PROJECT_DIR$/html/Layouts/CSS/Blog.css" />
         <option value="$PROJECT_DIR$/html/Layouts/html/Page404.php" />
@@ -241,16 +214,17 @@
         <option value="$PROJECT_DIR$/html/Classes/Validators/editValidate.php" />
         <option value="$PROJECT_DIR$/html/Layouts/html/articlePage.php" />
         <option value="$PROJECT_DIR$/html/Classes/Models/User.php" />
-        <option value="$PROJECT_DIR$/html/Layouts/html/tagPage.php" />
         <option value="$PROJECT_DIR$/html/Classes/Models/Articles.php" />
         <option value="$PROJECT_DIR$/html/Classes/Controllers/ValidateLoginController.php" />
         <option value="$PROJECT_DIR$/html/Classes/Controllers/LoginController.php" />
-        <option value="$PROJECT_DIR$/html/Classes/Controllers/AppController.php" />
         <option value="$PROJECT_DIR$/html/Classes/Controllers/UserController.php" />
         <option value="$PROJECT_DIR$/html/Layouts/html/homePage.php" />
         <option value="$PROJECT_DIR$/html/Classes/Models/Tag.php" />
-        <option value="$PROJECT_DIR$/html/Classes/Models/Model.php" />
         <option value="$PROJECT_DIR$/html/Classes/Models/Article.php" />
+        <option value="$PROJECT_DIR$/html/Classes/Models/Model.php" />
+        <option value="$PROJECT_DIR$/html/Classes/Controllers/AppController.php" />
+        <option value="$PROJECT_DIR$/html/Classes/Controllers/TagController.php" />
+        <option value="$PROJECT_DIR$/html/Layouts/html/tagPage.php" />
       </list>
     </option>
   </component>
@@ -637,14 +611,7 @@
       <workItem from="1469610995612" duration="8280000" />
       <workItem from="1470068271247" duration="7866000" />
       <workItem from="1470079508007" duration="1009000" />
-      <workItem from="1470128551080" duration="2502000" />
-    </task>
-    <task id="LOCAL-00144" summary="New: edit updated: file upload">
-      <created>1469446840357</created>
-      <option name="number" value="00144" />
-      <option name="presentableId" value="LOCAL-00144" />
-      <option name="project" value="LOCAL" />
-      <updated>1469446840358</updated>
+      <workItem from="1470128551080" duration="3329000" />
     </task>
     <task id="LOCAL-00145" summary="New: Model changed to edit view;">
       <created>1469446960135</created>
@@ -982,11 +949,18 @@
       <option name="project" value="LOCAL" />
       <updated>1470132197887</updated>
     </task>
-    <option name="localTasksCounter" value="193" />
+    <task id="LOCAL-00193" summary="New: articleModel-&gt;count()">
+      <created>1470132510670</created>
+      <option name="number" value="00193" />
+      <option name="presentableId" value="LOCAL-00193" />
+      <option name="project" value="LOCAL" />
+      <updated>1470132510670</updated>
+    </task>
+    <option name="localTasksCounter" value="194" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="231732000" />
+    <option name="totallyTimeSpent" value="232559000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
@@ -1025,7 +999,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
-    <MESSAGE value="New: Article Model -&gt; save(insert)" />
     <MESSAGE value="New: Article Model -&gt; delete()" />
     <MESSAGE value="Update: filtering bugfixing issues" />
     <MESSAGE value="Update: insertArticle" />
@@ -1050,7 +1023,8 @@
     <MESSAGE value="Update: homePage working with next , previous articles" />
     <MESSAGE value="New: articleModel-&gt;checkInTable()" />
     <MESSAGE value="New: articleModel-&gt;saveArticlesTags() for edit" />
-    <option name="LAST_COMMIT_MESSAGE" value="New: articleModel-&gt;saveArticlesTags() for edit" />
+    <MESSAGE value="New: articleModel-&gt;count()" />
+    <option name="LAST_COMMIT_MESSAGE" value="New: articleModel-&gt;count()" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1059,13 +1033,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/html/Classes/Forms/Inputs/PasswordInput.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/Classes/Forms/Inputs/SelectInput.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="648">
@@ -1290,31 +1257,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/Layouts/html/tagPage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/Layouts/html/articlePage.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/ValidateLoginController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/LoginController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1339,31 +1285,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
-          <folding>
-            <element signature="e#32#51#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/Layouts/html/homePage.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
           <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/AppController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1116">
-          <caret line="74" column="30" selection-start-line="74" selection-start-column="30" selection-end-line="74" selection-end-column="30" />
-          <folding>
-            <element signature="e#31#57#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1394,9 +1320,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="702">
           <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
-          <folding>
-            <element signature="e#32#60#0#PHP" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1424,7 +1348,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/html/Classes/Models/Tag.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
+        <state relative-caret-position="-810">
           <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
           <folding>
             <marker date="1470131660107" expanded="true" signature="887:922" ph="SELECT * FRO... tags" />
@@ -1437,42 +1361,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/Classes/Models/Model.php">
+    <entry file="file://$PROJECT_DIR$/html/Classes/Models/Article.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+        <state relative-caret-position="264">
+          <caret line="199" column="22" selection-start-line="199" selection-start-column="22" selection-end-line="199" selection-end-column="22" />
           <folding>
             <element signature="e#109#117#0#PHP" expanded="true" />
-            <marker date="1470132501827" expanded="true" signature="773:992" ph="SELECT name articles" />
-            <marker date="1470132501827" expanded="true" signature="1444:1511" ph="SELECT title... " />
-            <marker date="1470132501827" expanded="true" signature="2798:2869" ph="SELECT user_... users" />
-            <marker date="1470132501827" expanded="true" signature="4225:4298" ph="INSERT INTO articles_tags... " />
-            <marker date="1470132501827" expanded="true" signature="4936:4957" ph="SELECT name tags" />
-            <marker date="1470132501827" expanded="true" signature="5431:5599" ph="SELECT title... " />
-            <marker date="1470132501827" expanded="true" signature="5431:5608" ph="SELECT title... " />
-            <marker date="1470132501827" expanded="true" signature="5431:5635" ph="SELECT title... articles" />
-            <marker date="1470132501827" expanded="true" signature="5973:6052" ph="/** * Select... " />
+            <marker date="1470132611886" expanded="true" signature="1506:1557" ph="SELECT * FRO... articles" />
+            <marker date="1470132611886" expanded="true" signature="1953:2003" ph="SELECT * FRO... articles" />
+            <marker date="1470132611886" expanded="true" signature="2563:2700" ph="UPDATE artic... " />
+            <marker date="1470132611886" expanded="true" signature="3490:3649" ph="UPDATE artic... " />
+            <marker date="1470132611886" expanded="true" signature="4661:4804" ph="INSERT INTO articles... " />
+            <marker date="1470132611886" expanded="true" signature="5670:5709" ph="DELETE FROM " />
+            <marker date="1470132611886" expanded="true" signature="6149:6368" ph="SELECT name articles" />
+            <marker date="1470132611886" expanded="true" signature="6738:6761" ph="SELECT tag_i... tags" />
+            <marker date="1470132611886" expanded="true" signature="7233:7287" ph="DELETE FROM " />
+            <marker date="1470132611886" expanded="true" signature="7598:7672" ph="INSERT INTO articles_tags... " />
+            <marker date="1470132611886" expanded="true" signature="8149:8222" ph="INSERT INTO articles_tags... " />
+            <marker date="1470132611886" expanded="true" signature="8781:8812" ph="SELECT artic... articles" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/Classes/Models/Article.php">
+    <entry file="file://$PROJECT_DIR$/html/Classes/Models/Model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="212" column="5" selection-start-line="212" selection-start-column="5" selection-end-line="212" selection-end-column="5" />
+        <state relative-caret-position="421">
+          <caret line="75" column="4" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="4" />
           <folding>
             <element signature="e#109#117#0#PHP" expanded="true" />
-            <marker date="1470132501835" expanded="true" signature="1506:1557" ph="SELECT * FRO... articles" />
-            <marker date="1470132501835" expanded="true" signature="1953:2003" ph="SELECT * FRO... articles" />
-            <marker date="1470132501835" expanded="true" signature="2563:2700" ph="UPDATE artic... " />
-            <marker date="1470132501835" expanded="true" signature="3490:3649" ph="UPDATE artic... " />
-            <marker date="1470132501835" expanded="true" signature="4661:4804" ph="INSERT INTO articles... " />
-            <marker date="1470132501835" expanded="true" signature="5670:5709" ph="DELETE FROM " />
-            <marker date="1470132501835" expanded="true" signature="6146:6169" ph="SELECT tag_i... tags" />
-            <marker date="1470132501835" expanded="true" signature="6641:6695" ph="DELETE FROM " />
-            <marker date="1470132501835" expanded="true" signature="7006:7080" ph="INSERT INTO articles_tags... " />
-            <marker date="1470132501835" expanded="true" signature="7557:7630" ph="INSERT INTO articles_tags... " />
-            <marker date="1470132501835" expanded="true" signature="8189:8220" ph="SELECT artic... articles" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/ValidateLoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/Layouts/html/tagPage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/AppController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="90" column="36" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="36" />
+          <folding>
+            <element signature="e#31#57#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/TagController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="26" column="52" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
+          <folding>
+            <element signature="e#115#130#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

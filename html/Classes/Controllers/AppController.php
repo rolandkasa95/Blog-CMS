@@ -7,6 +7,7 @@ use Forms\InsertArticleForm;
 use Forms\LoginForm;
 use Forms\manageTagsForm;
 use Forms\RegisterForm;
+use Models\Article;
 use Models\articlepageModel;
 use Models\homepageModel;
 use Models\Model;
@@ -59,15 +60,15 @@ class AppController
             $action = $_GET['action'];
             switch ($action) {
                 case 'articleShow' :
-                    $class = new ArticleShowController();
+                    $class = new ArticleController();
                     $class->init();
                     break;
                 case 'tag':
-                    $class = new TagShowController();
+                    $class = new TagController();
                     $class->init();
                     break;
                 case 'login' :
-                    $class = new LoginController();
+                    $class = new UserController();
                     $class->init();
                     break;
                 case 'validate' :
@@ -75,19 +76,19 @@ class AppController
                     $class->init();
                     break;
                 case 'adminPanel':
-                    $class = new AdminPanelController();
+                    $class = new ArticleController();
                     $class->init();
                     break;
                 case 'insert':
-                    $class = new InsertController();
+                    $class = new ArticleController();
                     $class->init();
                     break;
                 case 'edit' :
-                    $class = new EditController();
+                    $class = new ArticleController();
                     $class->init();
                     break;
                 case 'deleteTags':
-                    $class = new ManageTagsController();
+                    $class = new TagController();
                     $class->init();
                     break;
                 default:
