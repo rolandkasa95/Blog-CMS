@@ -17,9 +17,14 @@
         <div class="col-md-6">
             <h4>
             <?php
-                $results = $this->model->getAllArticles();
-                foreach($results as $result)
+            ob_start();
+                $this->model=new \Models\Articles();
+                $this->model->setLimit(0);
+                $this->model->getWithLimitation();
+            ob_end_clean();
+                foreach($this->model->articleArray as $result)
                 {
+                    $this->model = new \Models\Article();
                     $this->model->setId($result['article_id']);
                 if(isset($_SESSION['username'])) {
                 echo "<a href='index.php?action=edit&id=" . $this->model->getId() . "'><div id='edit_div'></div></a>";
