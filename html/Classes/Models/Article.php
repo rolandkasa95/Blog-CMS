@@ -189,6 +189,29 @@ class Article extends Model
         }
     }
 
+    /**
+     * Retruns the number of the tags inside of the
+     * table
+     *
+     * @return int
+     */
+    public function count(){
+        try{
+            $this->connect();
+            $sql = "SELECT tag_id FROM tags";
+            $statement = $this->db->prepare($sql);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            $i=0;
+            foreach ($result as $item){
+                $i++;
+            }
+            return $i;
+        }catch (\PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
     public function saveArticleTags()
     {
         if($this->id){

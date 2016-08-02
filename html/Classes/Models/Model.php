@@ -103,99 +103,12 @@ class Model
         return $result;
     }
 
-    /**
-     * Retruns the number of the tags inside of the
-     * table
-     *
-     * @return int
-     */
-    public function count(){
-        try{
-            $this->connect();
-            $sql = "SELECT tag_id FROM tags";
-            $statement = $this->db->prepare($sql);
-            $statement->execute();
-            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-            $i=0;
-            foreach ($result as $item){
-                $i++;
-            }
-            return $i;
-        }catch (\PDOException $e){
-            echo $e->getMessage();
-        }
-    }
+
     
-
-    /**
-     *
-     * Inserts the new tags to the article given by the user
-     *
-     */
-    public function editNewTags(){
-        $this->connect();
-        try{
-            $newTags = filter_input(INPUT_POST,'tag',FILTER_SANITIZE_STRING);
-            $newTags = explode(',',$newTags);
-            $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
-            foreach ($newTags as $key => $value) {
-                if($this->articlesTagsInTable($this->getArticleId($title),$this->getTagId(trim($value,' ')))) {
-                    $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (:article_id,:tag_id)";
-                    $statement = $this->db->prepare($sql);
-                    $statement->bindParam(':article_id', $this->getArticleId($title), PDO::PARAM_INT);
-                    $statement->bindParam(':tag_id', $this->getTagId(trim($value, ' ')), PDO::PARAM_INT);
-                    $statement->execute();
-                }
-            }
-        }catch (\PDOException $e){
-            echo "Transaction failed: " . $e->getMessage();
-        }
-    }
-
-    /**
-     * Checks if the article is connected with the tag
-     *
-     * @param $article_id int
-     * @param $tag_id int
-     * @return bool
-     */
-    public function articlesTagsInTable($article_id,$tag_id){
-        try{
-            $this->connect();
-            $sql = "SELECT * FROM articles_tags WHERE article_id=:article_id AND tag_id=:tag_id";
-            $statement = $this->db->prepare($sql);
-            $statement->bindParam(':article_id',$article_id,PDO::PARAM_INT);
-            $statement->bindParam('tag_id',$tag_id,PDO::PARAM_INT);
-            $statement->execute();
-            $result = $statement->fetch(PDO::FETCH_ASSOC);
-            if(false === $result){
-                return true;
-            }else{
-                return false;
-            }
-        }catch (PDOException $e){
-            echo $e->getMessage();
-        }
-    }
-
-    /**
-     * Show exactly  articles which is affected by the offset
-     *
-     * @param $offset int
-     * @return array
-     */
-    public function getArticles($offset){
-        $this->connect();
-        $sql = 'SELECT title,date,article_id FROM articles WHERE isPublished=1 ORDER BY date DESC LIMIT 5 OFFSET ' . $offset;
-        $statement = $this->db->prepare($sql);
-        $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
-    }
     
     /**
      *
-     * Insert a new article to the table
+     * Controller -> Article: option Insert
      *
      */
     public function insertArticle(){
@@ -211,17 +124,6 @@ class Model
         $article->save($bool);
     }
 
-    /**
-     *
-     * Insert The tags which were selected to the articles_tags
-     * table.
-     *
-     */
-    public function editArticlesTags(){
-
-        return;
-    }
-    
 
     /**
      *
