@@ -56,7 +56,7 @@
             ?>
             <div class="col-md-12">
                 <?php
-                echo "<h4><a href=index.php?offset=" . ++$offset . ">Previous Articles</a></h4>";
+                echo "<h4 align='right'><a href=index.php?offset=" . ++$offset . ">Next Articles</a></h4>";
                 }
                 ?>
             </div>

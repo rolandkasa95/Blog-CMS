@@ -95,6 +95,7 @@ class Tag extends Model {
         $tags = filter_var($this->name,FILTER_SANITIZE_STRING);
         $tags = explode(',', $tags);
         $button = 1;
+        $this->id = $this->getByName($_SESSION['delete'])['tag_id'];
         foreach ($tags as $tag) {
             $value = trim($tag,' ');
             if (!$this->id) {
@@ -115,7 +116,7 @@ class Tag extends Model {
                     $sql = "Update tags SET name=:name WHERE tag_id=:id";
                     $statement = $this->db->prepare($sql);
                     $statement->bindParam(':name', $updateTo, PDO::PARAM_STR, 100);
-                    $statement->bindParam(':id', $this->getById($update), PDO::PARAM_INT);
+                    $statement->bindParam(':id', $this->id, PDO::PARAM_INT);
                     $statement->execute();
                     return true;
                 } catch (\PDOException $e) {
@@ -149,15 +150,13 @@ class Tag extends Model {
         }
     }
 
-    public function deleteById($tagToManage)
+    public function deleteById()
     {
         try{
             $this->connect();
-            $delete = filter_var($tagToManage,FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
-            $delete = trim($delete,' ');
             $query = "DELETE FROM tags WHERE tag_id=:tag_id";
             $statement = $this->db->prepare($query);
-            $statement->bindParam('tag_id',$this->getTagId($delete),PDO::PARAM_INT);
+            $statement->bindParam('tag_id',$this->id,PDO::PARAM_INT);
             $statement->execute();
             return true;
         }catch (\PDOException $e){
