@@ -37,8 +37,7 @@
         /**
          * getting tags and listing them on the page
          */
-        foreach($result as $items)
-            foreach($items as $key=>$row) {
+            foreach($result as $key=>$row) {
                 if ($i != 0) {
                     echo ",  <a href=index.php?action=tag&name=$row>" . strtolower($row) . '</a>';
                 }else{

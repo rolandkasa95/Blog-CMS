@@ -50,6 +50,25 @@ class ArticlesController
                         header('Location: index.php');
                     }
                     $view->render('editPage1.php',new InsertArticleForm(new Article));
+                    break;
+                case 'edit':
+                    if(isset($_POST['submit'])) {
+                        ArticleValidate::valid();
+                        ImageValidator::valid();
+                        $article = new Article();
+                        $article->setId($_GET['id']);
+                        $article->setTitle($_POST['title']);
+                        $article->setBody($_POST['body']);
+                        $article->setTag($_POST['tag']);
+                        $article->setUrlImage('Layouts/uploads/' . $_FILES['fileToUpload']['name']);
+                        $tag = new Tag($_POST['tag']);
+                        $tag->save();
+                        $article->save(1);
+                        $article->saveArticleTags();
+                        header('Location: index.php');
+                    }
+                    $view->render('adminEditPage.php',new EditArticleForm(new Article));
+                    break;
             }
             }else{
             $view->render('homePage.php',new Articles());

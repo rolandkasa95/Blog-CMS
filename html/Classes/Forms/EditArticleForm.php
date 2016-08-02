@@ -95,7 +95,7 @@ class EditArticleForm
         ]);
 
         //Add country and data options
-        $this->models = new Model();
+        $this->models = new Article();
 
         $this->addField([
             'label' => 'Tag Name: ',
@@ -103,7 +103,7 @@ class EditArticleForm
             'name' => 'tag',
             'priority' => 8,
             'required' => true,
-            'value' => implode(',',$this->models->selectArticleTagNames()),
+            'value' => implode(',',$this->models->tagNameDisplay()),
             'validator' => [
                 'StringLengthValidator' => [
                     'minimum' => 2,
@@ -118,7 +118,7 @@ class EditArticleForm
         //Adjust the button attributes
         $button = $this->getField('Submit');
         $button->setValue('Publish');
-
+        
         //Sort the fields by priority
         ksort($this->fields);
     }

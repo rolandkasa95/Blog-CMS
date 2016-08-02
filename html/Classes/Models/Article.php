@@ -130,7 +130,7 @@ class Article extends Model
         if($this->id){
             try {
                 $this->connect();
-                if("/Layouts/uploads/" === $this->urlImage){
+                if(strpos($this->urlImage,'Layouts/uploads') === false){
                     $sql = "UPDATE articles SET user_id=:user_id, title=:title, author=:author, body=:body, date=:date, isPublished=:isPublished WHERE article_id=:id";
                     $insert = $this->db->prepare($sql);
                     $insert->bindParam(':user_id', $user->getId(), PDO::PARAM_INT);
@@ -141,7 +141,6 @@ class Article extends Model
                     $insert->bindParam('isPublished', $bool, PDO::PARAM_BOOL);
                     $insert->bindParam(':id', $this->id, PDO::PARAM_INT);
                     $insert->execute();
-                    return;
                 }else {
                     $sql = "UPDATE articles SET user_id=:user_id, title=:title, author=:author, body=:body, date=:date, isPublished=:isPublished, imagePath=:imagePath WHERE article_id=:id";
                     $insert = $this->db->prepare($sql);
@@ -154,7 +153,6 @@ class Article extends Model
                     $insert->bindParam(':imagePath', $this->urlImage, 200);
                     $insert->bindParam(':id', $this->id, PDO::PARAM_INT);
                     $insert->execute();
-                    return;
                 }
             }catch (\PDOException $e){
                 echo $e->getMessage();
@@ -202,7 +200,7 @@ class Article extends Model
         $sql='SELECT name FROM articles  INNER JOIN articles_tags ON articles.article_id = articles_tags.article_id INNER JOIN tags ON articles_tags.tag_id = tags.tag_id WHERE articles.article_id=' .$id . ' AND articles.isPublished=1';
         $statement = $this->db->prepare($sql);
         $statement->execute();
-        $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+        $result = $statement->fetchAll(\PDO::FETCH_COLUMN);
         return $result;
     }
 
@@ -237,23 +235,10 @@ class Article extends Model
             $insert = $this->db->prepare($sql);
             $insert->bindParam('article_id',$this->id,PDO::PARAM_INT);
             $insert->execute();
-            for($j=0;$j<=$this->count();$j++){
-                $tags = 'tags_' . $j;
-                if (isset($_POST[$tags])) {
-                    $sql = "INSERT INTO articles_tags (article_id,tag_id) VALUES (:article_id,:tag_id)";
-                    $insert = $this->db->prepare($sql);
-                    $insert->bindParam(':article_id', $this->id, PDO::PARAM_INT);
-                    $insert->bindParam(':tag_id',$this->getTagId(trim($_POST[$tags]),' '),PDO::PARAM_INT);
-                    $insert->execute();
-                }
-            }
-        }
-        try {
-            $this->connect();
             $articleTag = new Tag();
-            $tags = explode(',',$this->tag);
+            $tags = explode(',', $this->tag);
             foreach ($tags as $tag) {
-                $tag = trim($tag,' ');
+                $tag = trim($tag, ' ');
                 $articleTag->setName($tag);
                 $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (:article_id,:tag_id)";
                 $insert = $this->db->prepare($sql);
@@ -261,9 +246,14 @@ class Article extends Model
                 $insert->bindParam(':tag_id', $articleTag->getByName()['tag_id'], PDO::PARAM_INT);
                 $insert->execute();
             }
-            return;
-        }catch (PDOException $e){
-            echo $e->getMessage();
+        }else {
+            try {
+                $this->connect();
+
+                return;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
         }
     }
 
