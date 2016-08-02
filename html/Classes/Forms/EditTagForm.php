@@ -10,6 +10,7 @@ namespace Forms;
 
 
 use Models\Model;
+use Models\Tag;
 
 class EditTagForm extends FormCommon
 {
@@ -24,8 +25,8 @@ class EditTagForm extends FormCommon
         ];
         parent::__construct($models, $params);
 
-
-        $result = $this->models->selectTags1();
+        $this->models = new Tag();
+        $result = $this->models->getAll();
         //Add username
         $this->addField([
             'label' => 'Tag to Manage: ',

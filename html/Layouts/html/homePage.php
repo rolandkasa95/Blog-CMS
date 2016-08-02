@@ -3,6 +3,9 @@
 <div class="container">
     <div class="col-md-12">
         <?php
+        if(isset($_SESSION['username'])){
+            echo "<h2><a href=\"index.php?action=adminPanel\">Admin Panel</a></h2>";
+        }
         ob_start();
         $articles = new \Models\Articles();
         if(isset($_GET['offset'])){

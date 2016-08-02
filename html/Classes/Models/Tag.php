@@ -50,6 +50,18 @@ class Tag extends Model {
         $this->name = $name;
     }
 
+    public function getAll(){
+        try{
+            $this->connect();
+            $sql = "SELECT name FROM tags";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_COLUMN);
+        }catch (\PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
     public function getByName()
     {
         try{

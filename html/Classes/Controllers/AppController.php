@@ -60,7 +60,7 @@ class AppController
             $action = $_GET['action'];
             switch ($action) {
                 case 'articleShow' :
-                    $class = new ArticleController();
+                    $class = new ArticlesController();
                     $class->init();
                     break;
                 case 'tag':
@@ -76,15 +76,15 @@ class AppController
                     $class->init();
                     break;
                 case 'adminPanel':
-                    $class = new ArticleController();
+                    $class = new ArticlesController();
                     $class->init();
                     break;
                 case 'insert':
-                    $class = new ArticleController();
+                    $class = new ArticlesController();
                     $class->init();
                     break;
                 case 'edit' :
-                    $class = new ArticleController();
+                    $class = new ArticlesController();
                     $class->init();
                     break;
                 case 'deleteTags':
@@ -95,7 +95,7 @@ class AppController
                     $view->render('Page404.php',new Model());
             }
         }else{
-            $class = new ArticleController();
+            $class = new ArticlesController();
             $class->init();
         }
     }

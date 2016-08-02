@@ -17,7 +17,6 @@
         <div class="col-md-6">
             <h4>
             <?php
-                $this->model = new \Models\Article();
                 $results = $this->model->getAllArticles();
                 foreach($results as $result)
                 {
