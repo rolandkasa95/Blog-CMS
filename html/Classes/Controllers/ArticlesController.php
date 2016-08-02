@@ -9,6 +9,8 @@
 namespace Controllers;
 
 
+use Forms\EditArticleForm;
+use Forms\InsertArticleForm;
 use Models\Article;
 use Models\Articles;
 use Views\View;
@@ -28,6 +30,9 @@ class ArticlesController
                     break;
                 case 'adminPanel':
                     $view->render('adminPanel.php',new Article());
+                    break;
+                case 'insert':
+                    $view->render('editPage1.php',new InsertArticleForm(new Article));
             }
             }else{
             $view->render('homePage.php',new Articles());
