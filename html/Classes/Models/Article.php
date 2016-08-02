@@ -191,6 +191,23 @@ class Article extends Model
 
     public function saveArticleTags()
     {
+        if($this->id){
+            $this->connect();
+            $sql = "DELETE FROM articles_tags WHERE article_id=:article_id";
+            $insert = $this->db->prepare($sql);
+            $insert->bindParam('article_id',$this->id,PDO::PARAM_INT);
+            $insert->execute();
+            for($j=0;$j<=$this->count();$j++){
+                $tags = 'tags_' . $j;
+                if (isset($_POST[$tags])) {
+                    $sql = "INSERT INTO articles_tags (article_id,tag_id) VALUES (:article_id,:tag_id)";
+                    $insert = $this->db->prepare($sql);
+                    $insert->bindParam(':article_id', $this->id, PDO::PARAM_INT);
+                    $insert->bindParam(':tag_id',$this->getTagId(trim($_POST[$tags]),' '),PDO::PARAM_INT);
+                    $insert->execute();
+                }
+            }
+        }
         try {
             $this->connect();
             $articleTag = new Tag();

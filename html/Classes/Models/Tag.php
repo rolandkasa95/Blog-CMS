@@ -78,35 +78,64 @@ class Tag extends Model {
         }
     }
     
-    public function save($value,$button = null)
+    public function save()
     {
-        if($this->id) {
-            if ($this->inTable($this->name)) {
-                $sql = "INSERT INTO tags(name,isVisible) VALUES (:name,:isVisible)";
-                $statement = $this->db->prepare($sql);
-                $statement->bindParam(':name', $value, PDO::PARAM_STR, 100);
-                $statement->bindParam(':isVisible', $button, PDO::PARAM_BOOL);
-                $statement->execute();
-                return true;
+        $tags = filter_input(INPUT_POST,'tag',FILTER_SANITIZE_STRING);
+        $tags = explode(',', $tags);
+        foreach ($tags as $tag) {
+            $value = trim($tag,' ');
+            if ($this->id) {
+                if ($this->inTable($this->name)) {
+                    $sql = "INSERT INTO tags(name,isVisible) VALUES (:name,:isVisible)";
+                    $statement = $this->db->prepare($sql);
+                    $statement->bindParam(':name', $tag, PDO::PARAM_STR, 100);
+                    $statement->bindParam(':isVisible', $button, PDO::PARAM_BOOL);
+                    $statement->execute();
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
+                try {
+                    $this->connect();
+                    $update = filter_var($this->name, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
+                    $update = trim($update, ' ');
+                    $updateTo = filter_input(INPUT_POST, 'updateTo', FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
+                    $updateTo = trim($updateTo, ' ');
+                    $sql = "Update tags SET name=:name WHERE tag_id=:id";
+                    $statement = $this->db->prepare($sql);
+                    $statement->bindParam(':name', $updateTo, PDO::PARAM_STR, 100);
+                    $statement->bindParam(':id', $this->getById($update), PDO::PARAM_INT);
+                    $statement->execute();
+                    return true;
+                } catch (\PDOException $e) {
+                    echo $e->getMessage();
+                }
+            }
+        }
+    }
+
+    /**
+     * Checks if the tag is in the table
+     *
+     * @param $tags string
+     * @return bool
+     */
+    public function inTable($tags){
+        try{
+            $this->connect();
+            $sql = "SELECT tag_id FROM tags WHERE name=:name";
+            $statement = $this->db->prepare($sql);
+            $statement->bindParam(':name',$tags,PDO::PARAM_STR,100);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_COLUMN);
+            if(empty($result)){
+                return true;
+            }else{
                 return false;
             }
-        }else{
-            try{
-                $this->connect();
-                $update = filter_var($this->name,FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
-                $update = trim($update,' ');
-                $updateTo = filter_input(INPUT_POST,'updateTo',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
-                $updateTo = trim($updateTo,' ');
-                $sql = "Update tags SET name=:name WHERE tag_id=:id";
-                $statement = $this->db->prepare($sql);
-                $statement->bindParam(':name',$updateTo,PDO::PARAM_STR,100);
-                $statement->bindParam(':id',$this->getById($update),PDO::PARAM_INT);
-                $statement->execute();
-                return true;
-            }catch(\PDOException $e){
-                echo $e->getMessage();
-            }
+        }catch (\PDOException $e){
+            echo "Transaction failed" . $e->getMessage();
         }
     }
 

@@ -218,65 +218,8 @@ class Model
      *
      */
     public function editArticlesTags(){
-        $this->connect();
-        $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-        $sql = "DELETE FROM articles_tags WHERE article_id=$id";
-        $insert = $this->db->prepare($sql);
-        $insert->execute();
-        $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
-        $title = trim($title,' ');
-        $j = 0;
-        for($j=0;$j<=$this->count();$j++){
-            $tags = 'tags_' . $j;
-            if (isset($_POST[$tags])) {
-                $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
-                $sql = "INSERT INTO articles_tags (article_id,tag_id) VALUES (:article_id,:tag_id)";
-                $insert = $this->db->prepare($sql);
-                $insert->bindParam(':article_id', $id, PDO::PARAM_INT);
-                $insert->bindParam(':tag_id',$this->getTagId(trim($_POST[$tags]),' '),PDO::PARAM_INT);
-                $insert->execute();
-            }
-        }
+
         return;
-    }
-
-    /**
-     *
-     * Insert The tags which were selected to the articles_tags
-     * table.
-     *
-     */
-    public function insertArticlesTags(){
-        $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING,FILTER_FLAG_ENCODE_LOW);
-        $title = trim($title,' ');
-        $tags = filter_input(INPUT_POST,'tag',FILTER_SANITIZE_STRING);
-        $tags = explode(',', $tags);
-        foreach ($tags as $value) {
-            $value = trim($value, ' ');
-            $tag = new Tag($value);
-            $real_tags[] = $tag;
-            $tag->save($value);
-            }
-        }
-
-    /**
-     * Inserts a new tag
-     */
-    public function insertTag(){
-        try{
-            $this->connect();
-            $button = $_POST['submit'] ?1:0;
-            $tags = filter_input(INPUT_POST,'tag',FILTER_SANITIZE_STRING);
-                $tags = explode(',', $tags);
-                foreach ($tags as $value) {
-                    $value = trim($value,' ');
-                    $tag = new Tag();
-                    $tag->setName($value);
-                    $tag->save($value,$button);
-                    }
-        }catch (\PDOException $e){
-            echo "Transaction Failed: " . $e->getMessage();
-        }
     }
     
 
