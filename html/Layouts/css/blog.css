@@ -8,6 +8,12 @@
     color: red;
 }
 
+#login_div{
+    text-align: center;
+    font-weight: 700;
+    color: red;
+}
+
 #header_div{
     text-align: right;
 }
