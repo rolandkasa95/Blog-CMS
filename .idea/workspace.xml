@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="707efae0-590d-4f81-b24d-0d0b69a3ec62" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/Classes/Controllers/TagController.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/html/Classes/Controllers/AdminPanelController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/html/Classes/Controllers/ArticleShowController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/html/Classes/Controllers/EditController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/html/Classes/Controllers/HomeController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/html/Classes/Controllers/InsertController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/html/Classes/Controllers/LoginController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/html/Classes/Controllers/ManageTagsController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/html/Classes/Controllers/TagShowController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/html/Classes/Controllers/ValidateLoginController.php" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/Classes/Controllers/ArticleController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/Classes/Controllers/AppController.php" afterPath="$PROJECT_DIR$/html/Classes/Controllers/AppController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/Classes/Models/Article.php" afterPath="$PROJECT_DIR$/html/Classes/Models/Article.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/Classes/Models/Model.php" afterPath="$PROJECT_DIR$/html/Classes/Models/Model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/Layouts/html/tagPage.php" afterPath="$PROJECT_DIR$/html/Layouts/html/tagPage.php" />
     </list>
     <ignored path="blog-CMS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -127,8 +115,8 @@
       <file leaf-file-name="AppController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/AppController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="606">
-              <caret line="90" column="36" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="36" />
+            <state relative-caret-position="408">
+              <caret line="97" column="45" selection-start-line="97" selection-start-column="45" selection-end-line="97" selection-end-column="45" />
               <folding>
                 <element signature="e#31#57#0#PHP" expanded="true" />
               </folding>
@@ -136,7 +124,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TagController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ArticleController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/ArticleController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+              <folding>
+                <element signature="e#115#134#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TagController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/TagController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="378">
@@ -144,6 +144,16 @@
               <folding>
                 <element signature="e#115#130#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="homePage.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/Layouts/html/homePage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="576">
+              <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -174,7 +184,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/html/Classes/Forms/Inputs/OptionInput.php" />
         <option value="$PROJECT_DIR$/html/Layouts/CSS/Blog.css" />
         <option value="$PROJECT_DIR$/html/Layouts/html/Page404.php" />
         <option value="$PROJECT_DIR$/html/Classes/Controllers/HomeController.php" />
@@ -222,9 +231,10 @@
         <option value="$PROJECT_DIR$/html/Classes/Models/Tag.php" />
         <option value="$PROJECT_DIR$/html/Classes/Models/Article.php" />
         <option value="$PROJECT_DIR$/html/Classes/Models/Model.php" />
-        <option value="$PROJECT_DIR$/html/Classes/Controllers/AppController.php" />
         <option value="$PROJECT_DIR$/html/Classes/Controllers/TagController.php" />
         <option value="$PROJECT_DIR$/html/Layouts/html/tagPage.php" />
+        <option value="$PROJECT_DIR$/html/Classes/Controllers/ArticleModel.php" />
+        <option value="$PROJECT_DIR$/html/Classes/Controllers/AppController.php" />
       </list>
     </option>
   </component>
@@ -611,14 +621,7 @@
       <workItem from="1469610995612" duration="8280000" />
       <workItem from="1470068271247" duration="7866000" />
       <workItem from="1470079508007" duration="1009000" />
-      <workItem from="1470128551080" duration="3329000" />
-    </task>
-    <task id="LOCAL-00145" summary="New: Model changed to edit view;">
-      <created>1469446960135</created>
-      <option name="number" value="00145" />
-      <option name="presentableId" value="LOCAL-00145" />
-      <option name="project" value="LOCAL" />
-      <updated>1469446960136</updated>
+      <workItem from="1470128551080" duration="3695000" />
     </task>
     <task id="LOCAL-00146" summary="Update: model changed">
       <created>1469447222040</created>
@@ -956,11 +959,18 @@
       <option name="project" value="LOCAL" />
       <updated>1470132510670</updated>
     </task>
-    <option name="localTasksCounter" value="194" />
+    <task id="LOCAL-00194" summary="New: TagController: show all article names which contain the tag that you have selected">
+      <created>1470133375864</created>
+      <option name="number" value="00194" />
+      <option name="presentableId" value="LOCAL-00194" />
+      <option name="project" value="LOCAL" />
+      <updated>1470133375864</updated>
+    </task>
+    <option name="localTasksCounter" value="195" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="232559000" />
+    <option name="totallyTimeSpent" value="232925000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
@@ -999,7 +1009,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
-    <MESSAGE value="New: Article Model -&gt; delete()" />
     <MESSAGE value="Update: filtering bugfixing issues" />
     <MESSAGE value="Update: insertArticle" />
     <MESSAGE value="Planning 1.0" />
@@ -1024,7 +1033,8 @@
     <MESSAGE value="New: articleModel-&gt;checkInTable()" />
     <MESSAGE value="New: articleModel-&gt;saveArticlesTags() for edit" />
     <MESSAGE value="New: articleModel-&gt;count()" />
-    <option name="LAST_COMMIT_MESSAGE" value="New: articleModel-&gt;count()" />
+    <MESSAGE value="New: TagController: show all article names which contain the tag that you have selected" />
+    <option name="LAST_COMMIT_MESSAGE" value="New: TagController: show all article names which contain the tag that you have selected" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1033,13 +1043,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/html/Classes/Forms/Inputs/SelectInput.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/Classes/Forms/Inputs/SubmitInput.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1285,14 +1288,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/Layouts/html/homePage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/Classes/Models/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="864">
@@ -1393,14 +1388,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/LoginController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
@@ -1425,22 +1412,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/AppController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="606">
-          <caret line="90" column="36" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="36" />
-          <folding>
-            <element signature="e#31#57#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/TagController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="26" column="52" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
           <folding>
             <element signature="e#115#130#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/Layouts/html/homePage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/AppController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="97" column="45" selection-start-line="97" selection-start-column="45" selection-end-line="97" selection-end-column="45" />
+          <folding>
+            <element signature="e#31#57#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/ArticleController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+          <folding>
+            <element signature="e#115#134#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

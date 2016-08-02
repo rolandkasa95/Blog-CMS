@@ -95,7 +95,7 @@ class AppController
                     $view->render('Page404.php',new Model());
             }
         }else{
-            $class = new HomeController();
+            $class = new ArticleController();
             $class->init();
         }
     }
