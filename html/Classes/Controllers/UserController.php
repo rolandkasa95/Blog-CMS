@@ -34,6 +34,11 @@ class UserController
         }
         if (isset($_GET['action'])) {
             if ('login' === $_GET['action']) {
+                if(PHP_SESSION_NONE === session_status() || PHP_SESSION_ACTIVE === session_status()){
+                    session_unset();
+                    session_destroy();
+                    $view->render('homePage.php', new Articles());
+                }
                 $view->render('loginpage.php', new LoginForm(new User()));
             }
         }
