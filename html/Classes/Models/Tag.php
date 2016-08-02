@@ -92,20 +92,18 @@ class Tag extends Model {
     
     public function save()
     {
-        $tags = filter_input(INPUT_POST,'tag',FILTER_SANITIZE_STRING);
+        $tags = filter_var($this->name,FILTER_SANITIZE_STRING);
         $tags = explode(',', $tags);
+        $button = 1;
         foreach ($tags as $tag) {
             $value = trim($tag,' ');
-            if ($this->id) {
-                if ($this->inTable($this->name)) {
+            if (!$this->id) {
+                if ($this->inTable($value)) {
                     $sql = "INSERT INTO tags(name,isVisible) VALUES (:name,:isVisible)";
                     $statement = $this->db->prepare($sql);
-                    $statement->bindParam(':name', $tag, PDO::PARAM_STR, 100);
+                    $statement->bindParam(':name', $value, PDO::PARAM_STR, 100);
                     $statement->bindParam(':isVisible', $button, PDO::PARAM_BOOL);
                     $statement->execute();
-                    return true;
-                } else {
-                    return false;
                 }
             } else {
                 try {

@@ -123,7 +123,9 @@ class Article extends Model
 
     public function save($bool)
     {
+        session_start();
         $date = new \DateTime();
+        $user = new User($_SESSION['username']);
         $date->modify('+3 hours');
         if($this->id){
             try {
@@ -131,7 +133,7 @@ class Article extends Model
                 if("/Layouts/uploads/" === $this->urlImage){
                     $sql = "UPDATE articles SET user_id=:user_id, title=:title, author=:author, body=:body, date=:date, isPublished=:isPublished WHERE article_id=:id";
                     $insert = $this->db->prepare($sql);
-                    $insert->bindParam(':user_id', $this->getIdFromUsers(), PDO::PARAM_INT);
+                    $insert->bindParam(':user_id', $user->getId(), PDO::PARAM_INT);
                     $insert->bindParam(':title', trim($this->title, ' '), PDO::PARAM_STR, 100);
                     $insert->bindParam(':author', $_SESSION['username'], PDO::PARAM_STR, 100);
                     $insert->bindParam(':body', trim($this->body, ' '), PDO::PARAM_STR, 100);
@@ -143,7 +145,7 @@ class Article extends Model
                 }else {
                     $sql = "UPDATE articles SET user_id=:user_id, title=:title, author=:author, body=:body, date=:date, isPublished=:isPublished, imagePath=:imagePath WHERE article_id=:id";
                     $insert = $this->db->prepare($sql);
-                    $insert->bindParam(':user_id', $this->getIdFromUsers(), PDO::PARAM_INT);
+                    $insert->bindParam(':user_id', $user->getId(), PDO::PARAM_INT);
                     $insert->bindParam(':title', trim($this->title, ' '), PDO::PARAM_STR, 100);
                     $insert->bindParam(':author', $_SESSION['username'], PDO::PARAM_STR, 100);
                     $insert->bindParam(':body', trim($this->body, ' '), PDO::PARAM_STR, 100);
@@ -157,12 +159,12 @@ class Article extends Model
             }catch (\PDOException $e){
                 echo $e->getMessage();
             }
-        }else{
+        }elseif($this->checkInTable('title="' . $this->title . '"')){
             try{
                 $this->connect();
                 $sql="INSERT INTO articles(user_id,title,author,body,date,isPublished,imagePath) VALUES (:user_id,:title,:author,:body,:date,:isPublished,:imagePath)";
                 $insert = $this->db->prepare($sql);
-                $insert->bindParam(':user_id',$this->getIdFromUsers(),PDO::PARAM_INT);
+                $insert->bindParam(':user_id',$user->getId(),PDO::PARAM_INT);
                 $insert->bindParam(':title',trim($this->title,' '),PDO::PARAM_STR,100);
                 $insert->bindParam(':author',$_SESSION['username'],PDO::PARAM_STR,100);
                 $insert->bindParam(':body',trim($this->body,' '),PDO::PARAM_STR,100);
@@ -249,12 +251,17 @@ class Article extends Model
         try {
             $this->connect();
             $articleTag = new Tag();
-            $articleTag->setName($this->tag);
-            $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (:article_id,:tag_id)";
-            $insert = $this->db->prepare($sql);
-            $insert->bindParam(':article_id', $this->getByTitle(), PDO::PARAM_INT);
-            $insert->bindParam(':tag_id', $articleTag->getByName(), PDO::PARAM_INT);
-            $insert->execute();
+            $tags = explode(',',$this->tag);
+            foreach ($tags as $tag) {
+                $tag = trim($tag,' ');
+                $articleTag->setName($tag);
+                $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (:article_id,:tag_id)";
+                $insert = $this->db->prepare($sql);
+                $insert->bindParam(':article_id', $this->getByTitle()['article_id'], PDO::PARAM_INT);
+                $insert->bindParam(':tag_id', $articleTag->getByName()['tag_id'], PDO::PARAM_INT);
+                $insert->execute();
+            }
+            return;
         }catch (PDOException $e){
             echo $e->getMessage();
         }
@@ -269,7 +276,7 @@ class Article extends Model
     public function checkInTable($param){
         try{
             $this->connect();
-            $sql = "SELECT article_id FROM articles" . $param;
+            $sql = "SELECT article_id FROM articles WHERE " . $param;
             $statement = $this->db->prepare($sql);
             $statement->execute();
             $result = $statement->fetch(PDO::FETCH_ASSOC);

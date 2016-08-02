@@ -13,6 +13,9 @@ use Forms\EditArticleForm;
 use Forms\InsertArticleForm;
 use Models\Article;
 use Models\Articles;
+use Models\Tag;
+use Validators\ArticleValidate;
+use Validators\ImageValidator;
 use Views\View;
 
 class ArticlesController
@@ -32,6 +35,20 @@ class ArticlesController
                     $view->render('adminPanel.php',new Article());
                     break;
                 case 'insert':
+                    if(isset($_POST['submit'])) {
+                        ArticleValidate::valid();
+                        ImageValidator::valid();
+                        $article = new Article();
+                        $article->setTitle($_POST['title']);
+                        $article->setBody($_POST['body']);
+                        $article->setTag($_POST['tag']);
+                        $article->setUrlImage('Layouts/uploads/' . $_FILES['fileToUpload']['name']);
+                        $tag = new Tag($_POST['tag']);
+                        $tag->save();
+                        $article->save(1);
+                        $article->saveArticleTags();
+                        header('Location: index.php');
+                    }
                     $view->render('editPage1.php',new InsertArticleForm(new Article));
             }
             }else{

@@ -63,6 +63,21 @@ class User extends Model
             echo "ERROR: " . $e->getMessage();
         }
     }
+
+    public function getId()
+    {
+        try{
+            $this->connect();
+            $sql = "SELECT user_id FROM users WHERE  username=:username";
+            $statement = $this->db->prepare($sql);
+            $statement->bindParam(':username',$this->getUsername(),PDO::PARAM_STR,100);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            return $result['user_id'];
+        }catch (\PDOException $e){
+            echo "ERROR: " . $e->getMessage();
+        }
+    }
     
 
 }
