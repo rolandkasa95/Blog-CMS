@@ -88,8 +88,8 @@
       <file leaf-file-name="ArticlesController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/ArticlesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
-              <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
+            <state relative-caret-position="162">
+              <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
               <folding>
                 <element signature="e#115#141#0#PHP" expanded="true" />
               </folding>
@@ -562,14 +562,7 @@
       <workItem from="1470068271247" duration="7866000" />
       <workItem from="1470079508007" duration="1009000" />
       <workItem from="1470128551080" duration="17278000" />
-      <workItem from="1470313080859" duration="112000" />
-    </task>
-    <task id="LOCAL-00155" summary="Update: manageTagsForm.php changed the action of the form">
-      <created>1469457861371</created>
-      <option name="number" value="00155" />
-      <option name="presentableId" value="LOCAL-00155" />
-      <option name="project" value="LOCAL" />
-      <updated>1469457861371</updated>
+      <workItem from="1470313080859" duration="206000" />
     </task>
     <task id="LOCAL-00156" summary="Update: model returns when the funtion ends">
       <created>1469457904945</created>
@@ -907,11 +900,18 @@
       <option name="project" value="LOCAL" />
       <updated>1470159186721</updated>
     </task>
-    <option name="localTasksCounter" value="204" />
+    <task id="LOCAL-00204" summary="Update: new function insert on articlesController">
+      <created>1470313216652</created>
+      <option name="number" value="00204" />
+      <option name="presentableId" value="LOCAL-00204" />
+      <option name="project" value="LOCAL" />
+      <updated>1470313216653</updated>
+    </task>
+    <option name="localTasksCounter" value="205" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="246620000" />
+    <option name="totallyTimeSpent" value="246714000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="75" y="82" width="1845" height="998" extended-state="0" />
@@ -950,7 +950,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
-    <MESSAGE value="New: setter+getter username" />
     <MESSAGE value="New: getter user_id" />
     <MESSAGE value="New: function getUser()" />
     <MESSAGE value="New: constructor" />
@@ -975,7 +974,8 @@
     <MESSAGE value="New: editArticle-&gt;articleController" />
     <MESSAGE value="New: manageTags Controller -&gt; TagController" />
     <MESSAGE value="Update: model cleared" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update: model cleared" />
+    <MESSAGE value="Update: new function insert on articlesController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update: new function insert on articlesController" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1334,8 +1334,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/html/Classes/Controllers/ArticlesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
+        <state relative-caret-position="162">
+          <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
           <folding>
             <element signature="e#115#141#0#PHP" expanded="true" />
           </folding>
