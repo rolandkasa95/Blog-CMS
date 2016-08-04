@@ -36,18 +36,7 @@ class ArticlesController
                     break;
                 case 'insert':
                     if(isset($_POST['submit'])) {
-                        ArticleValidate::valid();
-                        ImageValidator::valid();
-                        $article = new Article();
-                        $article->setTitle($_POST['title']);
-                        $article->setBody($_POST['body']);
-                        $article->setTag($_POST['tag']);
-                        $article->setUrlImage('Layouts/uploads/' . $_FILES['fileToUpload']['name']);
-                        $tag = new Tag($_POST['tag']);
-                        $tag->save();
-                        $article->save(1);
-                        $article->saveArticleTags();
-                        header('Location: index.php');
+                        $this->insert();
                     }
                     $view->render('editPage1.php',new InsertArticleForm(new Article));
                     break;
@@ -73,6 +62,22 @@ class ArticlesController
             }else{
             $view->render('homePage.php',new Articles());
         }
+    }
+
+    public function insert()
+    {
+        ArticleValidate::valid();
+        ImageValidator::valid();
+        $article = new Article();
+        $article->setTitle($_POST['title']);
+        $article->setBody($_POST['body']);
+        $article->setTag($_POST['tag']);
+        $article->setUrlImage('Layouts/uploads/' . $_FILES['fileToUpload']['name']);
+        $tag = new Tag($_POST['tag']);
+        $tag->save();
+        $article->save(1);
+        $article->saveArticleTags();
+        header('Location: index.php');
     }
 
 }
