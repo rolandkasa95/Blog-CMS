@@ -27,7 +27,7 @@
                     $this->model = new \Models\Article();
                     $this->model->setId($result['article_id']);
                 if(isset($_SESSION['username'])) {
-                echo "<a href='index.php?action=edit&id=" . $this->model->getId() . "'><div id='edit_div'></div></a>";
+                echo "<a href='index.php?action=edit&id=" . $this->model->getId() . "'><div class='btn btn-success btn-lg glyphicon glyphicon-edit'></div></a>";
                 }
                 echo "<a href=index.php?action=articleShow&id=" . $this->model->getId() . " >" . $result['title'] . '</a><br />';
                 echo $result['date'] . '<br /><hr />';
