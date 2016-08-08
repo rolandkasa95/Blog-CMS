@@ -44,7 +44,12 @@
                 </div>
                 <div class="col-md-6">
                     <?php
-                    if (1){
+                    ob_start();
+                    $offset = (int)$_GET['offset'];
+                    $articles->setLimit(5*++$offset);
+                    $articles->getWithLimitation();
+                    ob_end_clean();
+                    if (!empty($articles->articleArray)){
                         $offset = (int)$_GET['offset'];
                         echo "<h4 align='right'><a href=index.php?offset=" . ++$offset . ">Next Articles</a></h4>";
                     }

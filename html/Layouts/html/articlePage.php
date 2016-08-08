@@ -22,12 +22,13 @@
         echo "</div>";
         echo "<div class='col-md-6'>";
         print '<h4>' .  $result['body'] . '</h4>';
-        echo "</div>";
-        echo "<div class=row>";
-        echo "<div class='col-md-6'>";
         $imageURL = $result['imagePath'];
-        echo "<img src='$imageURL' class='img-responsive'>";
-
+        if(null !== $imageURL && 'Layouts/uploads/' !== $imageURL) {
+            echo "</div>";
+            echo "<div class=row>";
+            echo "<div class='col-md-6'>";
+            echo "<img src='$imageURL' class='img-responsive'>";
+        }
 
         $this->model = new Models\Article();
         $result = $this->model->tagNameDisplay();
