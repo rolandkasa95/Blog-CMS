@@ -14,20 +14,36 @@
     color: red;
 }
 
+.btn.btn-danger.btn-lg.glyphicon.glyphicon-trash{
+    display: block;
+    position: relative;
+    float: left;
+
+}
+
+@media screen and (max-width: 800px){
+    @media screen and (min-width: 320px) {
+        .img-responsive{
+            display: block;
+            margin-left: auto;
+            margin-right: auto
+        }
+    }
+}
+
 #header_div{
     text-align: right;
 }
 
-#edit_div {
-    font-size: x-small;
+.btn.btn-success.btn-lg.glyphicon.glyphicon-edit {
     float: right;
-    width: 30px;
-    height: 30px;
-    background-color: greenyellow;
+    position: relative;
 }
 
 #article_h1 {
     text-align: center;
+    margin-left: 60px;
+    margin-right: 60px;
 }
 
 #p_left {
