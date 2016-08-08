@@ -46,6 +46,8 @@ class ArticlesController
                     }
                     $view->render('adminEditPage.php',new EditArticleForm(new Article));
                     break;
+                case 'remove':
+                    $this->remove();
             }
             }else{
             $view->render('homePage.php',new Articles());
@@ -54,6 +56,7 @@ class ArticlesController
 
     public function insert()
     {
+        ob_start();
         ArticleValidate::valid();
         ImageValidator::valid();
         $article = new Article();
@@ -65,11 +68,13 @@ class ArticlesController
         $tag->save();
         $article->save(1);
         $article->saveArticleTags();
+        ob_end_clean();
         header('Location: index.php');
     }
 
     public function edit()
     {
+        ob_start();
         ArticleValidate::valid();
         ImageValidator::valid();
         $article = new Article();
@@ -82,6 +87,15 @@ class ArticlesController
         $tag->save();
         $article->save(1);
         $article->saveArticleTags();
+        ob_end_clean();
+        header('Location: index.php');
+    }
+    
+    public function remove(){
+        $article_id = filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT);
+        $article = new Article();
+        $article->setId($article_id);
+        $article->delete();
         header('Location: index.php');
     }
 }
