@@ -14,7 +14,8 @@
         }
 
         if(isset($_SESSION['username'])) {
-            echo "<a href='index.php?action=edit&id=" . $article->getId() . "'><div id=\"edit_div\"'></div></a>";
+            echo "<a href='index.php?action=edit&id=" . $article->getId() . "'><div class=\"btn btn-success btn-lg glyphicon glyphicon-edit\"'></div></a>";
+            echo "<a href='index.php?action=remove&id=" . $article->getId() . "'><div class=\"btn btn-danger btn-lg glyphicon glyphicon-trash\"'></div></a>";
             }
         echo '<h1 id="article_h1">' . $result['title'] . '</h1>';
         echo '<h2>' . $result['date'] . '</h2>';
