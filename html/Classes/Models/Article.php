@@ -130,7 +130,7 @@ class Article extends Model
         if($this->id){
             try {
                 $this->connect();
-                if(strpos($this->urlImage,'Layouts/uploads') === false){
+                if($this->urlImage === 'Layouts/uploads/'){
                     $sql = "UPDATE articles SET user_id=:user_id, title=:title, author=:author, body=:body, date=:date, isPublished=:isPublished WHERE article_id=:id";
                     $insert = $this->db->prepare($sql);
                     $insert->bindParam(':user_id', $user->getId(), PDO::PARAM_INT);
@@ -180,9 +180,9 @@ class Article extends Model
     {
         try{
             $this->connect();
-            $query = "DELETE FROM articles WHERE title=:title";
+            $query = "DELETE FROM articles WHERE article_id=:article_id";
             $stmt = $this->db->prepare($query);
-            $stmt->bindParam('title',$this->title,PDO::PARAM_STR,100);
+            $stmt->bindParam('article_id',$this->getId(),PDO::PARAM_INT);
             $stmt->execute();
         }catch (PDOException $e){
             echo $e->getMessage();
@@ -249,7 +249,17 @@ class Article extends Model
         }else {
             try {
                 $this->connect();
-
+                $articleTag = new Tag();
+                $tags = explode(',', $this->tag);
+                foreach ($tags as $tag) {
+                    $tag = trim($tag, ' ');
+                    $articleTag->setName($tag);
+                    $sql = "INSERT INTO articles_tags(article_id,tag_id) VALUES (:article_id,:tag_id)";
+                    $insert = $this->db->prepare($sql);
+                    $insert->bindParam(':article_id', $this->getByTitle()['article_id'], PDO::PARAM_INT);
+                    $insert->bindParam(':tag_id', $articleTag->getByName()['tag_id'], PDO::PARAM_INT);
+                    $insert->execute();
+                }
                 return;
             } catch (PDOException $e) {
                 echo $e->getMessage();
