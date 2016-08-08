@@ -1,5 +1,4 @@
 <body>
-
 <div class="container">
     <div class="col-md-12">
         <?php
@@ -21,7 +20,7 @@
             $article->setTitle($item['title']);
             $article->setId($article->getByTitle()['article_id']);
             if(isset($_SESSION['username'])) {
-                echo "<a href='index.php?action=edit&id=" . $article->getId() . "'><div id=\"edit_div\"'></div></a>";
+                echo "<a href='index.php?action=edit&id=" . $article->getId() . "'><div class=\"btn btn-success btn-lg glyphicon glyphicon-edit\"'></div></a>";
             }
             echo "<h2><a href=index.php?action=articleShow&id=". $article->getId() . ">" . $item['title'] . "</a></h2>";
             echo "<h4>" .  $item['date'] . "<hr /></h4>";
