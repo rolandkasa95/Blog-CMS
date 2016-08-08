@@ -11,6 +11,10 @@ namespace Models;
 use PDO;
 USE PDOException;
 
+/**
+ * Class Model
+ * @package Models
+ */
 class Model
 {
     /**
@@ -20,8 +24,6 @@ class Model
 
     /**
      * Connection to database
-     *
-     * @param $config array
      */
     public function connect(){
         try {
