@@ -28,44 +28,7 @@
         ?>
     </div>
 </div>
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <?php
-            if(isset($_GET['offset'])) {
-                ?>
-                <div class="col-md-6">
-                    <?php
-                    $offset = (int)$_GET['offset'];
-                    if (0 !== $offset) {
-                        echo "<h4><a href=index.php?offset=" . --$offset . ">Previous Articles</a></h4>";
-                    }
-                    ?>
-                </div>
-                <div class="col-md-6">
-                    <?php
-                    ob_start();
-                    $offset = (int)$_GET['offset'];
-                    $articles->setLimit(5*++$offset);
-                    $articles->getWithLimitation();
-                    ob_end_clean();
-                    if (!empty($articles->articleArray)){
-                        $offset = (int)$_GET['offset'];
-                        echo "<h4 align='right'><a href=index.php?offset=" . ++$offset . ">Next Articles</a></h4>";
-                    }
-                    ?>
-                </div>
-                <?php
-            }else{
-            ?>
-            <div class="col-md-12">
-                <?php
-                echo "<h4 align='right'><a href=index.php?offset=" . ++$offset . ">Next Articles</a></h4>";
-                }
-                ?>
-            </div>
-        </div>
-    </div>
-</footer>
-
+<?php
+    include "footer.php";
+?>
 </body>
