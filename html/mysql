@@ -1,6 +1,6 @@
 mysql -u root -p123;
 
-CREATE DATABASE mydb;
+CREATE DATABASE myblog;
 
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';
 FLUSH PRIVILEGES;
