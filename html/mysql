@@ -1,0 +1,93 @@
+mysql -u root -p123;
+
+CREATE DATABASE mydb;
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';
+FLUSH PRIVILEGES;
+
+USE mydb;
+
+CREATE TABLE IF NOT EXISTS users(
+  user_id INT(6) NOT NULL AUTO_INCREMENT,
+  username  VARCHAR(50) NOT NULL ,
+  password varchar(255) NOT NULL DEFAULT '',
+  first_name varchar(50),
+  last_name varchar(50),
+  email Varchar(100) NOT NULL,
+  PRIMARY KEY (`user_id`))
+  ;
+
+CREATE TABLE IF NOT EXISTS articles(
+  article_id INT(6) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id INT(6) NOT NULL,
+  body mediumtext,
+  title varchar(100),
+  author varchar(50) NOT NULL,
+  date datetime,
+  isPublished tinyint(1),
+  imagePath varchar(200),
+  FOREIGN KEY (user_id) REFERENCES users(user_id))
+  ;
+
+CREATE TABLE IF NOT EXISTS tags(
+  tag_id INT(12) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name varchar(50),
+  isVisible TINYINT(1)
+  );
+
+CREATE TABLE IF NOT EXISTS articles_tags(
+  article_id INT(10) NOT NULL,
+  tag_id Int(12) NOT NULL,
+  FOREIGN KEY (article_id) REFERENCES articles(article_id) ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY (tag_id) REFERENCES tags(tag_id) ON UPDATE CASCADE ON DELETE CASCADE)
+  ;
+  
+INSERT INTO users(username,password,first_name,last_name,email) VALUES ('admin','$2y$10$oimWsjt0X9OrXmpgmfKmo.K4PZKQD38YAsK9wYOhNu4UQXmAswVXm','Admin','Admin','rolandkasa95@gmail.com');
+
+INSERT INTO articles(user_id,body,title,author,date,isPublished) VALUES (1,'FIRST ARTICLE', 'First article','admin','2016-08-02 16:42:23',1);
+INSERT INTO articles(user_id,body,title,author,date,isPublished) VALUES (1,'Second ARTICLE', 'Second article','admin','2016-08-02 16:42:24',1);
+INSERT INTO articles(user_id,body,title,author,date,isPublished) VALUES (1,'Third ARTICLE', 'Third article','admin','2016-08-02 16:42:25',1);
+INSERT INTO articles(user_id,body,title,author,date,isPublished) VALUES (1,'Fourth ARTICLE', 'Fourth article','admin','2016-08-02 16:42:26',1);
+INSERT INTO articles(user_id,body,title,author,date,isPublished) VALUES (1,'Fifth ARTICLE', 'Fifth article','admin','2016-08-02 16:42:27',1);
+INSERT INTO articles(user_id,body,title,author,date,isPublished) VALUES (1,'Sixth ARTICLE', 'Sixth article','admin','2016-08-02 16:42:28',1);
+
+
+INSERT INTO tags(name,isVisible) VALUES('sport',1);
+INSERT INTO tags(name,isVisible) VALUES('life',1);
+INSERT INTO tags(name,isVisible) VALUES('goals',1);
+INSERT INTO tags(name,isVisible) VALUES('problem',1);
+INSERT INTO tags(name,isVisible) VALUES('dope',1);
+INSERT INTO tags(name,isVisible) VALUES('reckt',1);
+INSERT INTO tags(name,isVisible) VALUES('nice',1);
+INSERT INTO tags(name,isVisible) VALUES('cool',1);
+INSERT INTO tags(name,isVisible) VALUES('bright',1);
+INSERT INTO tags(name,isVisible) VALUES('MILF',1);
+INSERT INTO tags(name,isVisible) VALUES('GILF',1);
+
+
+INSERT INTO articles_tags(article_id,tag_id) VALUES (1,1);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (1,6);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (1,4);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (1,9);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (2,2);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (2,1);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (3,3);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (3,4);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (3,5);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (3,6);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (3,7);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (4,5);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (4,6);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (4,7);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (4,8);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (4,1);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (5,11);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (5,1);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (5,5);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (6,7);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (6,8);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (6,9);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (6,10);
+INSERT INTO articles_tags(article_id,tag_id) VALUES (6,11);
+ 
+
