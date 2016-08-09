@@ -2,7 +2,7 @@
 <body>
 <div class="container">
     <div class="jumbotron">
-        <h1>My Blog</h1>
+        <h1><a class="header-reference" href="homePage.php">My Blog<a></h1>
         <div id="header_div">
             <a href="index.php?action=login">
                 <?php

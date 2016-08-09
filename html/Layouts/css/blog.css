@@ -46,6 +46,10 @@
     margin-right: 60px;
 }
 
+.header-reference{
+    color: darkgreen;
+}
+
 #p_left {
     text-align: left;
 }
