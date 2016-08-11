@@ -2,19 +2,7 @@
 
 namespace Controllers;
 
-use Forms\EditArticleForm;
-use Forms\InsertArticleForm;
-use Forms\LoginForm;
-use Forms\manageTagsForm;
-use Forms\RegisterForm;
-use Models\Article;
-use Models\articlepageModel;
-use Models\homepageModel;
 use Models\Model;
-use Models\selectTagsModel;
-use Models\tagpageModel;
-use Models\userModel;
-use Session\Session;
 use Views\View;
 
 /**
@@ -84,6 +72,10 @@ class AppController
                     $class->init();
                     break;
                 case 'edit' :
+                    $class = new ArticlesController();
+                    $class->init();
+                    break;
+                case 'remove':
                     $class = new ArticlesController();
                     $class->init();
                     break;
